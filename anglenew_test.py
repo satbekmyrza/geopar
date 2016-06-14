@@ -9,6 +9,7 @@ class TestAngle(unittest.TestCase):
     def setUp(self):
         self.angle1 = Angle([1, 2, 3, 4, 5, 60])
         self.angle2 = Angle([2, 3, 4, 5, 6, 70])
+        self.angle3 = Angle([2, 4, 6, 8, 100])
 
     def test_add(self):
         # Angle + Angle
@@ -33,3 +34,7 @@ class TestAngle(unittest.TestCase):
     def test_rsub(self):
         # int - Angle
         self.assertEqual(200 - self.angle1, Angle([-1, -2, -3, -4, -5, 140]))
+
+    def test_floordiv(self):
+        # Angle // int
+        self.assertEqual(self.angle3 // 2, Angle([1, 2, 3, 4, 50]))
