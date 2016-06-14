@@ -1,6 +1,6 @@
 from Geopar.triangulated_figure import TriangulatedFigure
 from Geopar.triangle import Triangle
-from Geopar.angle import Angle
+from Geopar.anglenew import Angle
 
 __author__ = 'satbek'
 
@@ -10,8 +10,11 @@ def parse_a_file(filename):
     # AND number_of_triangles, figure instantiated
     a_file = open(filename)
 
-    # first line contains the number_of_triangles to read
-    number_of_triangles = int(a_file.readline().strip())
+    # first line contains the number_of_triangles to read and dimension of Angle
+    line = a_file.readline()
+    line = line.split()
+    number_of_triangles = int(line[0])
+    dim = int(line[1])
 
     # all read triangles will be added to figure
     figure = TriangulatedFigure()
@@ -22,9 +25,9 @@ def parse_a_file(filename):
         points = list(map(int, line[0].split(',')))
 
         angles_str = list(map(str.strip, line[1].split(',')))
-        a1 = Angle.from_str(angles_str[0])
-        a2 = Angle.from_str(angles_str[1])
-        a3 = Angle.from_str(angles_str[2])
+        a1 = Angle.from_str(angles_str[0], dim)
+        a2 = Angle.from_str(angles_str[1], dim)
+        a3 = Angle.from_str(angles_str[2], dim)
         angles = [a1, a2, a3]
         figure.add(Triangle(points, angles))
 

@@ -141,12 +141,15 @@ class Angle:
         return False
 
     @classmethod
-    def from_str(cls, a_str):
+    def from_str(cls, a_str, dimension):
         if a_str == 'x':
-            return Angle([0, 0, 0])
+            return Angle([0] * dimension)
+
         nums = list(map(int, a_str.split()))
+        if len(nums) != dimension:
+            raise Exception('R u kidding me?!')
+
         return Angle(nums)
 
 a = Angle([1,2,3,4,5,60])
 b = Angle([2,3,4,5,6,70])
-print(a-b)
