@@ -142,7 +142,10 @@ class Angle:
 
     @classmethod
     def from_str(cls, a_str):
-        pass
+        if a_str == 'x':
+            return Angle([0, 0, 0])
+        nums = list(map(int, a_str.split()))
+        return Angle(nums)
 
 a = Angle([1,2,3,4,5,60])
 b = Angle([2,3,4,5,6,70])
