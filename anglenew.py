@@ -1,7 +1,7 @@
 """
 ISSUES:
-1. How many variables should it support? refer to self.dimension in __init__
-2. Exceptions in __init__ to general
+1. How many variables should it support? refer to self.dimension_support in __init__
+2. Exceptions in __init__ are too general, make them more specific?
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
 4. [SOLVED] in __add__, make Angle addable to int and vice versa
 
@@ -24,18 +24,18 @@ class Angle:
     def __init__(self, coefficients):
         """
         PRE1:
-        len(coefficients) >= 1 AND len(coefficients) <= self.dimension
+        len(coefficients) >= 1 AND len(coefficients) <= self.dimension_support
 
         """
-        self.dimension = len(GREEK_LETTERS)
+        self.dimension_support = len(GREEK_LETTERS)
 
         if len(coefficients) < 1:
             error_msg = 'From class Angle: you need to provide at least one element in coefficients.'
             raise Exception(error_msg)
 
-        if len(coefficients) > self.dimension:
-            error_msg = 'From class Angle: this class supports {} variables. You provided too many variables.'
-            raise Exception(error_msg.format(self.dimension))
+        if len(coefficients) > self.dimension_support:
+            error_msg = 'From class Angle: this class supports {} variables. You provided {} variables.'
+            raise Exception(error_msg.format(self.dimension_support, len(coefficients)))
 
         self.coefficients = coefficients
 
@@ -44,14 +44,12 @@ class Angle:
             error_msg = 'Trying to add non-Angle or non-int object to an Angle object.'
             raise TypeError(error_msg)
 
-        if len(self.coefficients) != len(other.coefficients):
+        if isinstance(other, Angle) and len(self.coefficients) != len(other.coefficients):
             error_msg = 'From Angle.__add__, coefficients in both addends have to contain same number of variables.'
             raise Exception(error_msg)
 
-        other_angle = None
-
         if isinstance(other, int):
-            other_angle = [0] * (self.dimension - 1) + [other]
+            other_angle = [0] * (len(self.coefficients) - 1) + [other]
             return Angle(list(map(sum, zip(self.coefficients, other_angle))))
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
@@ -61,7 +59,7 @@ class Angle:
             error_msg = 'Trying to add Angle object to a non-int object.'
             raise TypeError(error_msg)
 
-        other_angle = [0] * (self.dimension - 1) + [other]
+        other_angle = [0] * (self.dimension_support - 1) + [other]
 
         return self + Angle(other_angle)
 
