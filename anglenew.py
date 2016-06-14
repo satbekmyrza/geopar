@@ -29,7 +29,8 @@ class Angle:
         self.support_num_var = len(GREEK_LETTERS)
 
         if len(coefficients) < 1:
-            raise Exception('From class Angle: you need to provide at least one element in coefficients.')
+            error_msg = 'From class Angle: you need to provide at least one element in coefficients.'
+            raise Exception(error_msg)
 
         if len(coefficients) > self.support_num_var:
             error_msg = 'From class Angle: this class supports {} variables. You provided too many variables.'
@@ -39,10 +40,12 @@ class Angle:
 
     def __add__(self, other):
         if not isinstance(other, Angle):
-            raise TypeError('You cannot add non-Angle object to an Angle object.')
+            error_msg = 'Trying to add non-Angle object to an Angle object.'
+            raise TypeError(error_msg)
 
         if len(self.coefficients) != len(other.coefficients):
-            raise Exception('From Angle.__add__, coefficients in both addends should be of same magnitude.')
+            error_msg = 'From Angle.__add__, coefficients in both addends have to contain same number of variables.'
+            raise Exception(error_msg)
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
 
