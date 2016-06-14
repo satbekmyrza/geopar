@@ -3,7 +3,7 @@ ISSUES:
 1. How many variables should it support? refer to self.dimension in __init__
 2. Exceptions in __init__ to general
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
-4. in __add__, make Angle addable to int and vice versa
+4. [SOLVED] in __add__, make Angle addable to int and vice versa
 
 NOTES:
 """
@@ -40,13 +40,19 @@ class Angle:
         self.coefficients = coefficients
 
     def __add__(self, other):
-        if not isinstance(other, Angle):
-            error_msg = 'Trying to add non-Angle object to an Angle object.'
+        if not isinstance(other, Angle) and not isinstance(other, int):
+            error_msg = 'Trying to add non-Angle or non-int object to an Angle object.'
             raise TypeError(error_msg)
 
         if len(self.coefficients) != len(other.coefficients):
             error_msg = 'From Angle.__add__, coefficients in both addends have to contain same number of variables.'
             raise Exception(error_msg)
+
+        other_angle = None
+
+        if isinstance(other, int):
+            other_angle = [0] * (self.dimension - 1) + [other]
+            return Angle(list(map(sum, zip(self.coefficients, other_angle))))
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
 
