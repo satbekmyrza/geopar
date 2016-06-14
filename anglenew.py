@@ -68,7 +68,12 @@ class Angle:
             error_msg = 'Trying to subtract non-Angle or non-int object from an Angle object.'
             raise TypeError(error_msg)
 
-        other_angle = list(map(lambda x: -x, other.coefficients))
+        if isinstance(other, Angle):
+            other_angle = list(map(lambda x: -x, other.coefficients))
+            return self + Angle(other_angle)
+
+        other_angle = [0] * (len(self.coefficients) - 1) + [-other]
+
         return self + Angle(other_angle)
 
     def __rsub__(self, other):

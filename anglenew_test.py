@@ -21,3 +21,11 @@ class TestAngle(unittest.TestCase):
     def test_radd(self):
         # int + Angle
         self.assertEqual(15 + self.angle2, Angle([2, 3, 4, 5, 6, 85]))
+
+    def test_sub(self):
+        # Angle - Angle
+        self.assertEqual(self.angle2 - self.angle1, Angle([1, 1, 1, 1, 1, 10]))
+        self.assertEqual(self.angle1 - self.angle2, Angle([-1, -1, -1, -1, -1, -10]))
+
+        # Angle - int
+        self.assertEqual(self.angle1 - 25, Angle([1, 2, 3, 4, 5, 35]))
