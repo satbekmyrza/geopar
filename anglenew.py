@@ -126,13 +126,19 @@ class Angle:
         return rtrn_str
 
     def __hash__(self):
-        pass
+        rtrn_str = ''
+        for c in self.coefficients:
+            rtrn_str += str(c)
+        return hash(rtrn_str)
 
     def get_coefficients(self):
-        pass
+        return self.coefficients
 
     def is_known(self):
-        pass
+        for c in self.coefficients:
+            if c != 0:
+                return True
+        return False
 
     @classmethod
     def from_str(cls, a_str):
