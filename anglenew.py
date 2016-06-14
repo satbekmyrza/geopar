@@ -19,5 +19,19 @@ GREEK_LETTER_NAMES = {'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta',
 
 class Angle:
     def __init__(self, coefficients):
+        """
+        PRE1:
+        len(coefficients) >= 1 AND len(coefficients) <= self.support_num_var
+
+        """
+        self.support_num_var = len(GREEK_LETTERS)
+
+        if len(coefficients) < 1:
+            raise Exception('From class Angle: you need to provide at least one element in coefficients.')
+
+        if len(coefficients) > self.support_num_var:
+            error_msg = 'From class Angle: this class supports {} variables. You provided too many variables.'
+            raise Exception(error_msg.format(self.support_num_var))
+
         self.coefficients = coefficients
 
