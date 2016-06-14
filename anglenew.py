@@ -59,7 +59,7 @@ class Angle:
             error_msg = 'Trying to add Angle object to a non-int object.'
             raise TypeError(error_msg)
 
-        other_angle = [0] * (self.dimension_support - 1) + [other]
+        other_angle = [0] * (len(self.coefficients) - 1) + [other]
 
         return self + Angle(other_angle)
 
@@ -107,4 +107,4 @@ class Angle:
 
 a = Angle([1,2,3,4,5,60])
 b = Angle([2,3,4,5,6,70])
-print(a+b)
+print(10+b)
