@@ -46,6 +46,46 @@ class Angle:
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
 
+    def __radd__(self, other):
+        raise Exception('not yet implemented: __radd__')
+
+    def __sub__(self, other):
+        pass
+
+    def __rsub__(self, other):
+        pass
+
+    def __floordiv__(self, other):
+        pass
+
+    def __mul__(self, other):
+        pass
+
+    def __rmul__(self, other):
+        pass
+
+    def __eq__(self, other):
+        pass
+
+    def __ne__(self, other):
+        pass
+
+    def __str__(self):
+        pass
+
+    def __hash__(self):
+        pass
+
+    def get_coefficients(self):
+        pass
+
+    def is_known(self):
+        pass
+
+    @classmethod
+    def from_str(cls, a_str):
+        pass
+
 a = Angle([1,2,3,4,5,6])
 b = Angle([2,3,4,5,6,7])
 a+b
