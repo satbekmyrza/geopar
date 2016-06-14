@@ -87,7 +87,12 @@ class Angle:
         pass
 
     def __str__(self):
-        pass
+        rtrn_str = ''
+        for i in range(len(self.coefficients) - 1):
+            rtrn_str += str(self.coefficients[i])
+            rtrn_str += GREEK_LETTERS[i] + ' '
+        rtrn_str += str(self.coefficients[-1])
+        return rtrn_str
 
     def __hash__(self):
         pass
@@ -102,6 +107,6 @@ class Angle:
     def from_str(cls, a_str):
         pass
 
-a = Angle([1,2,3,4,5,6])
-b = Angle([2,3,4,5,6,7])
-a+b
+a = Angle([1,2,3,4,5,60])
+b = Angle([2,3,4,5,6,70])
+print(a+b)
