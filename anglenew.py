@@ -64,7 +64,12 @@ class Angle:
         return self + Angle(other_angle)
 
     def __sub__(self, other):
-        pass
+        if not isinstance(other, Angle) and not isinstance(other, int):
+            error_msg = 'Trying to subtract non-Angle or non-int object from an Angle object.'
+            raise TypeError(error_msg)
+
+        other_angle = list(map(lambda x: -x, other.coefficients))
+        return self + Angle(other_angle)
 
     def __rsub__(self, other):
         pass
@@ -114,4 +119,4 @@ class Angle:
 
 a = Angle([1,2,3,4,5,60])
 b = Angle([2,3,4,5,6,70])
-print(10+b)
+print(a-b)
