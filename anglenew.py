@@ -1,6 +1,8 @@
 """
 ISSUES:
-1. How many variables should it support?
+1. How many variables should it support? refer to self.support_num_var in __init__
+2. Exceptions in __init__ to general
+3. in __add__, check if other.coefficients == self.coefficients [SOLVED]
 
 NOTES:
 """
@@ -35,3 +37,15 @@ class Angle:
 
         self.coefficients = coefficients
 
+    def __add__(self, other):
+        if not isinstance(other, Angle):
+            raise TypeError('You cannot add non-Angle object to an Angle object.')
+
+        if len(self.coefficients) != len(other.coefficients):
+            raise Exception('From Angle.__add__, coefficients in both addends should be of same magnitude.')
+
+        return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
+
+a = Angle([1,2,3,4,5,6])
+b = Angle([2,3,4,5,6,7])
+a+b
