@@ -92,7 +92,11 @@ class Angle:
         return Angle(other_angle)
 
     def __mul__(self, other):
-        pass
+        if not isinstance(other, int):
+            raise TypeError('Trying to multiply an Angle object to a non-int value.')
+
+        other_angle = list(map(lambda x: x * other, self.coefficients))
+        return Angle(other_angle)
 
     def __rmul__(self, other):
         pass
