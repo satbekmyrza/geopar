@@ -58,7 +58,7 @@ class TriangulatedFigure:
 
     def rule_180_valid(self):
         for t in self.triangles:
-            if sum(t.get_angles()) != Angle([0,0,180]):
+            if sum(t.get_angles()) != t.get_angles()[0].get_angle_180():
                 return False
         return True
 
@@ -72,7 +72,7 @@ class TriangulatedFigure:
             sum_angles = 0
             for triangle in _triangles:
                 sum_angles += triangle.angle_of_point(point)
-            if sum_angles != Angle([0,0,360]):
+            if sum_angles != sum_angles.get_angle_360():
                 return False
         return True
 

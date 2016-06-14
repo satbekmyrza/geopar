@@ -138,6 +138,16 @@ class Angle:
     def get_dimension(self):
         return len(self.coefficients)
 
+    def get_angle_180(self):
+        # returns 180 degree angle of dimension as self
+        angle = [0] * (self.get_dimension() - 1) + [180]
+        return Angle(angle)
+
+    def get_angle_360(self):
+        # returns 360 degree angle of dimension as self
+        angle = [0] * (self.get_dimension() - 1) + [360]
+        return Angle(angle)
+
     def is_known(self):
         for c in self.coefficients:
             if c != 0:
