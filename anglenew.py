@@ -4,6 +4,7 @@ ISSUES:
 2. Exceptions in __init__ are too general, make them more specific?
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
 4. [SOLVED] in __add__, make Angle addable to int and vice versa
+5. Float numbers are not supported
 
 NOTES:
 """
@@ -133,6 +134,9 @@ class Angle:
 
     def get_coefficients(self):
         return self.coefficients
+
+    def get_dimension(self):
+        return len(self.coefficients)
 
     def is_known(self):
         for c in self.coefficients:
