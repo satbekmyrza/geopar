@@ -1,7 +1,7 @@
 """
 ISSUES:
-1. How many variables should it support? refer to self.dimension_support in __init__
-2. Exceptions in __init__ are too general, make them more specific?
+1. max number of supported variables is not known, refer to self.dimension_support in __init__
+2. Exceptions in __init__, and other various places are too general, make them more specific?
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
 4. [SOLVED] in __add__, make Angle addable to int and vice versa
 5. Float numbers are not supported
