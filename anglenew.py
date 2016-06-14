@@ -77,7 +77,12 @@ class Angle:
         return self + Angle(other_angle)
 
     def __rsub__(self, other):
-        pass
+        if not isinstance(other, int):
+            error_msg = 'Trying to subtract Angle object from a non-int object.'
+            raise TypeError(error_msg)
+
+        other_angle = list(map(lambda x: -x, self.coefficients))
+        return Angle(other_angle) + other
 
     def __floordiv__(self, other):
         pass

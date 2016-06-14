@@ -29,3 +29,7 @@ class TestAngle(unittest.TestCase):
 
         # Angle - int
         self.assertEqual(self.angle1 - 25, Angle([1, 2, 3, 4, 5, 35]))
+
+    def test_rsub(self):
+        # int - Angle
+        self.assertEqual(200 - self.angle1, Angle([-1, -2, -3, -4, -5, 140]))
