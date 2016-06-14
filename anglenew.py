@@ -88,7 +88,7 @@ class Angle:
         if not isinstance(other, int):
             raise TypeError('Trying to floor-div an Angle object by a non-int value.')
 
-        other_angle = list(map(lambda x: x//other, self.coefficients))
+        other_angle = list(map(lambda x: x // other, self.coefficients))
         return Angle(other_angle)
 
     def __mul__(self, other):
