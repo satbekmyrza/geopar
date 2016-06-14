@@ -17,4 +17,3 @@ class TestAngle(unittest.TestCase):
         # Angle + int
         self.assertEqual(self.angle1 + 10, Angle([1, 2, 3, 4, 5, 70]))
         self.assertEqual(self.angle1 + (-10), Angle([1, 2, 3, 4, 5, 50]))
-        

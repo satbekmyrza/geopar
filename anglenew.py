@@ -79,7 +79,14 @@ class Angle:
         pass
 
     def __eq__(self, other):
-        pass
+        if len(self.coefficients) != len(other.coefficients):
+            raise Exception('Trying to compare two Angle objects of different dimension.')
+
+        for i in range(len(self.coefficients)):
+            if self.coefficients[i] != other.coefficients[i]:
+                return False
+
+        return True
 
     def __ne__(self, other):
         pass
