@@ -145,7 +145,7 @@ class Angle:
         if a_str == 'x':
             return Angle([0] * dimension)
 
-        nums = list(map(int, a_str.split()))
+        nums = list(map(float, a_str.split()))
         if len(nums) != dimension:
             raise Exception('R u kidding me?!')
 
