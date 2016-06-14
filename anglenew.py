@@ -99,7 +99,10 @@ class Angle:
         return Angle(other_angle)
 
     def __rmul__(self, other):
-        pass
+        if not isinstance(other, int):
+            raise TypeError('Trying to multiply an Angle object to a non-int value.')
+
+        return self * other
 
     def __eq__(self, other):
         if len(self.coefficients) != len(other.coefficients):

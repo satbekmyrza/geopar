@@ -42,3 +42,7 @@ class TestAngle(unittest.TestCase):
     def test_mul(self):
         # Angle * int
         self.assertEqual(self.angle3 * 2, Angle([4, 8, 12, 16, 200]))
+
+    def test_rmul(self):
+        # int * Angle
+        self.assertEqual(2 * self.angle3, Angle([4, 8, 12, 16, 200]))
