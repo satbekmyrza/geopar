@@ -5,7 +5,7 @@ ISSUES:
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
 4. [SOLVED] in __add__, make Angle addable to int and vice versa
 5. Float numbers are not supported
-6. Angle relationships are not supported. G.e. a+b+c+d=240; 
+6. Angle relationships are not supported. G.e. a+b+c+d=240;
 
 NOTES:
 """
