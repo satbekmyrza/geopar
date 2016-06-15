@@ -5,6 +5,7 @@ ISSUES:
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
 4. [SOLVED] in __add__, make Angle addable to int and vice versa
 5. Float numbers are not supported
+6. Angle relationships are not supported. G.e. a+b+c+d=240; 
 
 NOTES:
 """
@@ -12,7 +13,7 @@ NOTES:
 __author__ = 'satbek'
 
 # allows support for up to len(GREEK_LETTERS) variables
-GREEK_LETTERS = 'αβγδεηθλπρστμφω'
+GREEK_LETTERS = 'abcdαβγδεηθλπρστμφω'
 
 # total of 24 letters
 GREEK_LETTER_NAMES = {'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'ζ': 'zeta', 'η': 'eta',
@@ -164,6 +165,3 @@ class Angle:
             raise Exception('R u kidding me?!')
 
         return Angle(nums)
-
-a = Angle([1,2,3,4,5,60])
-b = Angle([2,3,4,5,6,70])
