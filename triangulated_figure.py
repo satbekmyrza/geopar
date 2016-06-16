@@ -130,10 +130,7 @@ class TriangulatedFigure:
     def get_interior_points(self):
         """
         INTENT:
-        Find all interior points of a self (TriangulatedFigure)
-
-        PRE:
-        None
+        Find all interior points of self (TriangulatedFigure)
 
         POST:
         interior_points is returned
@@ -141,7 +138,7 @@ class TriangulatedFigure:
         OBJECTIVES:
          (Found 1a): found the points that have more than 2 triangles attached to them
                      AND
-         (Found 1b): saved them in point_nums, alongside with number of triangles that they constitute
+         (Found 1b): saved them in point_nums, alongside with number of triangles that they are in
          (Found 2): found interior points
          (Complement): returned interior_points
 

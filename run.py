@@ -45,7 +45,6 @@ def run(figure):
 
     # All angles known?
     if figure.all_angles_known():
-
         # 180, 360, and pairing valid?
         if figure.rule_360_valid() and figure.rule_180_valid() and figure.rule_pairing_valid():
             print("Pre-process complete.")
