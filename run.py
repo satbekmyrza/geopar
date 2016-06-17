@@ -103,7 +103,6 @@ def run(figure):
             print('-------------------------')
             print('BAD INPUT. RUN THE PROGRAM AGAIN. TYPE y OR n.')
 
-
 # "Pre-processing" stage
 triangulated_figure = parse_a_file('input.txt')
 
