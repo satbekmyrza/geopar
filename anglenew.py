@@ -1,11 +1,12 @@
 """
 ISSUES:
-1. max number of supported variables is not known, refer to self.dimension_support in __init__
+1. [SOLVED] max number of supported variables is not known, refer to self.dimension_support in __init__
 2. Exceptions in __init__, and other various places are too general, make them more specific?
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
 4. [SOLVED] in __add__, make Angle addable to int and vice versa
-5. Float numbers are not supported
+5. Float numbers are not supported in __add__, etc
 6. Angle relationships are not supported. G.e. a+b+c+d=240;
+7. Angle.__init__: passed parameter coefficients is not checked for type of data
 
 NOTES:
 """
@@ -13,7 +14,8 @@ NOTES:
 __author__ = 'satbek'
 
 # allows support for up to len(GREEK_LETTERS) variables
-GREEK_LETTERS = 'abcdαβγδεηθλπρστμφω'
+GREEK_LETTERS = 'αβγδεηθλπρστμφω'
+VAR_SUPPORT = len('αβγδεηθλπρστμφω')
 
 # total of 24 letters
 GREEK_LETTER_NAMES = {'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'ζ': 'zeta', 'η': 'eta',
@@ -23,28 +25,49 @@ GREEK_LETTER_NAMES = {'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta',
 
 
 class Angle:
+    """
+    INTENT:
+    Defines an angle in terms of a list of integer/float numbers. Allows to work with variable angles.
+    G.e. Let's say the angle is: aα + bβ + c, where α and β are variables.
+    Then, this angle can be expressed by [a, b, c] a.k.a. coefficients.
+
+    IMPORTANT:
+    1. This class supports up to 15 variables.
+    2. If all of self.coefficients are 0, then the angle is said to be unknown.
+    """
+
     def __init__(self, coefficients):
         """
-        PRE1:
-        len(coefficients) >= 1 AND len(coefficients) <= self.dimension_support
+        PRE1: len(coefficients) >= 1
+        PRE2: len(coefficients) <= self.dimension_support
 
         """
-        self.dimension_support = len(GREEK_LETTERS)
 
+        # PRE1
         if len(coefficients) < 1:
-            error_msg = 'From class Angle: you need to provide at least one element in coefficients.'
+            error_msg = 'Angle: you need to provide at least one coefficient.'
             raise Exception(error_msg)
 
-        if len(coefficients) > self.dimension_support:
-            error_msg = 'From class Angle: this class supports {} variables. You provided {} variables.'
-            raise Exception(error_msg.format(self.dimension_support, len(coefficients)))
+        # PRE2
+        if len(coefficients) > VAR_SUPPORT:
+            error_msg = 'Angle: this class supports {} variables. You provided too many ({}) variables.'
+            raise Exception(error_msg.format(VAR_SUPPORT, len(coefficients)))
 
         self.coefficients = coefficients
 
     def __add__(self, other):
+        """
+        INTENT:
+        Performs addition of Angle objects.
+
+        PRE1: other is instance of Angle or int
+        PRE2: if other is Angle, 
+        """
+
+        # PRE1
         if not isinstance(other, Angle) and not isinstance(other, int):
-            error_msg = 'Trying to add non-Angle or non-int object to an Angle object.'
-            raise TypeError(error_msg)
+            error_msg = 'Angle: Trying to add {} object to an Angle object. Angle or int is required.'
+            raise TypeError(error_msg.format(str(type(other))[8:-2]))
 
         if isinstance(other, Angle) and len(self.coefficients) != len(other.coefficients):
             error_msg = 'From Angle.__add__, coefficients in both addends have to contain same number of variables.'
