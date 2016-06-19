@@ -1,6 +1,6 @@
 import unittest
-from Geopar.triangle import Triangle
-from Geopar.angle import Angle
+from triangle import Triangle
+from angle import Angle
 
 __author__ = 'satbek'
 

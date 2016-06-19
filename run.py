@@ -1,6 +1,6 @@
-from Geopar.triangulated_figure import TriangulatedFigure
-from Geopar.triangle import Triangle
-from Geopar.anglenew import Angle
+from triangulated_figure import TriangulatedFigure
+from triangle import Triangle
+from anglenew import Angle
 
 __author__ = 'satbek'
 

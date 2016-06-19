@@ -1,5 +1,5 @@
 import unittest
-from Geopar.anglenew import Angle
+from anglenew import Angle
 
 __author__ = 'satbek'
 
