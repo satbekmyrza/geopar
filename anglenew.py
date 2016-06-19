@@ -120,12 +120,27 @@ class Angle:
         return not self.__eq__(other)
 
     def __str__(self):
-        rtrn_str = ''
+        result = ''
         for i in range(len(self.coefficients) - 1):
-            rtrn_str += str(self.coefficients[i])
-            rtrn_str += GREEK_LETTERS[i] + ' '
-        rtrn_str += str(self.coefficients[-1])
-        return rtrn_str
+            a = self.coefficients[i]
+            if a > 0:
+                result += ' + ' + str(a) if a != 1 else '' + GREEK_LETTERS[i]
+            elif a < 0:
+                result += ' - ' + str(abs(a)) + GREEK_LETTERS[i]
+
+        a = self.coefficients[-1]
+
+        if a > 0:
+            result += ' + ' + str(a)
+        elif a < 0:
+            result += ' - ' + str(abs(a))
+
+        if result[:3] == ' - ':
+            result = '-' + result[3:]
+        elif result[:3] == ' + ':
+            result = result[3:]
+
+        return result
 
     def __hash__(self):
         rtrn_str = ''
