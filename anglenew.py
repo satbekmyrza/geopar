@@ -7,6 +7,7 @@ ISSUES:
 5. Float numbers are not supported in __add__, etc
 6. Angle relationships are not supported. G.e. a+b+c+d=240;
 7. Angle.__init__: passed parameter coefficients is not checked for type of data
+8. Angle: __div__ is not implemented
 
 NOTES:
 """
@@ -58,10 +59,10 @@ class Angle:
     def __add__(self, other):
         """
         INTENT:
-        Performs addition of Angle objects.
+        Performs addition of two Angle objects.
 
         PRE1: other is instance of Angle or int
-        PRE2: if other is Angle, 
+        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
@@ -69,49 +70,87 @@ class Angle:
             error_msg = 'Angle: Trying to add {} object to an Angle object. Angle or int is required.'
             raise TypeError(error_msg.format(str(type(other))[8:-2]))
 
-        if isinstance(other, Angle) and len(self.coefficients) != len(other.coefficients):
-            error_msg = 'From Angle.__add__, coefficients in both addends have to contain same number of variables.'
-            raise Exception(error_msg)
+        # PRE2
+        if isinstance(other, Angle) and self.get_dimension() != other.get_dimension():
+            error_msg = 'Angle: both addends should have the same dimension! {} != {}'
+            raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
 
         if isinstance(other, int):
-            other_angle = [0] * (len(self.coefficients) - 1) + [other]
-            return Angle(list(map(sum, zip(self.coefficients, other_angle))))
+            other_angle = [0] * (self.get_dimension() - 1) + [other]
+            return self + Angle(other_angle)
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
 
     def __radd__(self, other):
+        """
+        INTENT:
+        Performs addition of two Angle objects.
+
+        PRE1: other is instance of int
+        """
+
+        # PRE1
         if not isinstance(other, int):
-            error_msg = 'Trying to add Angle object to a non-int object.'
-            raise TypeError(error_msg)
+            error_msg = 'Angle: Trying to add Angle object to {} object. int is required.'
+            raise TypeError(error_msg.format(str(type(other))[8:-2]))
 
         other_angle = [0] * (len(self.coefficients) - 1) + [other]
 
         return self + Angle(other_angle)
 
     def __sub__(self, other):
+        """
+        INTENT:
+        Performs subtraction of two Angle objects.
+
+        PRE1: other is instance of Angle or int
+        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
+        """
+
+        # PRE1
         if not isinstance(other, Angle) and not isinstance(other, int):
-            error_msg = 'Trying to subtract non-Angle or non-int object from an Angle object.'
-            raise TypeError(error_msg)
+            error_msg = 'Angle: Trying to subtract {} object from an Angle object. Angle or int is required.'
+            raise TypeError(error_msg.format(str(type(other))[8:-2]))
 
-        if isinstance(other, Angle):
-            other_angle = list(map(lambda x: -x, other.coefficients))
-            return self + Angle(other_angle)
+        # PRE2
+        if isinstance(other, Angle) and self.get_dimension() != other.get_dimension():
+            error_msg = 'Angle: minuend and subtrahend should have the same dimension! {} != {}'
+            raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
 
-        other_angle = [0] * (len(self.coefficients) - 1) + [-other]
+        other_angle = list(map(lambda x: -x, other.coefficients))
+        if isinstance(other, int):
+            other_angle = [0] * (len(self.coefficients) - 1) + [-other]
 
         return self + Angle(other_angle)
 
     def __rsub__(self, other):
+        """
+        INTENT:
+        Performs subtraction of two Angle objects.
+
+        PRE1: other is instance of int
+        """
+
+        # PRE1
         if not isinstance(other, int):
-            error_msg = 'Trying to subtract Angle object from a non-int object.'
-            raise TypeError(error_msg)
+            error_msg = 'Angle: Trying to subtract Angle object from a {} object.'
+            raise TypeError(error_msg.format(str(type(other))[8:-2]))
 
         other_angle = list(map(lambda x: -x, self.coefficients))
         return Angle(other_angle) + other
 
     def __floordiv__(self, other):
+        """
+        INTENT:
+        Performs a floor division of Angle by other
+
+        PRE1:
+        other is instance of int
+        """
+
+        # PRE1
         if not isinstance(other, int):
-            raise TypeError('Trying to floor-div an Angle object by a non-int value.')
+            raise TypeError('Angle: Trying to floor-div an Angle object by a {} object.')
 
         other_angle = list(map(lambda x: x // other, self.coefficients))
         return Angle(other_angle)
