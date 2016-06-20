@@ -1,7 +1,7 @@
 __author__ = 'satbek'
 
 
-from anglenew import Angle
+from angle import Angle
 
 
 class Triangle:

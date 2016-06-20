@@ -2,7 +2,7 @@ __author__ = 'mostly satbek'
 
 
 from triangle import Triangle
-from anglenew import Angle
+from angle import Angle
 
 
 class TriangulatedFigure:

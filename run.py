@@ -1,6 +1,6 @@
 from triangulated_figure import TriangulatedFigure
 from triangle import Triangle
-from anglenew import Angle
+from angle import Angle
 
 __author__ = 'satbek'
 

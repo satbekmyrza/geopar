@@ -1,5 +1,5 @@
 import unittest
-from anglenew import Angle
+from angle import Angle
 
 __author__ = 'satbek'
 
