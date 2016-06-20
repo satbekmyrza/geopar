@@ -1,6 +1,6 @@
 import unittest
-from triangle import Triangle
-from triangulated_figure import TriangulatedFigure
+from geopar.triangle import Triangle
+from geopar.triangulated_figure import TriangulatedFigure
 
 __author__ = 'ebraude'
 
