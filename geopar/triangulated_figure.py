@@ -1,8 +1,7 @@
 __author__ = 'mostly satbek'
 
 
-from triangle import Triangle
-from angle import Angle
+from geopar.angle import Angle
 
 
 class TriangulatedFigure:

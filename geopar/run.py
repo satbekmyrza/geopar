@@ -1,6 +1,6 @@
-from triangulated_figure import TriangulatedFigure
-from triangle import Triangle
-from angle import Angle
+from geopar.triangulated_figure import TriangulatedFigure
+from geopar.triangle import Triangle
+from geopar.angle import Angle
 
 __author__ = 'satbek'
 
@@ -8,7 +8,7 @@ __author__ = 'satbek'
 def parse_a_file(filename):
     # (Opened): a file is opened
     # AND number_of_triangles, figure instantiated
-    a_file = open(filename)
+    a_file = open('../inputs/' + filename)
 
     # first line contains the number_of_triangles to read and dimension of Angle
     line = a_file.readline()

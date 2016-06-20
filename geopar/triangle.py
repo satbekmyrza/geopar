@@ -1,7 +1,7 @@
 __author__ = 'satbek'
 
 
-from angle import Angle
+from geopar.angle import Angle
 
 
 class Triangle:
