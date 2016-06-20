@@ -118,9 +118,11 @@ class Angle:
             error_msg = 'Angle: minuend and subtrahend should have the same dimension! {} != {}'
             raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
 
-        other_angle = list(map(lambda x: -x, other.coefficients))
+        other_angle = None
         if isinstance(other, int):
             other_angle = [0] * (len(self.coefficients) - 1) + [-other]
+        elif isinstance(other, Angle):
+            other_angle = list(map(lambda x: -x, other.coefficients))
 
         return self + Angle(other_angle)
 
