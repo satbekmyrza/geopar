@@ -9,16 +9,16 @@ class TestTriangle(unittest.TestCase):
 
     def setUp(self):
         self.triangle0 = Triangle([1, 2, 3], [20, 30, 130])
-        print("In TestTriangulatedFigure.setUp():" + self.triangle0.to_string())
+        print(self.triangle0)
         self.triangle1 = Triangle([2, 1, 77], [130, 20, 30])
-        print("In TestTriangulatedFigure.setUp():" + self.triangle1.to_string())
-        self.triangle2 = Triangle([1, 77, 88],[Angle([30,40,110]), Angle.from_str('x'), Angle([60,60,60])])
-        print("In TestTriangulatedFigure.setUp():" + self.triangle2.to_string())
+        print(self.triangle1)
+        self.triangle2 = Triangle([1, 77, 88], [Angle([30,40,110]), Angle.from_str('x', 3), Angle([60,60,60])])
+        print(self.triangle2)
 
     def test_get_angles(self):
         self.assertTrue(20 in self.triangle0.get_angles())
         self.assertTrue(30 in self.triangle1.get_angles())
-        self.assertTrue(Angle.from_str('30 40 110') in self.triangle2.get_angles())
+        self.assertTrue(Angle.from_str('30 40 110', 3) in self.triangle2.get_angles())
 
     def test_angle_of_point(self):
         self.assertTrue(20 == self.triangle0.angle_of_point(1))

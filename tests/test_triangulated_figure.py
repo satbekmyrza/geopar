@@ -29,11 +29,11 @@ class TestTriangulatedFigure(unittest.TestCase):
 
     def test_get_points(self):
 
-        self.triangulated_figure0.to_string()
+        print(self.triangulated_figure0)
         self.assertEqual(2, len(self.triangulated_figure0.triangles))  # 2 triangles
         self.assertEqual(4, len(self.triangulated_figure0.get_points()))  # 4 get_points
 
-        self.triangulated_figure1.to_string()
+        print(self.triangulated_figure1)
         self.assertEqual(4, len(self.triangulated_figure1.triangles))  # 4 triangles
         self.assertEqual(6, len(self.triangulated_figure1.get_points()))  # 6 get_points
 
