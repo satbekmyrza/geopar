@@ -18,14 +18,12 @@ The second number **m** on the first line in **input.txt** denotes a dimension o
 The following **n** lines denote the points (vertices) and angles of each triangle in the triangulated figure.
 The program will process first **n+1** lines in **input.txt** and neglect the remaining part.
 
-The points are written as 3 non-zero, distinct integer numbers in clockwise order separated by a comma.
-
+The points are written as 3 non-zero, distinct integer numbers in clockwise order separated by a comma.  
 _Example:_ 1, 3, 5
 
 The angle is written as **m** integer/float values **a b c** separated by space, each of which is a coefficient
 of an angle of the form **aα + bβ + c**, where **α** and **β** are variables.
-The program is able to work with unknown angles. Unknown angles are written with a symbol *x*.
-
+The program is able to work with unknown angles. Unknown angles are written with a symbol *x*.  
 _Example:_ -0.5 -1 1 60.0 _for m = 4_ 
 
 Please note that you need to provide **m** number of coefficients for each point (vertex),
@@ -35,19 +33,13 @@ One line contains information about one triangle: three points and three angles,
 where group of points is separated by a semicolon from a group of angles. 
 Please note that points and angles correspond to each other via their indices in the list.
 
-* This is an example of an information about triangle with all known angles for _m = 3_:
-  
-  _1, 3, 5; -1 -1 60, 0 1 0, 1 0 120_
-  
-  Vertices: _1, 3, 5_
-  
+* This is an example of an information about triangle with all known angles for _m = 3_:  
+  _1, 3, 5; -1 -1 60, 0 1 0, 1 0 120_  
+  Vertices: _1, 3, 5_  
   Angles: _-α - β + 60, β, α + 120_
-* This is an example of an information about triangle with one _unknown_ angle:
-  
-  _1, 5, 4; -1 -1 60, 0 1 60, x_
-  
-  Vertices: _1, 5, 4_
-  
+* This is an example of an information about triangle with one _unknown_ angle:  
+  _1, 5, 4; -1 -1 60, 0 1 60, x_  
+  Vertices: _1, 5, 4_  
   Angles: _-α - β + 60, β + 60, unknown_
 
 The program processes only the first triangle configuration in input.txt.
@@ -66,12 +58,11 @@ Below are some examples of triangle configurations with 3 variable angles:
   (https://drive.google.com/open?id=1iNWpIilNH_K_C657zRd4lBOg7BdvI69nyTdTjkCqxfI)
 
 Some triangulated figures come with constraints as demonstrated here: [link]
-(https://drive.google.com/open?id=1Co-chfuKsFyROpgChfybuGml94_yjnKcEUJ0IBFB54o)
-
+(https://drive.google.com/open?id=1Co-chfuKsFyROpgChfybuGml94_yjnKcEUJ0IBFB54o)  
 Our program does not support constraints yet.
 
 #### Issues
-See:
+See:  
 - angle.py
 - triangle.py
 - triangulated_figure.py
