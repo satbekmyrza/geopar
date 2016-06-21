@@ -59,23 +59,20 @@ before running the program.
 Preparing an input file may be frustrating at the first time, because any missed detail will lead to
 improper program work.
 Below are some examples of triangle configurations with 3 variable angles:
-- Simple triangle that requires pairing (CLASSIC PYRAMID):
-  
-  https://drive.google.com/open?id=1FBQ49obyUkgOncR4zO6KU7kQ88qRqlQWlRiMV95feHQ
-- Morley triangle that requires pairing (MORLEY INCOMPLETE):
-  
-  https://drive.google.com/open?id=172aspdJkZt9o6HyFKOKixCu8vuHe9FLwtaipAVcAuM4
-- Generalized Morley triangle with all angles known (GENERALIZED MORLEY):
-  
-  https://drive.google.com/open?id=1iNWpIilNH_K_C657zRd4lBOg7BdvI69nyTdTjkCqxfI
+- Simple triangle that requires pairing (CLASSIC PYRAMID): [link]
+  (https://drive.google.com/open?id=1FBQ49obyUkgOncR4zO6KU7kQ88qRqlQWlRiMV95feHQ)
+- Morley triangle that requires pairing (MORLEY INCOMPLETE): [link]
+  (https://drive.google.com/open?id=172aspdJkZt9o6HyFKOKixCu8vuHe9FLwtaipAVcAuM4)
+- Generalized Morley triangle with all angles known (GENERALIZED MORLEY): [link]
+  (https://drive.google.com/open?id=1iNWpIilNH_K_C657zRd4lBOg7BdvI69nyTdTjkCqxfI)
 
-Some triangulated figures come with constraints as demonstrated here:
-
-https://drive.google.com/open?id=1Co-chfuKsFyROpgChfybuGml94_yjnKcEUJ0IBFB54o
+Some triangulated figures come with constraints as demonstrated here: [link]
+(https://drive.google.com/open?id=1Co-chfuKsFyROpgChfybuGml94_yjnKcEUJ0IBFB54o)
 
 Our program does not support constraints yet.
 
 #### Issues:
-- see angle.py
-- see triangle.py
-- see triangulated_figure.py
+See:
+- angle.py
+- triangle.py
+- triangulated_figure.py
