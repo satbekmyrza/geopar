@@ -1,35 +1,35 @@
-### INTENT
+#### Intent
 This project is an example of Computational Reasoning. It acts as a geometric theorems
 prover. More specifically, it is designed to prove Morley's Trisector Theorem (as of June, 2016).
 
-### TO RUN THE PROJECT:
+#### To Run the Program
 Execute run.py script.
 
-### FUNCTIONALITY
+#### Functionality
 [Activity Diagram](https://drive.google.com/open?id=1NkYzuc2SvzuM0E-Suw00hTjIOd0kKMthwJZFddhUuCc)
 
 [Class Diagram](https://drive.google.com/open?id=0B13UVf6NnzqsUnRobzFkcldDR2c)
 
-### FORMAT OF input.txt:
+#### Format of **input.txt**:
 **input.txt** file serves as an input source for the project. It contains data about the vertices
 and the angles of a triangulated figure.
 
-The first number _n_ on the first line in input.txt denotes a number of triangles in the triangulated figure.
-The second number _m_ on the first line in input.txt denotes a dimension of the angles that constitute those triangles.
-The following _n_ lines denote the points (vertices) and angles of each triangle in the triangulated figure.
-The program will process first _n+1_ lines in input.txt and neglect the remaining part.
+The first number **n** on the first line in **input.txt** denotes a number of triangles in the triangulated figure.
+The second number **m** on the first line in **input.txt** denotes a dimension of the angles that constitute those triangles.
+The following **n** lines denote the points (vertices) and angles of each triangle in the triangulated figure.
+The program will process first **n+1** lines in **input.txt** and neglect the remaining part.
 
 The points are written as 3 non-zero, distinct integer numbers in clockwise order separated by a comma.
 
 _Example:_ 1, 3, 5
 
-The angle is written as _m_ integer/float values _a b c_ separated by space, each of which is a coefficient
-of an angle of the form _aα + bβ + c_, where _α_ and _β_ are variables.
+The angle is written as **m** integer/float values **a b c** separated by space, each of which is a coefficient
+of an angle of the form **aα + bβ + c**, where **α** and **β** are variables.
 The program is able to work with unknown angles. Unknown angles are written with a symbol *x*.
 
 _Example:_ -0.5 -1 1 60.0 _for m = 4_ 
 
-Please note that you need to provide _m_ number of coefficients for each point (vertex),
+Please note that you need to provide **m** number of coefficients for each point (vertex),
 otherwise, the program will fail to run. 
 
 One line contains information about one triangle: three points and three angles,
@@ -55,7 +55,7 @@ The program processes only the first triangle configuration in input.txt.
 Thus, you may store all your configurations in input.txt, and move the one of interest to the top
 before running the program.
 
-## EXAMPLE CONFIGURATIONS:
+#### Example Configurations:
 Preparing an input file may be frustrating at the first time, because any missed detail will lead to
 improper program work.
 Below are some examples of triangle configurations with 3 variable angles:
@@ -72,7 +72,7 @@ https://drive.google.com/open?id=1Co-chfuKsFyROpgChfybuGml94_yjnKcEUJ0IBFB54o
 
 Our program does not support constraints yet.
 
-## ISSUES:
+#### Issues:
 - see angle.py
 - see triangle.py
 - see triangulated_figure.py
