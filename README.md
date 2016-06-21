@@ -10,7 +10,7 @@ Execute run.py script.
 
 [Class Diagram](https://drive.google.com/open?id=0B13UVf6NnzqsUnRobzFkcldDR2c)
 
-#### Format of **input.txt**:
+#### Format of input.txt:
 **input.txt** file serves as an input source for the project. It contains data about the vertices
 and the angles of a triangulated figure.
 
@@ -43,7 +43,7 @@ Please note that points and angles correspond to each other via their indices in
   Vertices: _1, 3, 5_
   
   Angles: _-α - β + 60, β, α + 120_
-* This is an example of an information about triangle with one unknown angle:
+* This is an example of an information about triangle with one _unknown_ angle:
   
   _1, 5, 4; -1 -1 60, 0 1 60, x_
   
