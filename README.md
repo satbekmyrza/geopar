@@ -1,16 +1,17 @@
-## INTENT
+### INTENT
 This project is an example of Computational Reasoning. It acts as a geometric theorems
 prover. More specifically, it is designed to prove Morley's Trisector Theorem (as of June, 2016).
 
-## TO RUN THE PROJECT:
+### TO RUN THE PROJECT:
 Execute run.py script.
 
-## FUNCTIONALITY
-[Activity Diagram:](https://drive.google.com/open?id=1NkYzuc2SvzuM0E-Suw00hTjIOd0kKMthwJZFddhUuCc)
-[Class Diagram:](https://drive.google.com/open?id=0B13UVf6NnzqsUnRobzFkcldDR2c)
+### FUNCTIONALITY
+[Activity Diagram](https://drive.google.com/open?id=1NkYzuc2SvzuM0E-Suw00hTjIOd0kKMthwJZFddhUuCc)
 
-## FORMAT OF INPUT.TXT:
-input.txt file serves as an input source for the project. It contains data about the vertices
+[Class Diagram](https://drive.google.com/open?id=0B13UVf6NnzqsUnRobzFkcldDR2c)
+
+### FORMAT OF input.txt:
+**input.txt** file serves as an input source for the project. It contains data about the vertices
 and the angles of a triangulated figure.
 
 The first number _n_ on the first line in input.txt denotes a number of triangles in the triangulated figure.
@@ -19,11 +20,13 @@ The following _n_ lines denote the points (vertices) and angles of each triangle
 The program will process first _n+1_ lines in input.txt and neglect the remaining part.
 
 The points are written as 3 non-zero, distinct integer numbers in clockwise order separated by a comma.
-_Example:_ 1, 3, 5 
+
+_Example:_ 1, 3, 5
 
 The angle is written as _m_ integer/float values _a b c_ separated by space, each of which is a coefficient
 of an angle of the form _aα + bβ + c_, where _α_ and _β_ are variables.
 The program is able to work with unknown angles. Unknown angles are written with a symbol *x*.
+
 _Example:_ -0.5 -1 1 60.0 _for m = 4_ 
 
 Please note that you need to provide _m_ number of coefficients for each point (vertex),
@@ -34,12 +37,18 @@ where group of points is separated by a semicolon from a group of angles.
 Please note that points and angles correspond to each other via their indices in the list.
 
 * This is an example of an information about triangle with all known angles for _m = 3_:
+  
   _1, 3, 5; -1 -1 60, 0 1 0, 1 0 120_
+  
   Vertices: _1, 3, 5_
+  
   Angles: _-α - β + 60, β, α + 120_
 * This is an example of an information about triangle with one unknown angle:
+  
   _1, 5, 4; -1 -1 60, 0 1 60, x_
+  
   Vertices: _1, 5, 4_
+  
   Angles: _-α - β + 60, β + 60, unknown_
 
 The program processes only the first triangle configuration in input.txt.
@@ -58,7 +67,9 @@ Below are some examples of triangle configurations with 3 variable angles:
   https://drive.google.com/open?id=1iNWpIilNH_K_C657zRd4lBOg7BdvI69nyTdTjkCqxfI
 
 Some triangulated figures come with constraints as demonstrated here:
+
 https://drive.google.com/open?id=1Co-chfuKsFyROpgChfybuGml94_yjnKcEUJ0IBFB54o
+
 Our program does not support constraints yet.
 
 ## ISSUES:
