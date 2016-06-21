@@ -1,3 +1,9 @@
+"""
+ISSUES:
+1. Does not check the input for correctness
+"""
+
+
 from geopar.triangulated_figure import TriangulatedFigure
 from geopar.triangle import Triangle
 from geopar.angle import Angle
