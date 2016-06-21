@@ -10,40 +10,40 @@ Execute run.py script.
 [Class Diagram](https://drive.google.com/open?id=0B13UVf6NnzqsUnRobzFkcldDR2c)
 
 #### Format of `input.txt`
-**input.txt** file serves as an input source for the project. It contains data about the vertices
+`input.txt` file serves as an input source for the project. It contains data about the vertices
 and the angles of a triangulated figure.
 
-The first number **n** on the first line in **input.txt** denotes a number of triangles in the triangulated figure.
-The second number **m** on the first line in **input.txt** denotes a dimension of the angles that constitute those triangles.
-The following **n** lines denote the points (vertices) and angles of each triangle in the triangulated figure.
-The program will process first **n+1** lines in **input.txt** and neglect the remaining part.
+The first number `n` on the first line in `input.txt` denotes a number of triangles in the triangulated figure.
+The second number `m` on the first line in `input.txt` denotes a dimension of the angles that constitute those triangles.
+The following `n` lines denote the points (vertices) and angles of each triangle in the triangulated figure.
+The program will process first `n+1` lines in `input.txt` and neglect the remaining part.
 
 The points are written as 3 non-zero, distinct integer numbers in clockwise order separated by a comma.  
 _Example:_ `1, 3, 5`
 
-The angle is written as **m** integer/float values **a b c** separated by space, each of which is a coefficient
-of an angle of the form **aα + bβ + c**, where **α** and **β** are variables.
-The program is able to work with unknown angles. Unknown angles are written with a symbol *x*.  
-_Example:_ -0.5 -1 1 60.0 _for m = 4_ 
+The angle is written as `m` integer/float values `a b c` separated by space, each of which is a coefficient
+of an angle of the form `aα + bβ + c`, where `α` and `β` are variables.
+The program is able to work with unknown angles. Unknown angles are written with a symbol `x`.  
+_Example:_ `-0.5 -1 1 60.0`, _for m = 4_ 
 
-Please note that you need to provide **m** number of coefficients for each point (vertex),
+Please note that you need to provide `m` number of coefficients for each point (vertex),
 otherwise, the program will fail to run. 
 
 One line contains information about one triangle: three points and three angles,
 where group of points is separated by a semicolon from a group of angles. 
 Please note that points and angles correspond to each other via their indices in the list.
 
-* This is an example of an information about triangle with all known angles for _m = 3_:  
-  _1, 3, 5; -1 -1 60, 0 1 0, 1 0 120_  
-  Vertices: _1, 3, 5_  
-  Angles: _-α - β + 60, β, α + 120_
-* This is an example of an information about triangle with one _unknown_ angle:  
-  _1, 5, 4; -1 -1 60, 0 1 60, x_  
-  Vertices: _1, 5, 4_  
-  Angles: _-α - β + 60, β + 60, unknown_
+* This is an example of an information about triangle with all known angles for `m = 3`:  
+  `1, 3, 5; -1 -1 60, 0 1 0, 1 0 120`  
+  Vertices: `1, 3, 5`  
+  Angles: `-α - β + 60, β, α + 120`
+* This is an example of an information about triangle with one `unknown` angle:  
+  `1, 5, 4; -1 -1 60, 0 1 60, x`  
+  Vertices: `1, 5, 4`  
+  Angles: `-α - β + 60, β + 60, unknown`
 
-The program processes only the first triangle configuration in input.txt.
-Thus, you may store all your configurations in input.txt, and move the one of interest to the top
+The program processes only the first triangle configuration in `input.txt`.
+Thus, you may store all your configurations in `input.txt`, and move the one of interest to the top
 before running the program.
 
 #### Example Configurations
