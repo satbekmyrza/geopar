@@ -10,7 +10,7 @@ Execute run.py script.
 
 [Class Diagram](https://drive.google.com/open?id=0B13UVf6NnzqsUnRobzFkcldDR2c)
 
-#### Format of input.txt:
+#### Format of input.txt
 **input.txt** file serves as an input source for the project. It contains data about the vertices
 and the angles of a triangulated figure.
 
@@ -55,7 +55,7 @@ The program processes only the first triangle configuration in input.txt.
 Thus, you may store all your configurations in input.txt, and move the one of interest to the top
 before running the program.
 
-#### Example Configurations:
+#### Example Configurations
 Preparing an input file may be frustrating at the first time, because any missed detail will lead to
 improper program work.
 Below are some examples of triangle configurations with 3 variable angles:
@@ -71,7 +71,7 @@ Some triangulated figures come with constraints as demonstrated here: [link]
 
 Our program does not support constraints yet.
 
-#### Issues:
+#### Issues
 See:
 - angle.py
 - triangle.py
