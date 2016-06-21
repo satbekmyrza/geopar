@@ -19,7 +19,7 @@ The following **n** lines denote the points (vertices) and angles of each triang
 The program will process first **n+1** lines in **input.txt** and neglect the remaining part.
 
 The points are written as 3 non-zero, distinct integer numbers in clockwise order separated by a comma.  
-_Example:_ 1, 3, 5
+_Example:_ `1, 3, 5`
 
 The angle is written as **m** integer/float values **a b c** separated by space, each of which is a coefficient
 of an angle of the form **aα + bβ + c**, where **α** and **β** are variables.
