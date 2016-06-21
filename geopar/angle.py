@@ -9,6 +9,7 @@ ISSUES:
 7. Angle.__init__: passed parameter coefficients is not checked for type of data
 8. Angle: __div__ is not implemented
 9. Unknown Angle object has a dimension. Not necessary.
+10. [SOLVED] __str__ does not process unknown angle
 
 NOTES:
 """
@@ -231,14 +232,18 @@ class Angle:
         Returns string representation of an Angle object
         """
 
+        # processing unknown angle
+        if not self.is_known():
+            return 'x'
+
         # prepares first n-1 coefficients
         result = ''
         for i in range(len(self.coefficients) - 1):
             a = self.coefficients[i]
             if a > 0:
-                result += ' + ' + str(a) if a != 1 else '' + GREEK_LETTERS[i]
+                result += (' + ' + str(a) if a != 1 else ' + ') + GREEK_LETTERS[i]
             elif a < 0:
-                result += ' - ' + str(abs(a)) + GREEK_LETTERS[i]
+                result += (' - ' + str(abs(a)) if abs(a) != 1 else ' - ') + GREEK_LETTERS[i]
 
         # prepares the last coefficient
         a = self.coefficients[-1]

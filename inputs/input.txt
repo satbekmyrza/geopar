@@ -1,3 +1,11 @@
+3 3
+1, 2, 4; x, 0 1 0, x
+4, 2, 3; x, 0 1 0, 1 0 0
+1, 4, 3; x, x, 1 0 0
+CLASSIC PYRAMID
+https://drive.google.com/open?id=1FBQ49obyUkgOncR4zO6KU7kQ88qRqlQWlRiMV95feHQ
+
+
 10 4
 1, 2, 3; 0 0 1 0,   -0.5 -0.5 -0.5 120,   0.5 0.5 -0.5 60
 2, 9, 3; -0.5 -0.5 -0.5 120,   0 1 0 0,   0.5 -0.5 0.5 60
@@ -26,14 +34,6 @@ https://drive.google.com/open?id=1iNWpIilNH_K_C657zRd4lBOg7BdvI69nyTdTjkCqxfI
 3, 7, 4; 0 0 0 0 60, 0 0 0 0 60, 0 0 0 0 60
 GENERALIZED MORLEY WITH CONSTRAINT
 https://drive.google.com/open?id=1Co-chfuKsFyROpgChfybuGml94_yjnKcEUJ0IBFB54o
-
-
-3 3
-1, 2, 4; x, 0 1 0, x
-4, 2, 3; x, 0 1 0, 1 0 0
-1, 4, 3; x, x, 1 0 0
-CLASSIC PYRAMID
-https://drive.google.com/open?id=1FBQ49obyUkgOncR4zO6KU7kQ88qRqlQWlRiMV95feHQ
 
 
 7 3
