@@ -9,7 +9,7 @@ Execute run.py script.
 [Activity Diagram](https://drive.google.com/open?id=1NkYzuc2SvzuM0E-Suw00hTjIOd0kKMthwJZFddhUuCc)  
 [Class Diagram](https://drive.google.com/open?id=0B13UVf6NnzqsUnRobzFkcldDR2c)
 
-#### Format of input.txt
+#### Format of `input.txt`
 **input.txt** file serves as an input source for the project. It contains data about the vertices
 and the angles of a triangulated figure.
 
