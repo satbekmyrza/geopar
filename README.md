@@ -6,8 +6,7 @@ prover. More specifically, it is designed to prove Morley's Trisector Theorem (a
 Execute run.py script.
 
 #### Functionality
-[Activity Diagram](https://drive.google.com/open?id=1NkYzuc2SvzuM0E-Suw00hTjIOd0kKMthwJZFddhUuCc)
-
+[Activity Diagram](https://drive.google.com/open?id=1NkYzuc2SvzuM0E-Suw00hTjIOd0kKMthwJZFddhUuCc)  
 [Class Diagram](https://drive.google.com/open?id=0B13UVf6NnzqsUnRobzFkcldDR2c)
 
 #### Format of input.txt
