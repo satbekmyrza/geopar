@@ -2,3 +2,7 @@ ISSUES
 1. The program does not run from terminal when downloaded or cloned by someone.
 
 SUGGESTIONS
+
+
+SPRINTS
+1. Make it work with fractions
