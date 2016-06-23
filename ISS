@@ -5,4 +5,4 @@ SUGGESTIONS
 
 
 SPRINTS
-1. Make it work with fractions
+1. Make it work with fractions [SOLVING]
