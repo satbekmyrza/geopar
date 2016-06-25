@@ -26,16 +26,24 @@ def parse_a_file(filename):
     figure = TriangulatedFigure()
 
     # (Parsed): parsing the input.txt
-    for i in range(number_of_triangles):
-        line = a_file.readline().split(';')
-        points = list(map(int, line[0].split(',')))
 
+    # 'point1, point2, point3; angle1, angle2, angle3'
+    for i in range(number_of_triangles):
+        # line = ['point1, point2, point3', 'angle1, angle2, angle3']
+        line = a_file.readline().split(';')
+
+        # _points = [point1, point2, point3]
+        _points = list(map(int, line[0].split(',')))
+
+        # angles_str = ['angle1', 'angle2', 'angle3']
         angles_str = list(map(str.strip, line[1].split(',')))
+
         a1 = Angle.from_str(angles_str[0], dim)
         a2 = Angle.from_str(angles_str[1], dim)
         a3 = Angle.from_str(angles_str[2], dim)
-        angles = [a1, a2, a3]
-        figure.add(Triangle(points, angles))
+
+        _angles = [a1, a2, a3]
+        figure.add(Triangle(_points, _angles))
 
     return figure
 
