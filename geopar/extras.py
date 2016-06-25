@@ -8,7 +8,7 @@ class MyFraction(Fraction):
     Slightly modified version of fractions.Fraction
     MyFraction object is returned when MyFraction object
     is added to, subtracted from, multiplied to, or divided to
-    float number.
+    float number (and vice versa).
     """
 
     def _operator_fallbacks(monomorphic_operator, fallback_operator):
