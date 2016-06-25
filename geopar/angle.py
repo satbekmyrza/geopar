@@ -1,3 +1,5 @@
+from fractions import Fraction
+
 """
 ISSUES:
 1. [SOLVED] max number of supported variables is not known, refer to self.dimension_support in __init__
@@ -78,7 +80,7 @@ class Angle:
             raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
 
         if isinstance(other, int):
-            other_angle = [0] * (self.get_dimension() - 1) + [other]
+            other_angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(other)]
             return self + Angle(other_angle)
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
@@ -96,7 +98,7 @@ class Angle:
             error_msg = 'Angle: Trying to add Angle object to {} object. int is required.'
             raise TypeError(error_msg.format(str(type(other))[8:-2]))
 
-        other_angle = [0] * (len(self.coefficients) - 1) + [other]
+        other_angle = [Fraction(0)] * (len(self.coefficients) - 1) + [Fraction(other)]
 
         return self + Angle(other_angle)
 
@@ -121,7 +123,7 @@ class Angle:
 
         other_angle = None
         if isinstance(other, int):
-            other_angle = [0] * (len(self.coefficients) - 1) + [-other]
+            other_angle = [Fraction(0)] * (len(self.coefficients) - 1) + [Fraction(-other)]
         elif isinstance(other, Angle):
             other_angle = list(map(lambda x: -x, other.coefficients))
 
@@ -157,7 +159,7 @@ class Angle:
             error_msg = 'Angle: Trying to floor-div an Angle object by a {} object. int is required.'
             raise TypeError(error_msg.format(str(type(other))[8:-2]))
 
-        other_angle = list(map(lambda x: x // other, self.coefficients))
+        other_angle = list(map(lambda x: x / other, self.coefficients))
         return Angle(other_angle)
 
     def __mul__(self, other):
@@ -288,7 +290,7 @@ class Angle:
         returns an Angle [0, 0, ..., 0, 180] of dimension as self
         """
 
-        angle = [0] * (self.get_dimension() - 1) + [180]
+        angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(180)]
         return Angle(angle)
 
     def get_angle_360(self):
@@ -297,7 +299,7 @@ class Angle:
         returns an Angle [0, 0, ..., 0, 360] of dimension as self
         """
 
-        angle = [0] * (self.get_dimension() - 1) + [360]
+        angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(360)]
         return Angle(angle)
 
     def is_known(self):
@@ -330,9 +332,9 @@ class Angle:
         """
 
         if a_str == 'x':
-            return Angle([0] * a_dimension)
+            return Angle([Fraction(0)] * a_dimension)
 
-        nums = list(map(float, a_str.split()))
+        nums = list(map(lambda x: Fraction(x), a_str.split()))
         if len(nums) != a_dimension:
             error_msg = 'Angle: provided dimension ({}) is not in correspondence with the angle provided: {}'
             raise Exception(error_msg.format(a_dimension, a_str))

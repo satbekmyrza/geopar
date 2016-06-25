@@ -1,6 +1,7 @@
 import unittest
 from geopar.triangle import Triangle
 from geopar.angle import Angle
+from fractions import Fraction
 
 __author__ = 'satbek'
 
@@ -14,6 +15,11 @@ class TestTriangle(unittest.TestCase):
         print(self.triangle1)
         self.triangle2 = Triangle([1, 77, 88], [Angle([30,40,110]), Angle.from_str('x', 3), Angle([60,60,60])])
         print(self.triangle2)
+
+        self.aa = Angle.from_str('1/3 1/3 1/3 60', 4)
+        self.ab = Angle.from_str('-1/3 1/3 -1/3 45', 4)
+        self.ac = Angle.from_str('x', 4)
+        self.triangle3 = Triangle([1, 2, 3], [self.aa,self.ab,self.ac])
 
     def test_get_angles(self):
         self.assertTrue(20 in self.triangle0.get_angles())
@@ -38,3 +44,7 @@ class TestTriangle(unittest.TestCase):
 
     def test_find_third_angle(self):
         self.assertTrue(self.triangle2.complete_unknown_angle())
+
+    def test_complete_unknown_angle(self):
+        self.triangle3.complete_unknown_angle()
+        print(self.triangle3)
