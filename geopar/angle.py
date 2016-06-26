@@ -202,7 +202,8 @@ class Angle:
     def __eq__(self, other):
         """
         INTENT:
-        Performs comparison of two Angle objects
+        Performs comparison:
+          Angle == Angle
 
         PRE1: other is instance of Angle
         PRE2: if other is Angle, dimensions of other and self are equal
@@ -211,7 +212,7 @@ class Angle:
         # PRE1
         if not isinstance(other, Angle):
             error_msg = 'Angle: Trying to compare {} object to Angle object. Angle is required.'
-            raise Exception(error_msg.format(type(other).__name__))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
         if len(self.coefficients) != len(other.coefficients):
@@ -227,7 +228,8 @@ class Angle:
     def __ne__(self, other):
         """
         INTENT:
-        Performs comparison of two Angle objects
+        Performs comparison:
+          Angle != Angle
         """
 
         return not self.__eq__(other)
@@ -259,9 +261,9 @@ class Angle:
             result += ' - ' + str(abs(a))
 
         # restoring the sign before the first coefficient
-        if result[:3] == ' - ':
+        if result[1] == '-':
             result = '-' + result[3:]
-        elif result[:3] == ' + ':
+        elif result[1] == '+':
             result = result[3:]
 
         return result
@@ -297,7 +299,7 @@ class Angle:
         returns an Angle [0, 0, ..., 0, 180] of dimension as self
         """
 
-        angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(180)]
+        angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(180)]
         return Angle(angle)
 
     def get_angle_360(self):
@@ -306,7 +308,7 @@ class Angle:
         returns an Angle [0, 0, ..., 0, 360] of dimension as self
         """
 
-        angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(360)]
+        angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(360)]
         return Angle(angle)
 
     def is_known(self):
@@ -339,9 +341,9 @@ class Angle:
         """
 
         if a_str == 'x':
-            return Angle([Fraction(0)] * a_dimension)
+            return Angle([MyFraction(0)] * a_dimension)
 
-        nums = list(map(lambda x: Fraction(x), a_str.split()))
+        nums = list(map(lambda x: MyFraction(x), a_str.split()))
         if len(nums) != a_dimension:
             error_msg = 'Angle: provided dimension ({}) is not in correspondence with the angle provided: {}'
             raise Exception(error_msg.format(a_dimension, a_str))
