@@ -1,8 +1,6 @@
-__author__ = 'satbek'
-
-
 from geopar.angle import Angle
-from fractions import Fraction
+
+__author__ = 'satbek'
 
 
 class Triangle:

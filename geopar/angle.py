@@ -1,4 +1,3 @@
-from fractions import Fraction
 from geopar.extras import MyFraction
 import numbers
 
@@ -8,7 +7,7 @@ ISSUES:
 2. Exceptions in __init__, and other various places are too general, make them more specific?
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
 4. [SOLVED] in __add__, make Angle addable to int and vice versa
-5. Float numbers are not supported in __add__, etc
+5. [SOLVED] Float numbers are not supported in __add__, etc
 6. Angle relationships are not supported. G.e. a+b+c+d=240;
 7. Angle.__init__: passed parameter coefficients is not checked for type of data
 8. [SOLVED] Angle: __truediv__ is not implemented
