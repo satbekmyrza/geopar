@@ -152,15 +152,15 @@ class Angle:
     def __truediv__(self, other):
         """
         INTENT:
-        Performs a floor division of Angle by other
+        Performs division:
+          Angle / numbers.Real
 
-        PRE1:
-        other is instance of int
+        PRE1: other is instance of numbers.Real
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to floor-div an Angle object by a {} object. int is required.'
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to divide an Angle object by a <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = list(map(lambda x: x / other, self.coefficients))
