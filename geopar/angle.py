@@ -72,7 +72,7 @@ class Angle:
         # PRE1
         if not isinstance(other, Angle) and not isinstance(other, int):
             error_msg = 'Angle: Trying to add {} object to an Angle object. Angle or int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
         if isinstance(other, Angle) and self.get_dimension() != other.get_dimension():
@@ -96,7 +96,7 @@ class Angle:
         # PRE1
         if not isinstance(other, int):
             error_msg = 'Angle: Trying to add Angle object to {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = [Fraction(0)] * (len(self.coefficients) - 1) + [Fraction(other)]
 
@@ -114,7 +114,7 @@ class Angle:
         # PRE1
         if not isinstance(other, Angle) and not isinstance(other, int):
             error_msg = 'Angle: Trying to subtract {} object from an Angle object. Angle or int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
         if isinstance(other, Angle) and self.get_dimension() != other.get_dimension():
@@ -140,7 +140,7 @@ class Angle:
         # PRE1
         if not isinstance(other, int):
             error_msg = 'Angle: Trying to subtract Angle object from a {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = list(map(lambda x: -x, self.coefficients))
         return Angle(other_angle) + other
@@ -157,7 +157,7 @@ class Angle:
         # PRE1
         if not isinstance(other, int):
             error_msg = 'Angle: Trying to floor-div an Angle object by a {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = list(map(lambda x: x / other, self.coefficients))
         return Angle(other_angle)
@@ -174,7 +174,7 @@ class Angle:
         # PRE1
         if not isinstance(other, int):
             error_msg = 'Angle: Trying to multiply an Angle object to a {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = list(map(lambda x: x * other, self.coefficients))
         return Angle(other_angle)
@@ -191,7 +191,7 @@ class Angle:
         # PRE1
         if not isinstance(other, int):
             error_msg = 'Angle: Trying to multiply an Angle object to a {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         return self * other
 
@@ -207,7 +207,7 @@ class Angle:
         # PRE1
         if not isinstance(other, Angle):
             error_msg = 'Angle: Trying to compare {} object to Angle object. Angle is required.'
-            raise Exception(error_msg.format(str(type(other))[8:-2]))
+            raise Exception(error_msg.format(type(other).__name__))
 
         # PRE2
         if len(self.coefficients) != len(other.coefficients):
