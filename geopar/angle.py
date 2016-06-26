@@ -3,15 +3,15 @@ import numbers
 
 """
 ISSUES:
-1. [SOLVED] max number of supported variables is not known, refer to self.dimension_support in __init__
-2. [NOT AN ISSUE] Exceptions in __init__, and other various places are too general, make them more specific?
-3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
-4. [SOLVED] in __add__, make Angle addable to int and vice versa
-5. [SOLVED] Float numbers are not supported in __add__, etc
-6. [MOVED TO ISS] Angle relationships are not supported. G.e. a+b+c+d=240;
-7. Angle.__init__: passed parameter coefficients is not checked for type of data
-8. [SOLVED] Angle: __truediv__ is not implemented
-9. Unknown Angle object has a dimension. Not necessary.
+ 1. [SOLVED] max number of supported variables is not known, refer to self.dimension_support in __init__
+ 2. [NOT AN ISSUE] Exceptions in __init__, and other various places are too general, make them more specific?
+ 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
+ 4. [SOLVED] in __add__, make Angle addable to int and vice versa
+ 5. [SOLVED] Float numbers are not supported in __add__, etc
+ 6. [MOVED TO ISS] Angle relationships are not supported. G.e. a+b+c+d=240;
+ 7. [SOLVED] Angle.__init__: passed parameter coefficients is not checked for type of data
+ 8. [SOLVED] Angle: __truediv__ is not implemented
+ 9. Unknown Angle object has a dimension. Not necessary.
 10. [SOLVED] __str__ does not process unknown angle
 
 NOTES:
@@ -40,7 +40,7 @@ class Angle:
         """
         PRE1: len(coefficients) >= 1
         PRE2: len(coefficients) <= self.dimension_support
-        PRE3: coefficients[i] is MyFraction for all i
+        PRE3: coefficients[i] is MyFraction|int|float for all i
 
         """
 
@@ -53,6 +53,14 @@ class Angle:
         if len(coefficients) > VAR_SUPPORT:
             error_msg = 'Angle: this class supports {} variables. You provided too many ({}) variables.'
             raise Exception(error_msg.format(VAR_SUPPORT, len(coefficients)))
+
+        # PRE3
+        for c in coefficients:
+            if not (isinstance(c, MyFraction) or isinstance(c, numbers.Real)):
+                error_msg = 'Angle: wrong type provided for new Angle.' \
+                            '\nType: <{}>' \
+                            '\nValue: <{}>'
+                raise Exception(error_msg.format(type(c).__name__, c))
 
         self.coefficients = coefficients
 
