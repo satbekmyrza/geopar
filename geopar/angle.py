@@ -9,7 +9,7 @@ ISSUES:
 5. Float numbers are not supported in __add__, etc
 6. Angle relationships are not supported. G.e. a+b+c+d=240;
 7. Angle.__init__: passed parameter coefficients is not checked for type of data
-8. Angle: __div__ is not implemented
+8. [SOLVED] Angle: __truediv__ is not implemented
 9. Unknown Angle object has a dimension. Not necessary.
 10. [SOLVED] __str__ does not process unknown angle
 
@@ -145,7 +145,7 @@ class Angle:
         other_angle = list(map(lambda x: -x, self.coefficients))
         return Angle(other_angle) + other
 
-    def __floordiv__(self, other):
+    def __truediv__(self, other):
         """
         INTENT:
         Performs a floor division of Angle by other
