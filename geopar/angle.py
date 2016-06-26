@@ -1,13 +1,16 @@
+from geopar.extras import MyFraction
+import numbers
+
 """
 ISSUES:
 1. [SOLVED] max number of supported variables is not known, refer to self.dimension_support in __init__
 2. Exceptions in __init__, and other various places are too general, make them more specific?
 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
 4. [SOLVED] in __add__, make Angle addable to int and vice versa
-5. Float numbers are not supported in __add__, etc
+5. [SOLVED] Float numbers are not supported in __add__, etc
 6. Angle relationships are not supported. G.e. a+b+c+d=240;
 7. Angle.__init__: passed parameter coefficients is not checked for type of data
-8. Angle: __div__ is not implemented
+8. [SOLVED] Angle: __truediv__ is not implemented
 9. Unknown Angle object has a dimension. Not necessary.
 10. [SOLVED] __str__ does not process unknown angle
 
@@ -16,26 +19,20 @@ NOTES:
 
 __author__ = 'satbek'
 
-# allows support for up to len(GREEK_LETTERS) variables
+# allows support for up to len(GREEK_LETTERS) variables (currently 15)
 GREEK_LETTERS = 'αβγδεηθλπρστμφω'
 VAR_SUPPORT = len('αβγδεηθλπρστμφω')
-
-# total of 24 letters
-GREEK_LETTER_NAMES = {'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'ζ': 'zeta', 'η': 'eta',
-                      'θ': 'theta', 'ι': 'iota', 'κ': 'kappa', 'λ': 'lambda', 'μ': 'mu', 'ν': 'nu', 'ξ': 'xi',
-                      'ο': 'omicron', 'π': 'pi', 'ρ': 'rho', 'σ': 'sigma', 'τ': 'tau', 'υ': 'upsilon', 'φ': 'phi',
-                      'χ': 'chi', 'ψ': 'psi', 'ω': 'omega'}
 
 
 class Angle:
     """
     INTENT:
-    Defines an angle in terms of a list of integer/float numbers. Allows to work with variable angles.
+    Defines an angle in terms of a list of MyFraction objects. Supports variable angles.
     G.e. Let's say the angle is: aα + bβ + c, where α and β are variables.
     Then, this angle can be expressed by [a, b, c] a.k.a. coefficients.
 
     IMPORTANT:
-    1. This class supports up to 15 variables.
+    1. This class supports up to 15 variables. It is defined by VAR_SUPPORT constant.
     2. If all of self.coefficients are 0, then the angle is said to be unknown.
     """
 
@@ -61,24 +58,26 @@ class Angle:
     def __add__(self, other):
         """
         INTENT:
-        Performs addition of two Angle objects.
+        Performs addition:
+          Angle + Angle
+          Angle + numbers.Real
 
-        PRE1: other is instance of Angle or int
+        PRE1: other is instance of Angle or numbers.Real
         PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
-        if not isinstance(other, Angle) and not isinstance(other, int):
-            error_msg = 'Angle: Trying to add {} object to an Angle object. Angle or int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+        if not isinstance(other, Angle) and not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to add <{}> object to an Angle object. Angle or int or float is required.'
+            raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
         if isinstance(other, Angle) and self.get_dimension() != other.get_dimension():
             error_msg = 'Angle: both addends should have the same dimension! {} != {}'
             raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
 
-        if isinstance(other, int):
-            other_angle = [0] * (self.get_dimension() - 1) + [other]
+        if isinstance(other, numbers.Real):
+            other_angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(str(other))]
             return self + Angle(other_angle)
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
@@ -86,33 +85,37 @@ class Angle:
     def __radd__(self, other):
         """
         INTENT:
-        Performs addition of two Angle objects.
+        Performs addition:
+          numbers.Real + Angle
 
-        PRE1: other is instance of int
+        PRE1: other is instance of numbers.Real
+        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to add Angle object to {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to add Angle object to <{}> object. int or float is required.'
+            raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = [0] * (len(self.coefficients) - 1) + [other]
+        other_angle = [MyFraction(0)] * (len(self.coefficients) - 1) + [MyFraction(str(other))]
 
         return self + Angle(other_angle)
 
     def __sub__(self, other):
         """
         INTENT:
-        Performs subtraction of two Angle objects.
+        Performs subtraction:
+          Angle - Angle
+          Angle - numbers.Real
 
-        PRE1: other is instance of Angle or int
+        PRE1: other is instance of Angle or numbers.Real
         PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
-        if not isinstance(other, Angle) and not isinstance(other, int):
-            error_msg = 'Angle: Trying to subtract {} object from an Angle object. Angle or int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+        if not isinstance(other, Angle) and not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to subtract <{}> object from an Angle object. Angle or int or float is required.'
+            raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
         if isinstance(other, Angle) and self.get_dimension() != other.get_dimension():
@@ -120,8 +123,8 @@ class Angle:
             raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
 
         other_angle = None
-        if isinstance(other, int):
-            other_angle = [0] * (len(self.coefficients) - 1) + [-other]
+        if isinstance(other, numbers.Real):
+            other_angle = [MyFraction(0)] * (len(self.coefficients) - 1) + [MyFraction(str(-other))]
         elif isinstance(other, Angle):
             other_angle = list(map(lambda x: -x, other.coefficients))
 
@@ -130,49 +133,51 @@ class Angle:
     def __rsub__(self, other):
         """
         INTENT:
-        Performs subtraction of two Angle objects.
+        Performs subtraction:
+          numbers.Real - Angle
 
-        PRE1: other is instance of int
+        PRE1: other is instance of numbers.Real
+        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to subtract Angle object from a {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to subtract Angle object from a <{}> object. int or float is required.'
+            raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = list(map(lambda x: -x, self.coefficients))
         return Angle(other_angle) + other
 
-    def __floordiv__(self, other):
+    def __truediv__(self, other):
         """
         INTENT:
-        Performs a floor division of Angle by other
+        Performs division:
+          Angle / numbers.Real
 
-        PRE1:
-        other is instance of int
+        PRE1: other is instance of numbers.Real
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to floor-div an Angle object by a {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to divide an Angle object by a <{}> object. int or float is required.'
+            raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = list(map(lambda x: x // other, self.coefficients))
+        other_angle = list(map(lambda x: x / other, self.coefficients))
         return Angle(other_angle)
 
     def __mul__(self, other):
         """
         INTENT:
-        Performs multiplication of Angle object to int
+        Performs multiplication:
+          Angle * numbers.Real
 
-        PRE1:
-        other is instance of int
+        PRE1: other is instance of numbers.Real
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to multiply an Angle object to a {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to multiply an Angle object to a <{}> object. int or float is required.'
+            raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = list(map(lambda x: x * other, self.coefficients))
         return Angle(other_angle)
@@ -180,23 +185,24 @@ class Angle:
     def __rmul__(self, other):
         """
         INTENT:
-        Performs multiplication of Angle object to int
+        Performs multiplication:
+          numbers.Real * Angle
 
-        PRE1:
-        other is instance of int
+        PRE1: other is instance of numbers.Real
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to multiply an Angle object to a {} object. int is required.'
-            raise TypeError(error_msg.format(str(type(other))[8:-2]))
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to multiply an Angle object to a <{}> object. int or float is required.'
+            raise TypeError(error_msg.format(type(other).__name__))
 
         return self * other
 
     def __eq__(self, other):
         """
         INTENT:
-        Performs comparison of two Angle objects
+        Performs comparison:
+          Angle == Angle
 
         PRE1: other is instance of Angle
         PRE2: if other is Angle, dimensions of other and self are equal
@@ -205,7 +211,7 @@ class Angle:
         # PRE1
         if not isinstance(other, Angle):
             error_msg = 'Angle: Trying to compare {} object to Angle object. Angle is required.'
-            raise Exception(error_msg.format(str(type(other))[8:-2]))
+            raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
         if len(self.coefficients) != len(other.coefficients):
@@ -221,7 +227,8 @@ class Angle:
     def __ne__(self, other):
         """
         INTENT:
-        Performs comparison of two Angle objects
+        Performs comparison:
+          Angle != Angle
         """
 
         return not self.__eq__(other)
@@ -253,12 +260,15 @@ class Angle:
             result += ' - ' + str(abs(a))
 
         # restoring the sign before the first coefficient
-        if result[:3] == ' - ':
+        if result[1] == '-':
             result = '-' + result[3:]
-        elif result[:3] == ' + ':
+        elif result[1] == '+':
             result = result[3:]
 
         return result
+
+    def __repr__(self):
+        return self.__str__()
 
     def __hash__(self):
         """
@@ -288,7 +298,7 @@ class Angle:
         returns an Angle [0, 0, ..., 0, 180] of dimension as self
         """
 
-        angle = [0] * (self.get_dimension() - 1) + [180]
+        angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(180)]
         return Angle(angle)
 
     def get_angle_360(self):
@@ -297,7 +307,7 @@ class Angle:
         returns an Angle [0, 0, ..., 0, 360] of dimension as self
         """
 
-        angle = [0] * (self.get_dimension() - 1) + [360]
+        angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(360)]
         return Angle(angle)
 
     def is_known(self):
@@ -330,9 +340,9 @@ class Angle:
         """
 
         if a_str == 'x':
-            return Angle([0] * a_dimension)
+            return Angle([MyFraction(0)] * a_dimension)
 
-        nums = list(map(float, a_str.split()))
+        nums = list(map(lambda x: MyFraction(x), a_str.split()))
         if len(nums) != a_dimension:
             error_msg = 'Angle: provided dimension ({}) is not in correspondence with the angle provided: {}'
             raise Exception(error_msg.format(a_dimension, a_str))

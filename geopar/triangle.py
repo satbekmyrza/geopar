@@ -1,7 +1,6 @@
-__author__ = 'satbek'
-
-
 from geopar.angle import Angle
+
+__author__ = 'satbek'
 
 
 class Triangle:
@@ -278,7 +277,7 @@ class Triangle:
 
         if self.count_known() == 2:
             s = sum(self.angles).get_coefficients()
-            third = Angle([-s[0], -s[1], 180-s[2]])
+            third = 180 - Angle(s)
             for i in range(3):
                 if not self.angles[i].is_known():
                     self.angles[i] = third
