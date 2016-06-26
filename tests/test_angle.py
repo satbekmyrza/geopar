@@ -38,8 +38,9 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(self.angle1 - 50.0, Angle([1, 2, 3, 4, 5, 10]))
 
     def test_rsub(self):
-        # int - Angle
+        # numbers.Real - Angle
         self.assertEqual(200 - self.angle1, Angle([-1, -2, -3, -4, -5, 140]))
+        self.assertEqual(200.5 - self.angle1, Angle([-1, -2, -3, -4, -5, 140.5]))
 
     def test_truediv(self):
         # Angle // int

@@ -134,14 +134,16 @@ class Angle:
     def __rsub__(self, other):
         """
         INTENT:
-        Performs subtraction of two Angle objects.
+        Performs subtraction:
+          numbers.Real - Angle
 
-        PRE1: other is instance of int
+        PRE1: other is instance of numbers.Real
+        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to subtract Angle object from a {} object. int is required.'
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to subtract Angle object from a <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = list(map(lambda x: -x, self.coefficients))
