@@ -17,15 +17,16 @@ class TestAngle(unittest.TestCase):
         # print('({}) + ({}) = {}'.format(self.angle1, self.angle2, self.angle12))
         self.assertEqual(self.angle1 + self.angle2, self.angle12)
 
-        # Angle + int
+        # Angle + numbers.Real
         self.assertEqual(self.angle1 + 10, Angle([1, 2, 3, 4, 5, 70]))
-        self.assertEqual(self.angle1 + (-10), Angle([1, 2, 3, 4, 5, 50]))
+        self.assertEqual(self.angle1 + (-100.0), Angle([1, 2, 3, 4, 5, -40]))
 
-        print(self.angle1 + 12.1212)
+        # print(self.angle1 + 12.1212)
 
     def test_radd(self):
-        # int + Angle
+        # numbers.Real + Angle
         self.assertEqual(15 + self.angle2, Angle([2, 3, 4, 5, 6, 85]))
+        self.assertEqual(15.0 + self.angle2, Angle([2, 3, 4, 5, 6, 85]))
 
     def test_sub(self):
         # Angle - Angle

@@ -86,17 +86,18 @@ class Angle:
     def __radd__(self, other):
         """
         INTENT:
-        Performs addition of two Angle objects.
+        Performs addition:
+          numbers.Real + Angle
 
-        PRE1: other is instance of int
+        PRE1: other is instance of numbers.Real
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to add Angle object to {} object. int is required.'
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to add Angle object to <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = [Fraction(0)] * (len(self.coefficients) - 1) + [Fraction(other)]
+        other_angle = [MyFraction(0)] * (len(self.coefficients) - 1) + [MyFraction(str(other))]
 
         return self + Angle(other_angle)
 
