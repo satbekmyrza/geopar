@@ -48,8 +48,9 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(self.angle1 / 2, Angle.from_str('.5 1 1.5 2 2.5 30', 6))
 
     def test_mul(self):
-        # Angle * int
+        # Angle * numbers.Real
         self.assertEqual(self.angle3 * 2, Angle([4, 8, 12, 16, 200]))
+        self.assertEqual(self.angle3 * 2.0, Angle([4.0, 8, 12, 16, 200]))
 
     def test_rmul(self):
         # int * Angle

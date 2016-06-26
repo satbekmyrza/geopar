@@ -169,15 +169,15 @@ class Angle:
     def __mul__(self, other):
         """
         INTENT:
-        Performs multiplication of Angle object to int
+        Performs multiplication:
+          Angle * numbers.Real
 
-        PRE1:
-        other is instance of int
+        PRE1: other is instance of numbers.Real
         """
 
         # PRE1
-        if not isinstance(other, int):
-            error_msg = 'Angle: Trying to multiply an Angle object to a {} object. int is required.'
+        if not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to multiply an Angle object to a <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
         other_angle = list(map(lambda x: x * other, self.coefficients))
