@@ -9,15 +9,19 @@ class TestAngle(unittest.TestCase):
     def setUp(self):
         self.angle1 = Angle([1, 2, 3, 4, 5, 60])
         self.angle2 = Angle([2, 3, 4, 5, 6, 70])
+        self.angle12 = Angle([3, 5, 7, 9, 11, 130])
         self.angle3 = Angle([2, 4, 6, 8, 100])
 
     def test_add(self):
         # Angle + Angle
-        self.assertEqual(self.angle1 + self.angle2, Angle([3, 5, 7, 9, 11, 130]))
+        # print('({}) + ({}) = {}'.format(self.angle1, self.angle2, self.angle12))
+        self.assertEqual(self.angle1 + self.angle2, self.angle12)
 
         # Angle + int
         self.assertEqual(self.angle1 + 10, Angle([1, 2, 3, 4, 5, 70]))
         self.assertEqual(self.angle1 + (-10), Angle([1, 2, 3, 4, 5, 50]))
+
+        print(self.angle1 + 12.1212)
 
     def test_radd(self):
         # int + Angle
@@ -35,9 +39,9 @@ class TestAngle(unittest.TestCase):
         # int - Angle
         self.assertEqual(200 - self.angle1, Angle([-1, -2, -3, -4, -5, 140]))
 
-    def test_floordiv(self):
+    def test_truediv(self):
         # Angle // int
-        self.assertEqual(self.angle3 // 2, Angle([1, 2, 3, 4, 50]))
+        self.assertEqual(self.angle3 / 2, Angle([1, 2, 3, 4, 50]))
 
     def test_mul(self):
         # Angle * int

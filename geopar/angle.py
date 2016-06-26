@@ -1,4 +1,6 @@
 from fractions import Fraction
+from geopar.extras import MyFraction
+import numbers
 
 """
 ISSUES:
@@ -26,12 +28,12 @@ VAR_SUPPORT = len('αβγδεηθλπρστμφω')
 class Angle:
     """
     INTENT:
-    Defines an angle in terms of a list of integer/float numbers. Allows to work with variable angles.
+    Defines an angle in terms of a list of MyFraction objects. Supports variable angles.
     G.e. Let's say the angle is: aα + bβ + c, where α and β are variables.
     Then, this angle can be expressed by [a, b, c] a.k.a. coefficients.
 
     IMPORTANT:
-    1. This class supports up to 15 variables.
+    1. This class supports up to 15 variables. It is defined by VAR_SUPPORT constant.
     2. If all of self.coefficients are 0, then the angle is said to be unknown.
     """
 
@@ -57,15 +59,17 @@ class Angle:
     def __add__(self, other):
         """
         INTENT:
-        Performs addition of two Angle objects.
+        Performs addition:
+          Angle + Angle
+          Angle + numbers.Real
 
-        PRE1: other is instance of Angle or int
+        PRE1: other is instance of Angle or numbers.Real
         PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
-        if not isinstance(other, Angle) and not isinstance(other, int):
-            error_msg = 'Angle: Trying to add {} object to an Angle object. Angle or int is required.'
+        if not isinstance(other, Angle) and not isinstance(other, numbers.Real):
+            error_msg = 'Angle: Trying to add <{}> object to an Angle object. Angle or int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
@@ -73,8 +77,8 @@ class Angle:
             error_msg = 'Angle: both addends should have the same dimension! {} != {}'
             raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
 
-        if isinstance(other, int):
-            other_angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(other)]
+        if isinstance(other, numbers.Real):
+            other_angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(str(other))]
             return self + Angle(other_angle)
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
