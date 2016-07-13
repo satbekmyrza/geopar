@@ -250,7 +250,7 @@ class TriangulatedFigure:
             from collections import Counter
             if Counter(set1) == Counter(set2) and count_unknown_angles == 2:
                 sum_both = (len(triangles) - 2) * 180 - sum_angles
-                unknown_angle = sum_both // 2
+                unknown_angle = sum_both / 2
                 for _t_ in triangles_with_unknown_angles:
                     for _tt_ in self.triangles:
                         if _tt_.has_all_points(_t_.get_points()):
