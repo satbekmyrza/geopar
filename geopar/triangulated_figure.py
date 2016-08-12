@@ -182,7 +182,6 @@ class TriangulatedFigure:
         # Makes unknown angle known.
 
         interior_points = self.get_interior_points()
-        b = False
         for point in interior_points:
             # counting unknown angles for a given interior point
             count_unknowns = 0
@@ -209,7 +208,7 @@ class TriangulatedFigure:
                         if not triangle.angle_of_point(point).is_known():
                             # new information invoked
                             triangle.set_angle_by_index(triangle.get_points().index(point), unknown_angle)
-                            if b and not self.anything_new:
+                            if not self.anything_new:
                                 self.anything_new = True
 
     def preprocess_theorem_3_pairing(self):
