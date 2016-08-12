@@ -16,7 +16,6 @@ class TestAngle(unittest.TestCase):
         # Angle + Angle
         # print('({}) + ({}) = {}'.format(self.angle1, self.angle2, self.angle12))
         self.assertEqual(self.angle1 + self.angle2, self.angle12)
-
         # Angle + numbers.Real
         self.assertEqual(self.angle1 + 10, Angle([1, 2, 3, 4, 5, 70]))
         self.assertEqual(self.angle1 + (-100.0), Angle([1, 2, 3, 4, 5, -40]))
