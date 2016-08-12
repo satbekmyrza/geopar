@@ -194,7 +194,7 @@ class TriangulatedFigure:
             if count_unknowns == 1:
 
                 # adding up all the angles and storing in sum_angles
-                sum_angles = Angle([0] * self.triangles[0].get_angles()[0].get_dimension())
+                sum_angles = 0
                 for triangle in self.triangles:
                     if triangle.has_point(point):
                         sum_angles += triangle.angle_of_point(point)
