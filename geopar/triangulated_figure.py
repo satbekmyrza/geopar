@@ -38,11 +38,10 @@ class TriangulatedFigure:
         Postcondition: all points returned.
         """
 
-        all_points = set()
+        all_points = list()
         for triangle in self.triangles:
-            for point in triangle.get_points():
-                all_points.add(point)
-        return list(all_points)
+            all_points.extend(triangle.get_points())
+        return list(set(all_points))
 
     def __str__(self):
         return_str = ""
