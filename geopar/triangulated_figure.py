@@ -91,7 +91,6 @@ class TriangulatedFigure:
         # Precondition: At least one triangle in self.triangles contains a_point
         # Returns the (contiguous) list of self.triangles containing a_point
         # in clockwise order
-        # Example: URL1 (see at end)
 
         # [Collected]: triangles_with_a_point =
         # the triangles in self.triangles containing a_point [Note 3]
