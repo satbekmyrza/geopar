@@ -10,10 +10,13 @@ class TriangulatedFigure:
 
     # Class Invariant 2: Every Triangle in self.triangles shares two get_points with another
 
-    def __init__(self):
+    def __init__(self, triangles_=None):
         # the Triangle objects that make up self
 
-        self.triangles = []
+        if triangles_:
+            self.triangles = triangles_
+        else:
+            self.triangles = []
         self.anything_new = False
 
     def add(self, a_triangle):
