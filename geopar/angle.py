@@ -13,7 +13,7 @@ ISSUES:
  8. [SOLVED] Angle: __truediv__ is not implemented
  9. Unknown Angle object has a dimension. Not necessary.
 10. [SOLVED] __str__ does not process unknown angle
-11. 
+11.
 
 NOTES:
 """
