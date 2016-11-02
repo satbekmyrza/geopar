@@ -1,6 +1,7 @@
 from geopar.triangulated_figure import TriangulatedFigure
 from geopar.triangle import Triangle
 from geopar.angle import Angle
+from geopar.tfvalidator import TFValidator
 
 """
 ISSUES:
@@ -48,6 +49,9 @@ def parse_a_file(filename):
 
 
 def run(figure):
+
+    validator = TFValidator()
+
     # Apply 180 and 360 rules until no new angles deduced
     figure.preprocess_theorem_1()
     figure.preprocess_theorem_2()
@@ -59,7 +63,7 @@ def run(figure):
     # All angles known?
     if figure.all_angles_known():
         # 180, 360, and pairing valid?
-        if figure.rule_360_valid() and figure.rule_180_valid() and figure.rule_pairing_valid():
+        if validator.rule_360_valid(figure) and validator.rule_180_valid(figure) and validator.rule_pairing_valid(figure):
             print("Pre-process complete.")
             print("Here is your triangulated figure:")
             print(figure)
@@ -86,8 +90,8 @@ def run(figure):
                 figure.preprocess_theorem_2()
 
             # All angles known; 180, 360, and pairing valid?
-            if figure.all_angles_known() and figure.rule_180_valid() and figure.rule_360_valid() \
-                    and figure.rule_pairing_valid():
+            if figure.all_angles_known() and validator.rule_180_valid(figure) and validator.rule_360_valid(figure) \
+                    and validator.rule_pairing_valid(figure):
                 print('-------------------------')
                 print("Pre-process complete.")
                 print('-------------------------')
