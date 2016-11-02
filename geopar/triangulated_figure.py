@@ -56,39 +56,6 @@ class TriangulatedFigure:
                 return False
         return True
 
-    def rule_180_valid(self):
-        for t in self.triangles:
-            if sum(t.get_angles()) != t.get_angles()[0].get_angle_180():
-                return False
-        return True
-
-    def rule_360_valid(self):
-        interior_points = self.get_interior_points()
-        for point in interior_points:
-            _triangles = []
-            for triangle in self.triangles:
-                if triangle.has_point(point):
-                    _triangles.append(triangle)
-            sum_angles = 0
-            for triangle in _triangles:
-                sum_angles += triangle.angle_of_point(point)
-            if sum_angles != sum_angles.get_angle_360():
-                return False
-        return True
-
-    def rule_pairing_valid(self):
-        set1, set2 = [], []
-        from collections import Counter
-        for point in self.get_interior_points():
-            for tri in self.triangles_with_point(point):
-                set1.append(tri.angle_of_point(tri.point_following(point)))
-                set2.append(tri.angle_of_point(tri.point_preceding(point)))
-
-            if Counter(set1) != Counter(set2):
-                return False
-
-        return True
-
     def triangles_with_point(self, a_point):
         # Precondition: At least one triangle in self.triangles contains a_point
         # Returns the (contiguous) list of self.triangles containing a_point
