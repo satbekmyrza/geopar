@@ -6,23 +6,32 @@ __author__ = 'satbek'
 
 
 class TFPreprocessor(object):
-    def __init__(self):
-        pass
+    """
+    TFPreprocessor - Triangulated Figure Preprocessor
+    encapsulates functions that deal with preprocessing a triangulated figure a_tf (look at methods' parameters).
+
+    There are three theorems, by use of which we accomplish preprocessing:
+    - Theorem 1: Rule of 180 degrees
+    - Theorem 2: Rule of 360 degrees
+    - Theorem 3: Pairing rule
+    For more information on these rules, please refer to the paper.
+    """
 
     @staticmethod
-    def preprocess_theorem_1(a_tf):
-        # Pre-processing method.
-        # Checks for triangles with one unknown angle, makes the angles known.
+    def theorem_1(a_tf):
+        """
+        Completes unknown angles --where possible-- by using 180 degrees rule.
+        """
 
         b = False
         for triangle in a_tf.get_triangles():
             b = triangle.complete_unknown_angle()
-            if b and not a_tf.anything_new:
+            if b and not a_tf.angles_deduced:
                 # new information added
-                a_tf.anything_new = True
+                a_tf.angles_deduced = True
 
     @staticmethod
-    def preprocess_theorem_2(a_tf):
+    def theorem_2(a_tf):
         # Pre-processing method.
         # Checks all interior points if they have one missing angle around it.
         # Makes unknown angle known.
@@ -54,11 +63,11 @@ class TFPreprocessor(object):
                         if not triangle.angle_of_point(point).is_known():
                             # new information invoked
                             triangle.set_angle_by_index(triangle.get_points().index(point), unknown_angle)
-                            if not a_tf.anything_new:
-                                a_tf.anything_new = True
+                            if not a_tf.angles_deduced:
+                                a_tf.angles_deduced = True
 
     @staticmethod
-    def preprocess_theorem_3_pairing(a_tf):
+    def theorem_3(a_tf):
         # Precondition 1: a self has to have at least one interior point
         interior_points = a_tf.get_interior_points()
 
@@ -102,4 +111,4 @@ class TFPreprocessor(object):
                             for _p in _t_.get_points():
                                 if not _tt_.angle_of_point(_p).is_known() and _p != point:
                                     _tt_.set_angle_by_point(_p, unknown_angle)
-                                    a_tf.anything_new = True
+                                    a_tf.angles_deduced = True

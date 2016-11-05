@@ -17,7 +17,8 @@ class TriangulatedFigure:
             self.triangles = triangles_
         else:
             self.triangles = []
-        self.anything_new = False
+
+        self.angles_deduced = False
 
     def add(self, a_triangle):
         # Precondition 1: a_triangle is a Triangle instance
