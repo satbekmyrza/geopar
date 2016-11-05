@@ -32,8 +32,8 @@ class TFValidator(object):
             raise Exception('a_tf is empty! See precondition PRE')
         ########################################################################
 
-        for t in a_tf.get_triangles():
-            if sum(t.get_angles()) != t.get_angles()[0].get_angle_180():
+        for triangle_ in a_tf.get_triangles():
+            if sum(triangle_.get_angles()) != 180:
                 return False
         return True
 
