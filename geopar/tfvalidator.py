@@ -54,9 +54,7 @@ class TFValidator(object):
             raise Exception('a_tf is empty! See precondition PRE')
         ########################################################################
 
-        interior_points = a_tf.get_interior_points()
-
-        for point in interior_points:
+        for point in a_tf.get_interior_points():
             _triangles = a_tf.triangles_with_point(point)
 
             sum_angles = 0
