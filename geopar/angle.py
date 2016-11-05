@@ -204,23 +204,30 @@ class Angle:
 
     def __eq__(self, other):
         """
-        INTENT:
-        Performs comparison:
-          Angle == Angle
+        Performs comparison of:
+            - two angle objects (Angle == Angle)
+            - an angle object and a constant value of int (Angle == int or int == Angle)
 
-        PRE1: other is instance of Angle
-        PRE2: if other is Angle, dimensions of other and self are equal
+        PRE1
+        Other is an instance of Angle or int
+
+        PRE2
+        If other is Angle, dimensions of other and self are equal
         """
 
         # PRE1
-        if not isinstance(other, Angle):
-            error_msg = 'Angle: Trying to compare {} object to Angle object. Angle is required.'
+        if not isinstance(other, Angle) and not isinstance(other, int):
+            error_msg = 'Angle: Trying to compare {} object to Angle object. Angle or int is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
-        if len(self.coefficients) != len(other.coefficients):
+        if isinstance(other, Angle) and len(self.coefficients) != len(other.coefficients):
             error_msg = 'Angle: Trying to compare two Angle objects of different dimension.'
             raise Exception(error_msg)
+
+        if isinstance(other, int):
+            a = Angle([Fraction(0)] * (self.get_dimension() - 1) + [Fraction(other)])
+            return self == a
 
         for i in range(len(self.coefficients)):
             if self.coefficients[i] != other.coefficients[i]:
@@ -230,9 +237,18 @@ class Angle:
 
     def __ne__(self, other):
         """
-        INTENT:
-        Performs comparison:
-          Angle != Angle
+        Performs comparison of:
+            - two angle objects (Angle != Angle)
+            - an angle object and a constant value of int (Angle != int or int != Angle)
+
+        PRE1
+        Other is an instance of Angle or int.
+
+        PRE2
+        If other is Angle, dimensions of other and self are equal.
+
+        NOTE
+        Implementation of PRE1 and PRE2 are delegated to self.__eq__()
         """
 
         return not self.__eq__(other)

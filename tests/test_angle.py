@@ -12,6 +12,8 @@ class TestAngle(unittest.TestCase):
         self.angle2 = Angle([2, 3, 4, 5, 6, 70])
         self.angle12 = Angle([3, 5, 7, 9, 11, 130])
         self.angle3 = Angle([2, 4, 6, 8, 100])
+        self.angle4 = Angle([2, 4, 6, 8, 100])
+        self.angle5 = Angle([0, 0, 0, 0, 0, 90])
 
     def test_add(self):
         # Angle + Angle
@@ -62,4 +64,11 @@ class TestAngle(unittest.TestCase):
         a = Angle.from_str(a_str, dim)
 
         print(a_str.split())
+
+    def test_eq(self):
+        self.assertTrue(self.angle3 == self.angle4)
+        self.assertTrue(self.angle1 == self.angle1)
+        self.assertTrue(90 == self.angle5)
+        self.assertTrue(self.angle5 == 90)
+
 
