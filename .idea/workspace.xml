@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b0d2d385-f62c-42ba-a9c5-38f76b4f73dd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/tfvalidator.py" afterPath="$PROJECT_DIR$/geopar/tfvalidator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_tfvalidator.py" afterPath="$PROJECT_DIR$/tests/test_tfvalidator.py" />
     </list>
     <ignored path="Geopar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,8 +92,8 @@
       <file leaf-file-name="tfvalidator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/geopar/tfvalidator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="582">
+              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,8 +102,8 @@
       <file leaf-file-name="test_tfvalidator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_tfvalidator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="312">
+              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -113,8 +114,8 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geopar/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            <state relative-caret-position="300">
+              <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -146,8 +147,8 @@
         <option value="$PROJECT_DIR$/tests/test_angle.py" />
         <option value="$PROJECT_DIR$/geopar/run.py" />
         <option value="$PROJECT_DIR$/geopar/angle.py" />
-        <option value="$PROJECT_DIR$/tests/test_tfvalidator.py" />
         <option value="$PROJECT_DIR$/geopar/tfvalidator.py" />
+        <option value="$PROJECT_DIR$/tests/test_tfvalidator.py" />
       </list>
     </option>
   </component>
@@ -263,7 +264,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in TestTFValidator">
+  <component name="RunManager" selected="Python.run">
     <configuration default="false" name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -512,8 +513,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestTFValidator" />
-        <item index="1" class="java.lang.String" itemvalue="Python.run" />
+        <item index="0" class="java.lang.String" itemvalue="Python.run" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestTFValidator" />
         <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_eq" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestTFValidator.test_rule_180 (1)" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestTFValidator.test_rule_180 (2)" />
@@ -543,9 +544,6 @@
     <history-entry file="Unittest_TestAngle_test_eq - 2016.11.04 at 23h 24m 25s.xml">
       <configuration name="Unittest TestAngle.test_eq" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestTFValidator_test_rule_180_(1) - 2016.11.04 at 22h 48m 27s.xml">
-      <configuration name="Unittest TestTFValidator.test_rule_180 (1)" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittest_TestTFValidator_test_rule_180_(1) - 2016.11.04 at 22h 48m 35s.xml">
       <configuration name="Unittest TestTFValidator.test_rule_180 (1)" configurationId="tests" />
     </history-entry>
@@ -562,6 +560,9 @@
       <configuration name="Unittests in TestTFValidator" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_TestTFValidator - 2016.11.05 at 12h 29m 16s.xml">
+      <configuration name="Unittests in TestTFValidator" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TestTFValidator - 2016.11.05 at 12h 36m 02s.xml">
       <configuration name="Unittests in TestTFValidator" configurationId="tests" />
     </history-entry>
   </component>
@@ -1022,30 +1023,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_tfvalidator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="312">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/geopar/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/geopar/tfvalidator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="582">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding />
         </state>
       </provider>
