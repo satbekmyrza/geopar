@@ -65,7 +65,7 @@ def run(figure):
     # All angles known?
     if figure.all_angles_known():
         # 180, 360, and pairing valid?
-        if validator.rule_360(figure) and validator.rule_180(figure) and validator.rule_pairing(figure):
+        if validator.all_rules(figure):
             print("Pre-process complete.")
             print("Here is your triangulated figure:")
             print(figure)
@@ -92,8 +92,7 @@ def run(figure):
                 preprocessor.preprocess_theorem_2(figure)
 
             # All angles known; 180, 360, and pairing valid?
-            if figure.all_angles_known() and validator.rule_180(figure) and validator.rule_360(figure) \
-                    and validator.rule_pairing(figure):
+            if figure.all_angles_known() and validator.all_rules(figure):
                 print('-------------------------')
                 print("Pre-process complete.")
                 print('-------------------------')

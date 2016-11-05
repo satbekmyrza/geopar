@@ -64,3 +64,7 @@ class TFValidator(object):
                 return False
 
         return True
+
+    @staticmethod
+    def all_rules(a_tf):
+        return TFValidator.rule_180(a_tf) and TFValidator.rule_360(a_tf) and TFValidator.rule_pairing(a_tf)
