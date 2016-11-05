@@ -1,5 +1,6 @@
 import unittest
 from geopar.angle import Angle
+from fractions import Fraction
 
 __author__ = 'satbek'
 
@@ -54,3 +55,11 @@ class TestAngle(unittest.TestCase):
     def test_rmul(self):
         # int * Angle
         self.assertEqual(2 * self.angle3, Angle([4, 8, 12, 16, 200]))
+
+    def test_from_str(self):
+        a_str = '-1 2/4 -3/5 4000 -599 6/1'
+        dim = 10
+        a = Angle.from_str(a_str, dim)
+
+        print(a_str.split())
+

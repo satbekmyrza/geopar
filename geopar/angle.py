@@ -1,18 +1,13 @@
-from geopar.extras import MyFraction
+from fractions import Fraction
+from decimal import Decimal
 import numbers
 
 """
 ISSUES:
- 1. [SOLVED] max number of supported variables is not known, refer to self.dimension_support in __init__
- 2. [NOT AN ISSUE] Exceptions in __init__, and other various places are too general, make them more specific?
- 3. [SOLVED] in __add__, check if other.coefficients == self.coefficients
- 4. [SOLVED] in __add__, make Angle addable to int and vice versa
- 5. [SOLVED] Float numbers are not supported in __add__, etc
- 6. [MOVED TO ISS] Angle relationships are not supported. G.e. a+b+c+d=240;
- 7. [SOLVED] Angle.__init__: passed parameter coefficients is not checked for type of data
- 8. [SOLVED] Angle: __truediv__ is not implemented
- 9. Unknown Angle object has a dimension. Not necessary.
-10. [SOLVED] __str__ does not process unknown angle
+
+SUGGESTIONS:
+1. Unknown Angle object has a dimension. Not necessary.
+2. in @classmethod from_str(), process '2.4 3.4 5.6 1.9 90.0'? --> NO
 
 NOTES:
 """
@@ -56,7 +51,7 @@ class Angle:
 
         # PRE3
         for c in coefficients:
-            if not (isinstance(c, MyFraction) or isinstance(c, numbers.Real)):
+            if not (isinstance(c, Fraction) or isinstance(c, numbers.Real)):
                 error_msg = 'Angle: wrong type provided for new Angle.' \
                             '\nType: <{}>' \
                             '\nValue: <{}>'
@@ -86,7 +81,7 @@ class Angle:
             raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
 
         if isinstance(other, numbers.Real):
-            other_angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(str(other))]
+            other_angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
             return self + Angle(other_angle)
 
         return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
@@ -106,7 +101,7 @@ class Angle:
             error_msg = 'Angle: Trying to add Angle object to <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = [MyFraction(0)] * (len(self.coefficients) - 1) + [MyFraction(str(other))]
+        other_angle = [Fraction(0)] * (len(self.coefficients) - 1) + [Fraction(Decimal(str(other)))]
 
         return self + Angle(other_angle)
 
@@ -133,7 +128,7 @@ class Angle:
 
         other_angle = None
         if isinstance(other, numbers.Real):
-            other_angle = [MyFraction(0)] * (len(self.coefficients) - 1) + [MyFraction(str(-other))]
+            other_angle = [Fraction(0)] * (len(self.coefficients) - 1) + [Fraction(Decimal(str(-other)))]
         elif isinstance(other, Angle):
             other_angle = list(map(lambda x: -x, other.coefficients))
 
@@ -171,7 +166,7 @@ class Angle:
             error_msg = 'Angle: Trying to divide an Angle object by a <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = list(map(lambda x: x / other, self.coefficients))
+        other_angle = list(map(lambda x: x / Fraction(Decimal(str(other))), self.coefficients))
         return Angle(other_angle)
 
     def __mul__(self, other):
@@ -188,7 +183,7 @@ class Angle:
             error_msg = 'Angle: Trying to multiply an Angle object to a <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = list(map(lambda x: x * other, self.coefficients))
+        other_angle = list(map(lambda x: x * Fraction(Decimal(str(other))), self.coefficients))
         return Angle(other_angle)
 
     def __rmul__(self, other):
@@ -307,7 +302,7 @@ class Angle:
         returns an Angle [0, 0, ..., 0, 180] of dimension as self
         """
 
-        angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(180)]
+        angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(180)]
         return Angle(angle)
 
     def get_angle_360(self):
@@ -316,7 +311,7 @@ class Angle:
         returns an Angle [0, 0, ..., 0, 360] of dimension as self
         """
 
-        angle = [MyFraction(0)] * (self.get_dimension() - 1) + [MyFraction(360)]
+        angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(360)]
         return Angle(angle)
 
     def is_known(self):
@@ -333,27 +328,59 @@ class Angle:
         """
         INTENT
         This is a special class method, which allows to instantiate an Angle object
-        of dimension a_dimension from a string value.
+        of dimension a_dimension from a string value a_str.
+
+        PRE1
+        a_dimension < VAR_SUPPORT
+
+        PRE2
+        a_dimension == len(a_str.split())
+
+        PRE3
+        a_str is in one of the forms:
+            - 'x' for unknown
+            - 'a b ... z' for aα + bβ + ... + z
+                where a, b, ..., z are either of these:
+                    - positive/negative integers (g.e. 1, 2, -90, -9, etc)
+                    - positive/negative fractions (g.e. 1/2, 3/5, -6/19, -9/2, etc)
 
         USAGE
         a = Angle.from_str('x', 4)
         print(a.get_coefficients())  # [0, 0, 0, 0]
+
         b = Angle.from_str('1 0 90', 3)
         print(b)  # α + 90
+
         c = Angle.from_str('r 1 90', 3)  # ERROR! r is a letter
 
-        PRE
-        a_str should be in the form:
-            'x' for unknown OR
-            'a b c'--where a, b and c are integer numbers--for aα + bβ + c
+        d = Angle.from_str('1/3 1/3 -1/3 90')
+        print(d.get_coefficients())  # [1/3α + 1/3β - 1/3γ + 90]
         """
 
+        ######################### original code ##############################
+        # if a_str == 'x':
+        #     return Angle([MyFraction(0)] * a_dimension)
+        #
+        # nums = list(map(lambda x: MyFraction(x), a_str.split()))
+        #
+        # if len(nums) != a_dimension:
+        #     error_msg = 'Angle: provided dimension ({}) is not in correspondence with the angle provided: {}'
+        #     raise Exception(error_msg.format(a_dimension, a_str))
+        #
+        # return Angle(nums)
+        ######################################################################
+
+
+        ######################### suggested code #############################
         if a_str == 'x':
-            return Angle([MyFraction(0)] * a_dimension)
+            return Angle([Fraction(0)] * a_dimension)
 
-        nums = list(map(lambda x: MyFraction(x), a_str.split()))
-        if len(nums) != a_dimension:
-            error_msg = 'Angle: provided dimension ({}) is not in correspondence with the angle provided: {}'
-            raise Exception(error_msg.format(a_dimension, a_str))
+        # we assume that coefficients are separated by space
+        coefs = a_str.split()
+        fraction_coefs = list()
+        for coef in coefs:
+            fraction_coefs.append(Fraction(coef))
 
-        return Angle(nums)
+        print(fraction_coefs)
+        return Angle(fraction_coefs)
+        ######################################################################
