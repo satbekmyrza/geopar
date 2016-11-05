@@ -56,6 +56,9 @@ class TriangulatedFigure:
                 return False
         return True
 
+    def is_empty(self):
+        return not bool(self.triangles)
+
     def triangles_with_point(self, a_point):
         # Precondition: At least one triangle in self.triangles contains a_point
         # Returns the (contiguous) list of self.triangles containing a_point

@@ -30,6 +30,8 @@ class TestTriangulatedFigure(unittest.TestCase):
         self.tf1.add(self.t6)
         self.tf1.add(self.t7)
 
+        self.tf_empty = TriangulatedFigure()
+
     def test_constructor(self):
 
         t1 = Triangle([1, 2, 5], [20, 10, 150])
@@ -57,5 +59,10 @@ class TestTriangulatedFigure(unittest.TestCase):
 
         triangles_ = self.tf1.triangles_with_point(4)
         self.assertEqual(4, len(triangles_))  # 4 triangles around point 4
+
+    def test_is_empty(self):
+        self.assertTrue(self.tf_empty.is_empty())
+        self.assertFalse(self.tf1.is_empty())
+
 
 

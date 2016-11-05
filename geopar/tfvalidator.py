@@ -1,23 +1,44 @@
-from geopar.triangulated_figure import TriangulatedFigure
-from geopar.triangle import Triangle
-from geopar.angle import Angle
+from collections import Counter
 
 __author__ = 'satbek'
 
 
 class TFValidator(object):
-    def __init(self):
-        pass
+    """
+    TFValidator - Triangulated Figure Validator
+    encapsulates functions that deal with validating a triangulated figure a_tf (look at methods' parameters).
+
+    We conclude that a triangulated figure is valid when it passes all of the following three rules:
+    1 - Rule of 180 degrees
+    2 - Rule of 360 degrees
+    3 - Pairing rule
+    For more information on these rules, please refer to the paper.
+    """
 
     @staticmethod
-    def rule_180_valid(a_tf):
-        for t in a_tf.triangles:
+    def rule_180(a_tf):
+        """
+        Checks whether a rule of 180 degrees is valid in a triangulated figure a_tf.
+
+        PRE
+        a_tf is an instance of TriangulatedFigure class containing at least one triangle.
+
+        POST
+        True is returned if the rule is valid, False otherwise.
+        """
+
+        ########################################################################
+        if a_tf.is_empty():
+            raise Exception('a_tf is empty! See precondition PRE')
+        ########################################################################
+
+        for t in a_tf.get_triangles():
             if sum(t.get_angles()) != t.get_angles()[0].get_angle_180():
                 return False
         return True
 
     @staticmethod
-    def rule_360_valid(a_tf):
+    def rule_360(a_tf):
         interior_points = a_tf.get_interior_points()
         for point in interior_points:
             _triangles = []
@@ -32,9 +53,8 @@ class TFValidator(object):
         return True
 
     @staticmethod
-    def rule_pairing_valid(a_tf):
+    def rule_pairing(a_tf):
         set1, set2 = [], []
-        from collections import Counter
         for point in a_tf.get_interior_points():
             for tri in a_tf.triangles_with_point(point):
                 set1.append(tri.angle_of_point(tri.point_following(point)))
