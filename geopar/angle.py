@@ -327,7 +327,7 @@ class Angle:
     def from_str(cls, a_str, a_dimension):
         """
         INTENT
-        This is a special class method, which allows to instantiate an Angle object
+        This is a special class method which allows to instantiate an Angle object
         of dimension a_dimension from a string value a_str.
 
         PRE1
@@ -357,21 +357,6 @@ class Angle:
         print(d.get_coefficients())  # [1/3α + 1/3β - 1/3γ + 90]
         """
 
-        ######################### original code ##############################
-        # if a_str == 'x':
-        #     return Angle([MyFraction(0)] * a_dimension)
-        #
-        # nums = list(map(lambda x: MyFraction(x), a_str.split()))
-        #
-        # if len(nums) != a_dimension:
-        #     error_msg = 'Angle: provided dimension ({}) is not in correspondence with the angle provided: {}'
-        #     raise Exception(error_msg.format(a_dimension, a_str))
-        #
-        # return Angle(nums)
-        ######################################################################
-
-
-        ######################### suggested code #############################
         if a_str == 'x':
             return Angle([Fraction(0)] * a_dimension)
 
@@ -381,6 +366,4 @@ class Angle:
         for coef in coefs:
             fraction_coefs.append(Fraction(coef))
 
-        print(fraction_coefs)
         return Angle(fraction_coefs)
-        ######################################################################
