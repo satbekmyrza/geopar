@@ -16,7 +16,7 @@ __author__ = 'satbek'
 
 # allows support for up to len(GREEK_LETTERS) variables (currently 15)
 GREEK_LETTERS = 'αβγδεηθλπρστμφω'
-VAR_SUPPORT = len('αβγδεηθλπρστμφω')
+VAR_SUPPORT = 15  # len(GREEK_LETTERS)
 
 
 class Angle:

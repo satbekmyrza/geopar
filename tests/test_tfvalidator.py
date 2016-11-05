@@ -37,3 +37,9 @@ class TestTFValidator(unittest.TestCase):
 
         with self.assertRaises(Exception):
             self.validator.rule_180(self.tf_empty)
+
+    def test_rule_360(self):
+        self.assertTrue(self.validator.rule_360(self.tf1))
+
+        with self.assertRaises(Exception):
+            self.validator.rule_180(self.tf_empty)
