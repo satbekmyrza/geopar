@@ -23,11 +23,8 @@ class TFPreprocessor(object):
         Completes unknown angles --where possible-- by using 180 degrees rule.
         """
 
-        for triangle in a_tf.get_triangles():
-            triangle.complete_unknown_angle()
-            if not a_tf.angles_deduced:
-                # new information added
-                a_tf.angles_deduced = True
+        for t in a_tf.get_triangles():
+            t.complete_unknown_angle()
 
     @staticmethod
     def theorem_2(a_tf):
