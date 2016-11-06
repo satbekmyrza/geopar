@@ -55,12 +55,16 @@ def run(figure):
     preprocessor = TFPreprocessor()
 
     # Apply 180 and 360 rules until no new angles deduced
+    state_before = figure.get_state()
     preprocessor.theorem_1(figure)
     preprocessor.theorem_2(figure)
-    while figure.angles_deduced:
-        figure.angles_deduced = False
+    state_after = figure.get_state()
+
+    while state_before != state_after:
+        state_before = figure.get_state()
         preprocessor.theorem_1(figure)
         preprocessor.theorem_2(figure)
+        state_after = figure.get_state()
 
     # All angles known?
     if figure.all_angles_known():
@@ -82,14 +86,17 @@ def run(figure):
         if user_input == 'y':
 
             # Apply pairing, 180, and 360 rules until no new angles deduced
+            state_before = figure.get_state()
             preprocessor.theorem_3(figure)
             preprocessor.theorem_1(figure)
             preprocessor.theorem_2(figure)
-            while figure.angles_deduced:
-                figure.angles_deduced = False
+            state_after = figure.get_state()
+            while state_before != state_after:
+                state_before = figure.get_state()
                 preprocessor.theorem_3(figure)
                 preprocessor.theorem_1(figure)
                 preprocessor.theorem_2(figure)
+                state_after = figure.get_state()
 
             # All angles known; 180, 360, and pairing valid?
             if figure.all_angles_known() and validator.all_rules(figure):

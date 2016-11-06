@@ -18,8 +18,6 @@ class TriangulatedFigure:
         else:
             self.triangles = []
 
-        self.angles_deduced = False
-
     def get_state(self):
         return hash(str(sorted(list(map(hash, self.triangles)))))
 

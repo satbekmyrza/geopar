@@ -59,8 +59,6 @@ class TFPreprocessor(object):
                         if not triangle.angle_of_point(point).is_known():
                             # new information invoked
                             triangle.set_angle_by_index(triangle.get_points().index(point), unknown_angle)
-                            if not a_tf.angles_deduced:
-                                a_tf.angles_deduced = True
 
     @staticmethod
     def theorem_3(a_tf):
@@ -107,4 +105,3 @@ class TFPreprocessor(object):
                             for _p in _t_.get_points():
                                 if not _tt_.angle_of_point(_p).is_known() and _p != point:
                                     _tt_.set_angle_by_point(_p, unknown_angle)
-                                    a_tf.angles_deduced = True
