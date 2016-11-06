@@ -276,14 +276,6 @@ class Triangle:
 
         POST:
         1. All three angles in self.angles are known
-        2. *True is returned, if change to triangle is made; False, otherwise.
-
-        RAISES:
-        None
-
-        NOTES:
-        * This is specifically done for the purposes in Geopar.triangulated_figure.TriangulatedFigure
-        unittest should be implemented
         """
 
         if self.count_known() == 2:
@@ -292,9 +284,3 @@ class Triangle:
             for i in range(3):
                 if not self.angles[i].is_known():
                     self.angles[i] = third
-
-                    # change is made
-                    return True
-
-        # no change is made to self
-        return False

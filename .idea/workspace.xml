@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0d2d385-f62c-42ba-a9c5-38f76b4f73dd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/triangulated_figure.py" afterPath="$PROJECT_DIR$/geopar/triangulated_figure.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_triangulated_figure.py" afterPath="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/tfpreprocessor.py" afterPath="$PROJECT_DIR$/geopar/tfpreprocessor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/triangle.py" afterPath="$PROJECT_DIR$/geopar/triangle.py" />
     </list>
     <ignored path="Geopar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,8 +50,8 @@
       <file leaf-file-name="triangle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geopar/triangle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+            <state relative-caret-position="312">
+              <caret line="286" column="0" selection-start-line="286" selection-start-column="0" selection-end-line="286" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -72,18 +72,18 @@
       <file leaf-file-name="triangulated_figure.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+            <state relative-caret-position="315">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_triangulated_figure.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_triangulated_figure.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+            <state relative-caret-position="-228">
+              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -101,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tfpreprocessor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tfpreprocessor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/geopar/tfpreprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+            <state relative-caret-position="252">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -161,11 +161,11 @@
         <option value="$PROJECT_DIR$/geopar/tfvalidator.py" />
         <option value="$PROJECT_DIR$/tests/test_tfvalidator.py" />
         <option value="$PROJECT_DIR$/geopar/run.py" />
-        <option value="$PROJECT_DIR$/geopar/tfpreprocessor.py" />
-        <option value="$PROJECT_DIR$/geopar/triangle.py" />
         <option value="$PROJECT_DIR$/tests/test_triangle.py" />
         <option value="$PROJECT_DIR$/geopar/triangulated_figure.py" />
         <option value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+        <option value="$PROJECT_DIR$/geopar/triangle.py" />
+        <option value="$PROJECT_DIR$/geopar/tfpreprocessor.py" />
       </list>
     </option>
   </component>
@@ -593,7 +593,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1005,16 +1005,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/tfpreprocessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geopar/angle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3930">
@@ -1035,28 +1025,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/triangle.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="-228">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+        <state relative-caret-position="315">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
+    <entry file="file://$PROJECT_DIR$/geopar/triangle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+        <state relative-caret-position="312">
+          <caret line="286" column="0" selection-start-line="286" selection-start-column="0" selection-end-line="286" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geopar/tfpreprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
