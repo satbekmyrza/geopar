@@ -20,6 +20,9 @@ class TriangulatedFigure:
 
         self.angles_deduced = False
 
+    def get_state(self):
+        return hash(str(sorted(list(map(hash, self.triangles)))))
+
     def add(self, a_triangle):
         # Precondition 1: a_triangle is a Triangle instance
         # Precondition 2: len(self.triangles) < 2
