@@ -45,6 +45,17 @@ class Triangle:
 
         return return_string
 
+    def __hash__(self):
+        """
+        Computes hash of self.
+        """
+
+        sorted_points = sorted(self.points)
+        for_hash = str(sorted_points[0]) + str(hash(self.angle_of_point(sorted_points[0])))
+        for_hash += str(sorted_points[1]) + str(hash(self.angle_of_point(sorted_points[1])))
+        for_hash += str(sorted_points[2]) + str(hash(self.angle_of_point(sorted_points[2])))
+        return hash(for_hash)
+
     def get_angles(self):
         """
         POST:

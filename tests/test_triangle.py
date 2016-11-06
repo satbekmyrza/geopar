@@ -21,6 +21,19 @@ class TestTriangle(unittest.TestCase):
         self.ac = Angle.from_str('x', 4)
         self.triangle3 = Triangle([1, 2, 3], [self.aa,self.ab,self.ac])
 
+        self.aaa = Angle.from_str('1/3 1/3 1/3 60', 4)
+        self.aba = Angle.from_str('-1/3 1/3 -1/3 45', 4)
+        self.aca = Angle.from_str('x', 4)
+        self.triangle3a = Triangle([1, 2, 3], [self.aaa, self.aba, self.aca])
+
+    def test_hash(self):
+        self.assertEqual(hash(self.triangle0), hash(self.triangle0))  # a == a
+        self.assertEqual(hash(self.triangle1), hash(self.triangle1))  # b == b
+        self.assertNotEqual(hash(self.triangle0), hash(self.triangle1))  # a != b
+
+        self.assertEqual(hash(self.triangle3), hash(self.triangle3))  # c == c
+        self.assertEqual(hash(self.triangle3), hash(self.triangle3a))  # c == d
+
     def test_get_angles(self):
         self.assertTrue(20 in self.triangle0.get_angles())
         self.assertTrue(30 in self.triangle1.get_angles())
