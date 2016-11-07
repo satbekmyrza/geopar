@@ -34,46 +34,6 @@ class TFPreprocessor(object):
         For more information, please refer to the paper.
         """
 
-        """
-        interior_points = a_tf.get_interior_points()
-        for point in interior_points:
-
-            # counting unknown angles for a given interior point
-            sum_angles = 0
-            tw_point = a_tf.triangles_with_point(point)
-            count_unknowns = len(tw_point)
-            for t in tw_point:
-                if t.angle_of_point(point).is_known():
-                    count_unknowns -= 1
-                    sum_angles += t.angle_of_point(point)
-
-
-            # for triangle in a_tf.triangles:
-            #     if triangle.has_point(point):
-            #         if not triangle.angle_of_point(point).is_known():
-            #             count_unknowns += 1
-
-            # if there is only 1 unknown, we can calculate it
-            if count_unknowns == 1:
-
-                # adding up all the angles and storing in sum_angles
-
-                # sum_angles = 0
-                # for triangle in a_tf.triangles:
-                #     if triangle.has_point(point):
-                #         sum_angles += triangle.angle_of_point(point)
-
-                # finding the unknown angle
-                unknown_angle = 360 - sum_angles
-
-                # setting the unknown angle
-                for triangle in a_tf.triangles:
-                    if triangle.has_point(point):
-                        if not triangle.angle_of_point(point).is_known():
-                            # new information invoked
-                            triangle.set_angle_by_index(triangle.get_points().index(point), unknown_angle)
-        """
-
         for point in a_tf.get_interior_points():
             # get all triangles with given interior point
             triangles = a_tf.triangles_with_point(point)
@@ -106,8 +66,6 @@ class TFPreprocessor(object):
             # record result of computation
             if unknowns_count == 1:
                 a_tf.set_angle_by_points(*points_of_unknown_angle, 360 - sum_angles)
-
-
 
     @staticmethod
     def theorem_3(a_tf):
