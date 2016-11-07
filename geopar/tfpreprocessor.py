@@ -1,6 +1,7 @@
 from geopar.triangulated_figure import TriangulatedFigure
 from geopar.triangle import Triangle
 from geopar.angle import Angle
+from collections import Counter
 
 __author__ = 'satbek'
 
@@ -74,20 +75,35 @@ class TFPreprocessor(object):
         """
 
         for point in a_tf.get_interior_points():
+            # get all triangles with given interior point
             triangles = a_tf.triangles_with_point(point)
+
+            # count unknown angles around interior point
             unknowns_count = 0
+            # sum known angles around interior point
             sum_angles = 0
+            # angle points of all angles around interior point
             angle_points = []
+            # record angle points of latest unknown angle
             points_of_unknown_angle = None
+
+            # get all angle points of angles around interior point
             for t in triangles:
                 angle_points.append(t.get_angle_points_by_point(point))
+
+            # cycle through angle points (is equivalent to cycling through angles) around interior point
             for angle_point in angle_points:
+                # get the angle
                 angle = a_tf.get_angle_by_points(*angle_point)
+
+                # restore control variables
                 if not angle.is_known():
                     unknowns_count += 1
                     points_of_unknown_angle = angle_point
                 else:
                     sum_angles += angle
+
+            # record result of computation
             if unknowns_count == 1:
                 a_tf.set_angle_by_points(*points_of_unknown_angle, 360 - sum_angles)
 
@@ -95,46 +111,46 @@ class TFPreprocessor(object):
 
     @staticmethod
     def theorem_3(a_tf):
-        # Precondition 1: a self has to have at least one interior point
-        interior_points = a_tf.get_interior_points()
+        # traversing through interior points
+        for point in a_tf.get_interior_points():
 
-        # cycling through all interior points
-        for point in interior_points:
+            # triangles around interior point
             triangles = a_tf.triangles_with_point(point)
 
-            set1, set2 = [], []
-            triangles_with_unknown_angles = []
-            count_unknown_angles = 0
+            angle_following_list = []
+            angle_preceding_list = []
+
+            unknown_following_count = 0
+            unknown_preceding_count = 0
             sum_angles = 0
 
-            for _t in triangles:
-                af = _t.angle_of_point(_t.point_following(point))
-                ap = _t.angle_of_point(_t.point_preceding(point))
+            points_of_unknown_angles = []
 
-                if not af.is_known():
-                    triangles_with_unknown_angles.append(_t)
-                    count_unknown_angles += 1
+            # traverse through triangles around interior point
+            for t in triangles:
+                point_following = t.point_following(point)
+                point_preceding = t.point_preceding(point)
+
+                angle_following = t.angle_of_point(point_following)
+                angle_preceding = t.angle_of_point(point_preceding)
+
+                angle_following_list.append(angle_following)
+                angle_preceding_list.append(angle_preceding)
+
+                if not angle_following.is_known():
+                    unknown_following_count += 1
+                    points_of_unknown_angles.append(t.get_angle_points_by_point(point_following))
                 else:
-                    set1.append(af)
-                    sum_angles += af
+                    sum_angles += angle_following
 
-                if not ap.is_known():
-                    if af.is_known():
-                        triangles_with_unknown_angles.append(_t)
-                    count_unknown_angles += 1
+                if not angle_preceding.is_known():
+                    unknown_preceding_count += 1
+                    points_of_unknown_angles.append(t.get_angle_points_by_point(point_preceding))
                 else:
-                    set2.append(ap)
-                    sum_angles += ap
+                    sum_angles += angle_preceding
 
-            # collections.Counter is needed to check if two lists contain the same elements.
-            # Lists may have repeated elements.
-            from collections import Counter
-            if Counter(set1) == Counter(set2) and count_unknown_angles == 2:
-                sum_both = (len(triangles) - 2) * 180 - sum_angles
-                unknown_angle = sum_both / 2
-                for _t_ in triangles_with_unknown_angles:
-                    for _tt_ in a_tf.triangles:
-                        if _tt_.has_all_points(_t_.get_points()):
-                            for _p in _t_.get_points():
-                                if not _tt_.angle_of_point(_p).is_known() and _p != point:
-                                    _tt_.set_angle_by_point(_p, unknown_angle)
+            if unknown_following_count == 1 and unknown_following_count == 1 and \
+                    Counter(angle_following_list) == Counter(angle_preceding_list):
+                angle_to_set = ((len(triangles) - 2) * 180 - sum_angles) / 2
+                a_tf.set_angle_by_points(*points_of_unknown_angles[0], angle_to_set)
+                a_tf.set_angle_by_points(*points_of_unknown_angles[1], angle_to_set)
