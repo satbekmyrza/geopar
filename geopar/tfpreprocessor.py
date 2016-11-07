@@ -33,6 +33,7 @@ class TFPreprocessor(object):
         For more information, please refer to the paper.
         """
 
+        """
         interior_points = a_tf.get_interior_points()
         for point in interior_points:
 
@@ -70,6 +71,27 @@ class TFPreprocessor(object):
                         if not triangle.angle_of_point(point).is_known():
                             # new information invoked
                             triangle.set_angle_by_index(triangle.get_points().index(point), unknown_angle)
+        """
+
+        for point in a_tf.get_interior_points():
+            triangles = a_tf.triangles_with_point(point)
+            unknowns_count = 0
+            sum_angles = 0
+            angle_points = []
+            points_of_unknown_angle = None
+            for t in triangles:
+                angle_points.append(t.get_angle_points_by_point(point))
+            for angle_point in angle_points:
+                angle = a_tf.get_angle_by_points(*angle_point)
+                if not angle.is_known():
+                    unknowns_count += 1
+                    points_of_unknown_angle = angle_point
+                else:
+                    sum_angles += angle
+            if unknowns_count == 1:
+                a_tf.set_angle_by_points(*points_of_unknown_angle, 360 - sum_angles)
+
+
 
     @staticmethod
     def theorem_3(a_tf):
