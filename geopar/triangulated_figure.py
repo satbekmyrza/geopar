@@ -31,6 +31,20 @@ class TriangulatedFigure:
 
         self.triangles.append(a_triangle)
 
+    def set_angle(self, p1, p2, p3, angle_):
+        """
+        Set an angle in self to angle_.
+        The angle is defined by three points p1, p2, and p3. In other words, the angle is
+        an angle of point p2 in triangle with points p1, p2, and p3.
+
+        PRE
+        Points are given in clockwise order.
+        """
+
+        for triangle in self.triangles:
+            if triangle.has_all_points([p1, p2, p3]):
+                triangle.set_angle_by_point(p2, angle_)
+
     def get_triangles(self):
         return self.triangles
 

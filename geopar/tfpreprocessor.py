@@ -28,27 +28,38 @@ class TFPreprocessor(object):
 
     @staticmethod
     def theorem_2(a_tf):
-        # Pre-processing method.
-        # Checks all interior points if they have one missing angle around it.
-        # Makes unknown angle known.
+        """
+        Completes unknown angles --where possible-- by using 360 degrees rule.
+        For more information, please refer to the paper.
+        """
 
         interior_points = a_tf.get_interior_points()
         for point in interior_points:
+
             # counting unknown angles for a given interior point
-            count_unknowns = 0
-            for triangle in a_tf.triangles:
-                if triangle.has_point(point):
-                    if not triangle.angle_of_point(point).is_known():
-                        count_unknowns += 1
+            sum_angles = 0
+            tw_point = a_tf.triangles_with_point(point)
+            count_unknowns = len(tw_point)
+            for t in tw_point:
+                if t.angle_of_point(point).is_known():
+                    count_unknowns -= 1
+                    sum_angles += t.angle_of_point(point)
+
+
+            # for triangle in a_tf.triangles:
+            #     if triangle.has_point(point):
+            #         if not triangle.angle_of_point(point).is_known():
+            #             count_unknowns += 1
 
             # if there is only 1 unknown, we can calculate it
             if count_unknowns == 1:
 
                 # adding up all the angles and storing in sum_angles
-                sum_angles = 0
-                for triangle in a_tf.triangles:
-                    if triangle.has_point(point):
-                        sum_angles += triangle.angle_of_point(point)
+
+                # sum_angles = 0
+                # for triangle in a_tf.triangles:
+                #     if triangle.has_point(point):
+                #         sum_angles += triangle.angle_of_point(point)
 
                 # finding the unknown angle
                 unknown_angle = 360 - sum_angles

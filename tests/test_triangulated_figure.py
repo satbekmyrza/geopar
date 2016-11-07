@@ -1,6 +1,7 @@
 import unittest
 from geopar.triangle import Triangle
 from geopar.triangulated_figure import TriangulatedFigure
+from geopar.angle import Angle
 
 __author__ = 'ebraude'
 
@@ -60,6 +61,16 @@ class TestTriangulatedFigure(unittest.TestCase):
         t7 = Triangle([4, 5, 6], [60, 60, 60])
         tf1 = TriangulatedFigure([t1, t2, t3, t4, t5, t6, t7])
         print(tf1)
+
+    def test_set_angle(self):
+        a = Angle([100])
+        self.tf1.set_angle(3, 6, 2, 100)
+        check = False
+        for t in self.tf1.get_triangles():
+            if t.has_all_points([3, 2, 6]):
+                if t.angle_of_point(6) == 100:
+                    check = True
+        self.assertTrue(check)
 
     def test_get_state(self):
         print(self.tf1.get_state())
