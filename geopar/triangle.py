@@ -64,6 +64,12 @@ class Triangle:
 
         return self.angles
 
+    def get_angle_points_by_point(self, a_point):
+        ind = self.index_of_point(a_point)
+        shift = (ind + 2) % 3
+        points = self.points[shift:] + self.points[:shift]
+        return points
+
     def get_points(self):
         """
         POST:
@@ -180,6 +186,9 @@ class Triangle:
         NOTES:
         unittest should be implemented
         """
+
+        if isinstance(self.angles[0], int) and isinstance(self.angles[1], int) and isinstance(self.angles[2], int):
+            return 3
 
         count = 0
         for angle in self.angles:
