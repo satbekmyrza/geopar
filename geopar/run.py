@@ -80,6 +80,10 @@ def run(figure):
             print('INCONCLUSIVE (1)')
     else:
         # pairing wanted?
+        print('-------------------------')
+        print('Before pairing:')
+        print('-------------------------')
+        print(figure)
         user_input = input('Do you want angle pairing to be applied? (y/n): ')
         print()
 
