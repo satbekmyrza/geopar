@@ -39,6 +39,11 @@ class TestTriangle(unittest.TestCase):
         self.assertTrue(30 in self.triangle1.get_angles())
         self.assertTrue(Angle.from_str('30 40 110', 3) in self.triangle2.get_angles())
 
+    def test_angle_points_by_point(self):
+        self.assertEqual(self.triangle0.get_angle_points_by_point(1), [3, 1, 2])
+        self.assertEqual(self.triangle0.get_angle_points_by_point(2), [1 ,2, 3])
+        self.assertEqual(self.triangle0.get_angle_points_by_point(3), [2, 3, 1])
+
     def test_angle_of_point(self):
         self.assertTrue(20 == self.triangle0.angle_of_point(1))
         self.assertTrue(30 == self.triangle1.angle_of_point(77))
