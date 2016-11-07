@@ -13,6 +13,9 @@ __author__ = 'satbek'
 # URL2:
 # https://docs.google.com/presentation/d/1nddxo9JPaoxz-Colod8qd6Yuj_k7LXhBfO3JlVSYXrE/edit#slide=id.g13a06c4058_0_84
 
+# URL3:
+# https://docs.google.com/presentation/d/1nddxo9JPaoxz-Colod8qd6Yuj_k7LXhBfO3JlVSYXrE/edit#slide=id.g13a06c4058_0_179
+
 
 class TestTFPreprocessor(unittest.TestCase):
 
@@ -49,6 +52,18 @@ class TestTFPreprocessor(unittest.TestCase):
         self.tt7 = Triangle([4, 5, 6], [Angle([0, 0, 60]), Angle([0, 0, 60]), Angle([0, 0, 60])])
         self.tf2 = TriangulatedFigure([self.tt1, self.tt2, self.tt3, self.tt4, self.tt5, self.tt6, self.tt7])
 
+        # TriangulatedFigure tf3 consists of seven Triangles ttt1-ttt7
+        # Appearance: URL3 at the top
+        self.ttt1 = Triangle([2, 6, 5], [Angle([0,1,0]), Angle.from_str('x', 3), Angle.from_str('x', 3)])
+        self.ttt2 = Triangle([2, 3, 6], [Angle([0,1,0]), Angle([-1,-1,60]), Angle.from_str('x', 3)])
+        self.ttt3 = Triangle([6, 3, 4], [Angle.from_str('x', 3), Angle([-1,-1,60]), Angle.from_str('x', 3)])
+        self.ttt4 = Triangle([4, 3, 1], [Angle.from_str('x', 3), Angle([-1,-1,60]), Angle([1,0,0])])
+        self.ttt5 = Triangle([5, 4, 1], [Angle.from_str('x', 3), Angle.from_str('x', 3), Angle([1, 0, 0])])
+        self.ttt6 = Triangle([2, 5, 1], [Angle([0,1,0]), Angle.from_str('x', 3), Angle([1,0,0])])
+        self.ttt7 = Triangle([6, 4, 5], [Angle([0, 0, 60]), Angle([0, 0, 60]), Angle([0, 0, 60])])
+        self.tf3 = TriangulatedFigure([self.ttt1, self.ttt2, self.ttt3, self.ttt4, self.ttt5, self.ttt6, self.ttt7])
+
+
     def test_theorem_2(self):
         validator = TFValidator()
         if validator.rule_180(self.tf2):
@@ -71,3 +86,12 @@ class TestTFPreprocessor(unittest.TestCase):
         print(self.tf2)
 
         self.assertTrue(True)
+
+    def test_theorem_3(self):
+        preprocessor = TFPreprocessor()
+        print('original:')
+        print(self.tf3)
+        preprocessor.theorem_3(self.tf3)
+        print('after pairing:')
+        print(self.tf3)
+        pass
