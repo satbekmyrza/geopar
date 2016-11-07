@@ -64,13 +64,18 @@ class TestTriangulatedFigure(unittest.TestCase):
 
     def test_set_angle(self):
         a = Angle([100])
-        self.tf1.set_angle(3, 6, 2, 100)
+        self.tf1.set_angle_by_points(3, 6, 2, 100)
         check = False
         for t in self.tf1.get_triangles():
             if t.has_all_points([3, 2, 6]):
                 if t.angle_of_point(6) == 100:
                     check = True
         self.assertTrue(check)
+
+    def test_get_angle_by_points(self):
+        self.assertEqual(self.tf1.get_angle_by_points(2, 5, 1), 150)
+        self.assertEqual(self.tf1.get_angle_by_points(5, 1, 2), 20)
+        self.assertEqual(self.tf1.get_angle_by_points(1, 2, 5), 10)
 
     def test_get_state(self):
         print(self.tf1.get_state())
