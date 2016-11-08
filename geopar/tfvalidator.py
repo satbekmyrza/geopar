@@ -5,32 +5,28 @@ __author__ = 'satbek'
 
 class TFValidator(object):
     """
-    TFValidator - Triangulated Figure Validator
-    encapsulates functions that deal with validating a triangulated figure a_tf (look at methods' parameters).
-
-    We conclude that a triangulated figure is valid when it passes all of the following three rules:
+    Triangulated Figure Validator: a triangulated figure is valid when it passes
+    all of the following three rules (see the paper):
     1 - Rule of 180 degrees
     2 - Rule of 360 degrees
-    3 - Pairing rule
-    For more information on these rules, please refer to the paper.
+    3 - Rule of pairing
     """
 
     @staticmethod
     def rule_180(a_tf):
         """
-        Checks whether a rule of 180 degrees is valid in a triangulated figure a_tf.
+        INTENT
+        Checks whether a rule of 180 degrees is valid in a triangulated figure.
 
         PRE
         a_tf is an instance of TriangulatedFigure class containing at least one triangle.
 
         POST
-        True is returned if the rule is valid, False otherwise.
+        True is returned if the angles of every triangle in a_tf sum up to 180, False otherwise.
         """
 
-        ########################################################################
         if a_tf.is_empty():
-            raise Exception('a_tf is empty! See precondition PRE')
-        ########################################################################
+            raise Exception('a_tf is empty! See precondition PRE.')
 
         for triangle_ in a_tf.get_triangles():
             if sum(triangle_.get_angles()) != 180:
