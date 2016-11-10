@@ -6,7 +6,11 @@ from geopar.extras import EmptyException
 
 __author__ = 'satbek'
 
-# URL1: https://docs.google.com/presentation/d/1nddxo9JPaoxz-Colod8qd6Yuj_k7LXhBfO3JlVSYXrE/edit?usp=sharing
+# URL1:
+# https://docs.google.com/presentation/d/1nddxo9JPaoxz-Colod8qd6Yuj_k7LXhBfO3JlVSYXrE/edit?usp=sharing
+
+# URL 2:
+# https://docs.google.com/presentation/d/1nddxo9JPaoxz-Colod8qd6Yuj_k7LXhBfO3JlVSYXrE/edit#slide=id.g13a65b87db_0_0
 
 
 class TestTFValidator(unittest.TestCase):
@@ -33,6 +37,11 @@ class TestTFValidator(unittest.TestCase):
         self.tf1.add(self.t6)
         self.tf1.add(self.t7)
 
+        # TriangulatedFigure tf_simple consists of 1 triangle t_simple
+        # Appearance: URL2 at the top
+        self.t_simple = Triangle([1,2,3],[50,70,60])
+        self.tf_simple = TriangulatedFigure([self.t_simple])
+
     def test_rule_180(self):
         self.assertTrue(self.validator.rule_180(self.tf1))
 
@@ -42,8 +51,8 @@ class TestTFValidator(unittest.TestCase):
     def test_rule_360(self):
         self.assertTrue(self.validator.rule_360(self.tf1))
 
-        with self.assertRaises(Exception):
-            self.validator.rule_180(self.tf_empty)
+        with self.assertRaises(EmptyException):
+            self.validator.rule_360(self.tf_empty)
 
     def test_rule_pairing(self):
         self.assertTrue(self.validator.rule_pairing(self.tf1))
