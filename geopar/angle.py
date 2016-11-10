@@ -22,42 +22,45 @@ VAR_SUPPORT = 15  # len(GREEK_LETTERS)
 class Angle:
     """
     INTENT:
+    Defines a geometrical angle in terms of a list of numbers - _coefficients.
+
+
     Defines an angle in terms of a list of MyFraction objects. Supports variable angles.
     G.e. Let's say the angle is: aα + bβ + c, where α and β are variables.
-    Then, this angle can be expressed by [a, b, c] a.k.a. coefficients.
+    Then, this angle can be expressed by [a, b, c] a.k.a. _coefficients.
 
     IMPORTANT:
     1. This class supports up to 15 variables. It is defined by VAR_SUPPORT constant.
-    2. If all of self.coefficients are 0, then the angle is said to be unknown.
+    2. If all of self._coefficients are 0, then the angle is said to be unknown.
     """
 
-    def __init__(self, coefficients):
+    def __init__(self, _coefficients):
         """
-        PRE1: len(coefficients) >= 1
-        PRE2: len(coefficients) <= self.dimension_support
-        PRE3: coefficients[i] is MyFraction|int|float for all i
+        PRE1: len(_coefficients) >= 1
+        PRE2: len(_coefficients) <= self.dimension_support
+        PRE3: _coefficients[i] is MyFraction|int|float for all i
 
         """
 
         # PRE1
-        if len(coefficients) < 1:
+        if len(_coefficients) < 1:
             error_msg = 'Angle: you need to provide at least one coefficient.'
             raise Exception(error_msg)
 
         # PRE2
-        if len(coefficients) > VAR_SUPPORT:
+        if len(_coefficients) > VAR_SUPPORT:
             error_msg = 'Angle: this class supports {} variables. You provided too many ({}) variables.'
-            raise Exception(error_msg.format(VAR_SUPPORT, len(coefficients)))
+            raise Exception(error_msg.format(VAR_SUPPORT, len(_coefficients)))
 
         # PRE3
-        for c in coefficients:
+        for c in _coefficients:
             if not (isinstance(c, Fraction) or isinstance(c, numbers.Real)):
                 error_msg = 'Angle: wrong type provided for new Angle.' \
                             '\nType: <{}>' \
                             '\nValue: <{}>'
                 raise Exception(error_msg.format(type(c).__name__, c))
 
-        self.coefficients = coefficients
+        self._coefficients = _coefficients
 
     def __add__(self, other):
         """
@@ -84,7 +87,7 @@ class Angle:
             other_angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
             return self + Angle(other_angle)
 
-        return Angle(list(map(sum, zip(self.coefficients, other.coefficients))))
+        return Angle(list(map(sum, zip(self._coefficients, other.coefficients))))
 
     def __radd__(self, other):
         """
@@ -101,7 +104,7 @@ class Angle:
             error_msg = 'Angle: Trying to add Angle object to <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = [Fraction(0)] * (len(self.coefficients) - 1) + [Fraction(Decimal(str(other)))]
+        other_angle = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(other)))]
 
         return self + Angle(other_angle)
 
@@ -128,9 +131,9 @@ class Angle:
 
         other_angle = None
         if isinstance(other, numbers.Real):
-            other_angle = [Fraction(0)] * (len(self.coefficients) - 1) + [Fraction(Decimal(str(-other)))]
+            other_angle = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(-other)))]
         elif isinstance(other, Angle):
-            other_angle = list(map(lambda x: -x, other.coefficients))
+            other_angle = list(map(lambda x: -x, other._coefficients))
 
         return self + Angle(other_angle)
 
@@ -149,7 +152,7 @@ class Angle:
             error_msg = 'Angle: Trying to subtract Angle object from a <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = list(map(lambda x: -x, self.coefficients))
+        other_angle = list(map(lambda x: -x, self._coefficients))
         return Angle(other_angle) + other
 
     def __truediv__(self, other):
@@ -166,7 +169,7 @@ class Angle:
             error_msg = 'Angle: Trying to divide an Angle object by a <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = list(map(lambda x: x / Fraction(Decimal(str(other))), self.coefficients))
+        other_angle = list(map(lambda x: x / Fraction(Decimal(str(other))), self._coefficients))
         return Angle(other_angle)
 
     def __mul__(self, other):
@@ -183,7 +186,7 @@ class Angle:
             error_msg = 'Angle: Trying to multiply an Angle object to a <{}> object. int or float is required.'
             raise TypeError(error_msg.format(type(other).__name__))
 
-        other_angle = list(map(lambda x: x * Fraction(Decimal(str(other))), self.coefficients))
+        other_angle = list(map(lambda x: x * Fraction(Decimal(str(other))), self._coefficients))
         return Angle(other_angle)
 
     def __rmul__(self, other):
@@ -221,7 +224,7 @@ class Angle:
             raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
-        if isinstance(other, Angle) and len(self.coefficients) != len(other.coefficients):
+        if isinstance(other, Angle) and len(self._coefficients) != len(other.coefficients):
             error_msg = 'Angle: Trying to compare two Angle objects of different dimension.'
             raise Exception(error_msg)
 
@@ -229,8 +232,8 @@ class Angle:
             a = Angle([Fraction(0)] * (self.get_dimension() - 1) + [Fraction(other)])
             return self == a
 
-        for i in range(len(self.coefficients)):
-            if self.coefficients[i] != other.coefficients[i]:
+        for i in range(len(self._coefficients)):
+            if self._coefficients[i] != other.coefficients[i]:
                 return False
 
         return True
@@ -263,17 +266,17 @@ class Angle:
         if not self.is_known():
             return 'x'
 
-        # prepares first n-1 coefficients
+        # prepares first n-1 _coefficients
         result = ''
-        for i in range(len(self.coefficients) - 1):
-            a = self.coefficients[i]
+        for i in range(len(self._coefficients) - 1):
+            a = self._coefficients[i]
             if a > 0:
                 result += (' + ' + str(a) if a != 1 else ' + ') + GREEK_LETTERS[i]
             elif a < 0:
                 result += (' - ' + str(abs(a)) if abs(a) != 1 else ' - ') + GREEK_LETTERS[i]
 
         # prepares the last coefficient
-        a = self.coefficients[-1]
+        a = self._coefficients[-1]
         if a > 0:
             result += ' + ' + str(a)
         elif a < 0:
@@ -300,17 +303,17 @@ class Angle:
         Both Python sets and collections.Counter require objects to be hashable.
         """
 
-        # relies on coefficients
+        # relies on _coefficients
         result = ''
-        for c in self.coefficients:
+        for c in self._coefficients:
             result += str(c)
         return hash(result)
 
     def get_coefficients(self):
-        return self.coefficients
+        return self._coefficients
 
     def get_dimension(self):
-        return len(self.coefficients)
+        return len(self._coefficients)
 
     def get_angle_180(self):
         """
@@ -334,7 +337,7 @@ class Angle:
         # INTENT
         # enables the user to know whether the value of self is known
 
-        for c in self.coefficients:
+        for c in self._coefficients:
             if c != 0:
                 return True
         return False
@@ -376,7 +379,7 @@ class Angle:
         if a_str == 'x':
             return Angle([Fraction(0)] * a_dimension)
 
-        # we assume that coefficients are separated by space
+        # we assume that _coefficients are separated by space
         coefs = a_str.split()
         fraction_coefs = list()
         for coef in coefs:
