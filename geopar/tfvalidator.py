@@ -1,4 +1,5 @@
 from collections import Counter
+from geopar.extras import EmptyException
 
 __author__ = 'satbek'
 
@@ -26,7 +27,7 @@ class TFValidator(object):
         """
 
         if a_tf.is_empty():
-            raise Exception('a_tf is empty! See precondition PRE.')
+            raise EmptyException('A triangulated figure is empty! See precondition in TFValidator.rule_180().')
 
         for triangle_ in a_tf.get_triangles():
             if sum(triangle_.get_angles()) != 180:
