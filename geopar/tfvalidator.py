@@ -37,30 +37,64 @@ class TFValidator(object):
     @staticmethod
     def rule_360(a_tf):
         """
-        Checks whether a rule of 360 degrees is valid in a triangulated figure a_tf.
+        Checks whether a rule of 360 degrees is valid in a triangulated figure.
 
         PRE
         a_tf is an instance of TriangulatedFigure class containing at least one triangle.
 
         POST
-        True is returned if the rule is valid, False otherwise.
+        True is returned if the angles around every interior point sum up to 360, False otherwise.
         """
 
-        ########################################################################
         if a_tf.is_empty():
-            raise Exception('a_tf is empty! See precondition PRE')
-        ########################################################################
+            raise EmptyException('A triangulated figure is empty! See precondition in TFValidator.rule_360().')
 
-        for point in a_tf.get_interior_points():
-            _triangles = a_tf.triangles_with_point(point)
+        # === 1 (Interior point): 'interior_point' is a point
+        for interior_point in a_tf.get_interior_points():
 
+            # === 2 (Summed up): 'sum_angle' contains the sum of angles around 'interior_point'
+            triangles = a_tf.triangles_with_point(interior_point)
             sum_angles = 0
-            for triangle in _triangles:
-                sum_angles += triangle.angle_of_point(point)
+            for triangle in triangles:
+                sum_angles += triangle.angle_of_point(interior_point)
 
+            # === 3 (Sum checked): 'sum_angles' is not equal to 360
             if sum_angles != 360:
                 return False
 
+        # === 4 (Complement): 'sum_angles' is equal to 360
+        return True
+
+        # === 1 (Interior point): interior_point = points[i] for 0 <= i < len(points)
+        # === 2 (Summed up): sum_angles = sum of angles around interior_point
+        # === 3 (Sum checked): sum_angles != 360
+        # === 4 (Complement): i == len(points)
+
+        points = a_tf.get_interior_points()
+
+        # a_tf has no interior points
+        if not points:
+            return True
+
+        i = 0
+
+        while i != len(points):
+
+            # === 1 (Interior point)
+            interior_point = points[i]
+            i += 1
+
+            # === 2 (Summed up)
+            triangles = a_tf.triangles_with_point(interior_point)
+            sum_angles = 0
+            for triangle in triangles:
+                sum_angles += triangle.angle_of_point(interior_point)
+
+            # === 3 (Sum checked)
+            if sum_angles != 360:
+                return False
+
+        # === 4 (Complement)
         return True
 
     @staticmethod
