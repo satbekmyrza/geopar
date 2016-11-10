@@ -67,5 +67,12 @@ See:
 - triangle.py
 - triangulated_figure.py
 
+#### Conventions
+- Object attributes start with _ (underscore). G.e. _object_attribute
+
+#### Terminology
+- 
+
+
 Inline-style: 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
