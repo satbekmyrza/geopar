@@ -71,7 +71,7 @@ See:
 - Object attributes start with _ (underscore). G.e. _object_attribute
 
 #### Terminology
-- 
+- interior point
 
 
 Inline-style: 
