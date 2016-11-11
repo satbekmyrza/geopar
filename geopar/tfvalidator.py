@@ -49,6 +49,25 @@ class TFValidator(object):
         if a_tf.is_empty():
             raise EmptyException('A triangulated figure is empty! See precondition in TFValidator.rule_360().')
 
+        '''
+        # version 1
+        def sum_of_angles_around_a_point_is_360(a_point):
+            # Intent: returns True if the sum of angles around a_point equals 360, False otherwise
+            triangles_ = a_tf.triangles_with_point(a_point)
+            sum_angles_ = 0
+            for triangle_ in triangles_:
+                sum_angles_ += triangle_.angle_of_point(interior_point)
+            return sum_angles_ == 360
+
+        for interior_point in a_tf.get_interior_points():
+            if not sum_of_angles_around_a_point_is_360(interior_point):
+                return False
+
+        return True
+        '''
+
+        '''
+        # version 2
         # === 1 (Interior point): 'interior_point' is a point
         for interior_point in a_tf.get_interior_points():
 
@@ -64,6 +83,7 @@ class TFValidator(object):
 
         # === 4 (Complement): 'sum_angles' is equal to 360
         return True
+        '''
 
         # === 1 (Interior point): interior_point = points[i] for 0 <= i < len(points)
         # === 2 (Summed up): sum_angles = sum of angles around interior_point
