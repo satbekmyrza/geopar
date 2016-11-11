@@ -8,6 +8,14 @@ __author__ = 'satbek'
 class TestAngle(unittest.TestCase):
 
     def setUp(self):
+        self.a_constant = Angle([90])
+        self.a_constant_neg = Angle([-90])
+
+        self.a_two1 = Angle([1, 45])
+        self.a_two2 = Angle([0, 45])
+        self.a_two3 = Angle([2, -45])
+        self.a_two4 = Angle([0, -45])
+
         self.angle1 = Angle([1, 2, 3, 4, 5, 60])
         self.angle2 = Angle([2, 3, 4, 5, 6, 70])
         self.angle12 = Angle([3, 5, 7, 9, 11, 130])
@@ -71,4 +79,11 @@ class TestAngle(unittest.TestCase):
         self.assertTrue(90 == self.angle5)
         self.assertTrue(self.angle5 == 90)
 
+    def test_str(self):
+        print(self.a_constant)
+        print(self.a_constant_neg)
+        print(self.a_two1)
+        print(self.a_two2)
+        print(self.a_two3)
+        print(self.a_two4)
 
