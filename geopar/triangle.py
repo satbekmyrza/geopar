@@ -288,7 +288,12 @@ class Triangle:
         """
 
         if self.count_known() == 2:
-            s = sum(self.angles).get_coefficients()
+            s = 0
+            for an in self.get_angles():
+                if an.is_known():
+                    s += an
+            # s = sum(self.angles).get_coefficients()
+            s = s.get_coefficients()
             third = 180 - Angle(s)
             for i in range(3):
                 if not self.angles[i].is_known():
