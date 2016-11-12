@@ -7,10 +7,9 @@ import numbers
 ISSUES:
 
 SUGGESTIONS:
-1. Unknown Angle object has a dimension. Not necessary.
-2. in @classmethod from_str(), process '2.4 3.4 5.6 1.9 90.0'? --> NO
 
 NOTES:
+
 """
 
 __author__ = 'satbek'
