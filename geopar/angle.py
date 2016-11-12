@@ -16,13 +16,14 @@ __author__ = 'satbek'
 
 # allows support for up to len(GREEK_LETTERS) variables (currently 15)
 GREEK_LETTERS = 'αβγδεηθλπρστμφω'
-VAR_SUPPORT = 15  # len(GREEK_LETTERS)
 
 
 class Angle:
     """
-    INTENT:
-    Defines a geometrical angle in terms of a list of numbers - _coefficients.
+    Defines a geometrical angle in terms of a list of Fraction numbers - _coefficients.
+
+    _coefficients contains n elements, where 1 <= n <= len(GREEK_LETTERS) + 1.
+
 
 
     Defines an angle in terms of a list of MyFraction objects. Supports variable angles.
@@ -30,7 +31,7 @@ class Angle:
     Then, this angle can be expressed by [a, b, c] a.k.a. _coefficients.
 
     IMPORTANT:
-    1. This class supports up to 15 variables. It is defined by VAR_SUPPORT constant.
+    1. This class supports up to len(GREEK_LETTERS) variables.
     2. If all of self._coefficients are 0, then the angle is said to be unknown.
     """
 
@@ -48,9 +49,9 @@ class Angle:
             raise Exception(error_msg)
 
         # PRE2
-        if len(_coefficients) > VAR_SUPPORT:
+        if len(_coefficients) > len(GREEK_LETTERS):
             error_msg = 'Angle: this class supports {} variables. You provided too many ({}) variables.'
-            raise Exception(error_msg.format(VAR_SUPPORT, len(_coefficients)))
+            raise Exception(error_msg.format(len(GREEK_LETTERS), len(_coefficients)))
 
         # PRE3
         for c in _coefficients:
@@ -358,7 +359,7 @@ class Angle:
         of dimension a_dimension from a string value a_str.
 
         PRE1
-        a_dimension < VAR_SUPPORT
+        a_dimension < len(GREEK_LETTERS)
 
         PRE2
         a_dimension == len(a_str.split())
