@@ -1,5 +1,6 @@
 from fractions import Fraction
 from decimal import Decimal
+from geopar.extras import AngleState
 import numbers
 
 """
@@ -61,6 +62,13 @@ class Angle:
                 raise Exception(error_msg.format(type(c).__name__, c))
 
         self._coefficients = _coefficients
+        self.state = AngleState.KNOWN
+
+    def set_state(self, a_state):
+        self.state = a_state
+
+    def get_state(self):
+        return self.state
 
     def __add__(self, other):
         """
@@ -87,7 +95,11 @@ class Angle:
             other_angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
             return self + Angle(other_angle)
 
-        return Angle(list(map(sum, zip(self._coefficients, other.coefficients))))
+        if isinstance(other, Angle):
+            if not other.is_known():
+                raise Exception('Cannot add unknown angle!')
+
+        return Angle(list(map(sum, zip(self._coefficients, other._coefficients))))
 
     def __radd__(self, other):
         """
@@ -224,7 +236,7 @@ class Angle:
             raise TypeError(error_msg.format(type(other).__name__))
 
         # PRE2
-        if isinstance(other, Angle) and len(self._coefficients) != len(other.coefficients):
+        if isinstance(other, Angle) and len(self._coefficients) != len(other._coefficients):
             error_msg = 'Angle: Trying to compare two Angle objects of different dimension.'
             raise Exception(error_msg)
 
@@ -233,7 +245,7 @@ class Angle:
             return self == a
 
         for i in range(len(self._coefficients)):
-            if self._coefficients[i] != other.coefficients[i]:
+            if self._coefficients[i] != other._coefficients[i]:
                 return False
 
         return True
@@ -337,10 +349,7 @@ class Angle:
         # INTENT
         # enables the user to know whether the value of self is known
 
-        for c in self._coefficients:
-            if c != 0:
-                return True
-        return False
+        return self.state == AngleState.KNOWN
 
     @classmethod
     def from_str(cls, a_str, a_dimension):
@@ -377,7 +386,9 @@ class Angle:
         """
 
         if a_str == 'x':
-            return Angle([Fraction(0)] * a_dimension)
+            a = Angle([Fraction(0)] * a_dimension)
+            a.set_state(AngleState.UNKNOWN)
+            return a
 
         # we assume that _coefficients are separated by space
         coefs = a_str.split()
