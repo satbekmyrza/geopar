@@ -327,12 +327,8 @@ class Angle:
 
     def __hash__(self):
         """
-        INTENT
-        User defined objects in Python are mutable by default. Overriding this method enables to make them immutable.
-        This method is specifically written to be able to:
-        1. compare two sets of Angle objects with each other.
-        2. using collections.Counter for comparing two lists of Angle objects
-        Both Python sets and collections.Counter require objects to be hashable.
+        User defined objects in Python are mutable by default.
+        Overriding __hash__ method enables to make them immutable.
         """
 
         # relies on _coefficients
@@ -347,72 +343,50 @@ class Angle:
     def get_dimension(self):
         return len(self._coefficients)
 
-    def get_angle_180(self):
-        """
-        INTENT:
-        returns an Angle [0, 0, ..., 0, 180] of dimension as self
-        """
-
-        angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(180)]
-        return Angle(angle)
-
-    def get_angle_360(self):
-        """
-        INTENT:
-        returns an Angle [0, 0, ..., 0, 360] of dimension as self
-        """
-
-        angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(360)]
-        return Angle(angle)
-
     def is_known(self):
-        # INTENT
         # enables the user to know whether the value of self is known
 
         return bool(self.get_coefficients())
 
     @classmethod
-    def from_str(cls, a_str, a_dimension):
+    def from_str(cls, a_str):
         """
-        INTENT
-        This is a special class method which allows to instantiate an Angle object
+        INTENT:
+        This is a special class method which allows instantiating an Angle object
         of dimension a_dimension from a string value a_str.
 
         PRE1
-        a_dimension < len(GREEK_LETTERS)
-
-        PRE2
-        a_dimension == len(a_str.split())
-
-        PRE3
         a_str is in one of the forms:
             - 'x' for unknown
             - 'a b ... z' for aα + bβ + ... + z
                 where a, b, ..., z are either of these:
                     - positive/negative integers (g.e. 1, 2, -90, -9, etc)
+                    - positive/negative float numbers (g.e. 1.2, 2.3, -90.0, -9.0, etc)
                     - positive/negative fractions (g.e. 1/2, 3/5, -6/19, -9/2, etc)
 
         USAGE
-        a = Angle.from_str('x', 4)
-        print(a.get_coefficients())  # [0, 0, 0, 0]
+        a = Angle.from_str('x')
+        print(a.get_coefficients())  # []
 
-        b = Angle.from_str('1 0 90', 3)
+        b = Angle.from_str('1 0 90')
         print(b)  # α + 90
 
-        c = Angle.from_str('r 1 90', 3)  # ERROR! r is a letter
+        c = Angle.from_str('r 1 90')  # ERROR! 'r' is a character
 
         d = Angle.from_str('1/3 1/3 -1/3 90')
-        print(d.get_coefficients())  # [1/3α + 1/3β - 1/3γ + 90]
+        print(d.get_coefficients())  # [1/3, 1/3, -1/3, 90]
         """
 
         if a_str == 'x':
-            a = Angle([])
-            return a
+            return Angle([])
 
         # we assume that _coefficients are separated by space
-        coefs = a_str.split()
-        fraction_coefs = list()
-        for coef in coefs:
-            fraction_coefs.append(Fraction(coef))
+        coefficients = a_str.split()
+        fraction_coefs = []
+        for coef in coefficients:
+            if '/' in coef:
+                fraction_coefs.append(Fraction(coef))
+            else:
+                fraction_coefs.append(Fraction(Decimal(coef)))
 
         return Angle(fraction_coefs)
