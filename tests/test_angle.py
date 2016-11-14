@@ -150,9 +150,26 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(1.5 - Angle([-1, 0, -10]), Angle([1, 0, 11.5]))
 
     def test_truediv(self):
-        # Angle / numbers.Real
-        self.assertEqual(self.angle3 / 2, Angle([1, 2, 3, 4, 50]))
-        self.assertEqual(self.angle1 / 2, Angle.from_str('.5 1 1.5 2 2.5 30', 6))
+        a = Angle([])
+        b = Angle([1, 2, 3, 30])
+
+        # PRE1
+        # self is unknown
+        with self.assertRaises(Exception):
+            c = a / 2
+
+        # PRE2
+        # other is not int|float
+        with self.assertRaises(Exception):
+            c = a / 'str'
+
+        # Angle / int
+        self.assertEqual(b / 2, Angle([.5, 1, 1.5, 15]))
+        self.assertEqual(b / 1, b)
+        # Angle / float
+        self.assertEqual(b / .5, Angle([2, 4, 6, 60]))
+        self.assertEqual(b / 2.0, Angle([.5, 1, 1.5, 15]))
+        self.assertEqual(b / 1.0, b)
 
     def test_mul(self):
         # Angle * numbers.Real
