@@ -69,6 +69,7 @@ See:
 
 #### Conventions
 - Object attributes start with _ (underscore). G.e. _object_attribute
+- Triangle vertices are called triangle points (or simply, points), for convenience
 
 #### Terminology
 - interior point
