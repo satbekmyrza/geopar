@@ -1,6 +1,5 @@
 from fractions import Fraction
 from decimal import Decimal
-from geopar.extras import AngleState
 import numbers
 
 """
@@ -9,7 +8,6 @@ ISSUES:
 SUGGESTIONS:
 
 NOTES:
-- KNOWN, UNKNOWN angle, should be reconsidered?
 
 """
 
@@ -25,26 +23,26 @@ class Angle:
     Defines a geometrical angle in terms of a list of Fraction numbers - _coefficients.
 
     NOTES:
-    _coefficients contains n elements, where 1 <= n <= len(GREEK_LETTERS) + 1.
+    _coefficients contains n elements, where 0 <= n <= len(GREEK_LETTERS) + 1.
     Below are different cases for n. When {{1}}:
-    1. n == 1, the angle is constant.
+    1. n == 0, the angle is unknown.
+    2. n == 1, the angle is constant.
        _coefficients = [90] --> 90 degrees
        _coefficients = [-30] --> -30 degrees
-    2. n == 2, the angle has one variable (first letter of GREEK_LETTERS) and a constant term.
+    3. n == 2, the angle has one variable (first letter of GREEK_LETTERS) and a constant term.
        _coefficients = [1, 45] --> α + 45
        _coefficients = [-1, -30] --> -α - 30
        _coefficients = [-1, 0] --> -α
-    3. n == 3, the angle has two variables (first two letters of GREEK_LETTERS) and a constant term.
+    4. n == 3, the angle has two variables (first two letters of GREEK_LETTERS) and a constant term.
        _coefficients = [1, 1, 30] --> α + β + 30
        _coefficients = [0, -1, 30] --> -β + 30
        _coefficients = [-1, -1, 120] --> -α - β + 120
        _coefficients = [1, 1, 0] --> α + β
     ... and so on.
 
-    _state contains the state of self.
-    An angle can be in one of either states: KNOWN or UNKNOWN.
-    The value of KNOWN angle is explicitly set.
-    The value of UNKNOWN angle is implicit.
+    The angle can be in either of two states: known or unknown.
+    If len(_coefficients) == 0, then the angle is said to be unknown.
+    Otherwise, the angle is said to be known.
 
     {{1}} To explain more easily, I used integers as coefficients. However, keep in mind that _coefficients
     contains ONLY objects of built-in Fraction class.
@@ -52,63 +50,49 @@ class Angle:
 
     def __init__(self, _coefficients):
         """
-        PRE1: len(_coefficients) >= 1
-        PRE2: len(_coefficients) <= len(GREEK_LETTERS) + 1
-        PRE3: _coefficients[i] is an instance of Fraction, where 0 <= i < len(_coefficients)
+        PRE1: len(_coefficients) <= len(GREEK_LETTERS) + 1
+        PRE2: _coefficients[i] is an instance of Fraction, where 0 <= i < len(_coefficients)
         """
 
         # PRE1
-        if len(_coefficients) < 1:
-            raise Exception('You need to provide at least one coefficient.')
-
-        # PRE2
-        if len(_coefficients) > len(GREEK_LETTERS):
+        if len(_coefficients) > len(GREEK_LETTERS) + 1:
             raise Exception('Too many coefficients were provided.')
 
-        # PRE3
+        # PRE2
         for coef in _coefficients:
             if not (isinstance(coef, Fraction)):
                 raise Exception('Coefficient provided is not Fraction.')
 
         self._coefficients = _coefficients
-        self._state = AngleState.KNOWN
-
-    def set_state(self, a_state):
-        self._state = a_state
-
-    def get_state(self):
-        return self._state
 
     def __add__(self, other):
         """
-        INTENT:
-        Performs addition:
-          Angle + Angle
-          Angle + numbers.Real
+        Implements binary arithmetic operation '+'.
 
-        PRE1: other is instance of Angle or numbers.Real
-        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
+        PRE1: other is instance of Angle, int, or float
+        PRE2: if other is instance Angle, then:
+                1. self.get_dimension() == other.get_dimension()
+                2. other is known
         """
 
         # PRE1
-        if not isinstance(other, Angle) and not isinstance(other, numbers.Real):
-            error_msg = 'Angle: Trying to add <{}> object to an Angle object. Angle or int or float is required.'
-            raise TypeError(error_msg.format(type(other).__name__))
+        if not (isinstance(other, Angle) or isinstance(other, int) or isinstance(other, float)):
+            raise Exception('Wrong type provided.')
 
         # PRE2
-        if isinstance(other, Angle) and self.get_dimension() != other.get_dimension():
-            error_msg = 'Angle: both addends should have the same dimension! {} != {}'
-            raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
+        if isinstance(other, Angle):
+            if self.get_dimension() != other.get_dimension():
+                raise Exception('Angles to be added have different dimensions.')
+            if not other.is_known():
+                raise Exception('Angle to be added is unknown.')
 
-        if isinstance(other, numbers.Real):
+        # int, float
+        if isinstance(other, int) or isinstance(other, float):
             other_angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
             return self + Angle(other_angle)
 
-        if isinstance(other, Angle):
-            if not other.is_known():
-                raise Exception('Cannot add unknown angle!')
-
-        return Angle(list(map(sum, zip(self._coefficients, other._coefficients))))
+        # Angle
+        return Angle(list(map(sum, zip(self._coefficients, other.get_coefficients()))))
 
     def __radd__(self, other):
         """
@@ -358,7 +342,7 @@ class Angle:
         # INTENT
         # enables the user to know whether the value of self is known
 
-        return self._state == AngleState.KNOWN
+        return bool(self.get_coefficients())
 
     @classmethod
     def from_str(cls, a_str, a_dimension):
@@ -395,8 +379,7 @@ class Angle:
         """
 
         if a_str == 'x':
-            a = Angle([Fraction(0)] * a_dimension)
-            a.set_state(AngleState.UNKNOWN)
+            a = Angle([])
             return a
 
         # we assume that _coefficients are separated by space
