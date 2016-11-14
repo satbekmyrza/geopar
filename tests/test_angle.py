@@ -1,12 +1,12 @@
 import unittest
 from geopar.angle import Angle
+from geopar.angle import GREEK_LETTERS
 from fractions import Fraction
 
 __author__ = 'satbek'
 
 
 class TestAngle(unittest.TestCase):
-
     def setUp(self):
         self.a_constant = Angle([90])
         self.a_constant_neg = Angle([-90])
@@ -23,15 +23,55 @@ class TestAngle(unittest.TestCase):
         self.angle4 = Angle([2, 4, 6, 8, 100])
         self.angle5 = Angle([0, 0, 0, 0, 0, 90])
 
-    def test_add(self):
-        # Angle + Angle
-        # print('({}) + ({}) = {}'.format(self.angle1, self.angle2, self.angle12))
-        self.assertEqual(self.angle1 + self.angle2, self.angle12)
-        # Angle + numbers.Real
-        self.assertEqual(self.angle1 + 10, Angle([1, 2, 3, 4, 5, 70]))
-        self.assertEqual(self.angle1 + (-100.0), Angle([1, 2, 3, 4, 5, -40]))
+    def test_init(self):
+        # PRE 1
+        # len(coefficients) > 16
+        with self.assertRaises(Exception):
+            angle = Angle([1] * (len(GREEK_LETTERS) + 2))
 
-        # print(self.angle1 + 12.1212)
+        # PRE 2
+        # wrong type
+        with self.assertRaises(Exception):
+            angle = Angle(['str value'])
+
+        # Force conversion of int, float coefficients to Fraction
+        angle = Angle([1, 2, Fraction(3), 4.0, Fraction(1, 3)])
+        for coef in angle.get_coefficients():
+            self.assertTrue(isinstance(coef, Fraction))
+
+    def test_add(self):
+        a = Angle([])
+        b = Angle([1, 90])
+        c = Angle([1, 1, 90])
+
+        # PRE1
+        # self is unknown
+        with self.assertRaises(Exception):
+            c = a + b
+
+        # PRE2
+        # other is not Angle|int|float
+        with self.assertRaises(Exception):
+            c = b + 'str'
+
+        # PRE3
+        # other is unknown
+        with self.assertRaises(Exception):
+            c = b + a
+        # self.get_dimension != other.get_dimension
+        with self.assertRaises(Exception):
+            c = b + c
+
+        # Angle + Angle
+        self.assertEqual(Angle([10]) + Angle([20]), Angle([30]))
+        self.assertEqual(Angle([1, 10]) + Angle([0, -20]), Angle([1, -10]))
+        # Angle + int
+        self.assertEqual(Angle([1, 10]) + 90, Angle([1, 100]))
+        self.assertEqual(Angle([1, 2, 3, 4, -10]) + 90, Angle([1, 2, 3, 4, 80]))
+        # Angle + float
+        self.assertEqual(Angle([1, 10]) + 1.5, Angle([1, 11.5]))
+        self.assertEqual(Angle([-1, 0, -10]) + 1.5, Angle([-1, 0, -8.5]))
+
 
     def test_radd(self):
         # numbers.Real + Angle
@@ -86,4 +126,3 @@ class TestAngle(unittest.TestCase):
         print(self.a_two2)
         print(self.a_two3)
         print(self.a_two4)
-
