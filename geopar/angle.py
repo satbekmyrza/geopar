@@ -153,21 +153,18 @@ class Angle:
 
     def __rsub__(self, other):
         """
-        INTENT:
-        Performs subtraction:
-          numbers.Real - Angle
+        Implements binary arithmetic operation '-'.
 
-        PRE1: other is instance of numbers.Real
-        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
+        PRE1: other is an instance of int|float
+        Remaining preconditions are delegated to self.__add__()
         """
 
         # PRE1
-        if not isinstance(other, numbers.Real):
-            error_msg = 'Angle: Trying to subtract Angle object from a <{}> object. int or float is required.'
-            raise TypeError(error_msg.format(type(other).__name__))
+        if not (isinstance(other, int) or isinstance(other, float)):
+            raise Exception('Wrong type provided.')
 
-        other_angle = list(map(lambda x: -x, self._coefficients))
-        return Angle(other_angle) + other
+        negated_self_coefficients = list(map(lambda x: -x, self._coefficients))
+        return Angle(negated_self_coefficients) + other
 
     def __truediv__(self, other):
         """
