@@ -78,6 +78,9 @@ class Angle:
     def __add__(self, other):
         """
         Implements binary arithmetic operation '+'.
+        Angle + Angle
+        Angle + int
+        Angle + float
 
         PRE1: self is known
         PRE2: other is instance of Angle, int, or float
@@ -112,6 +115,9 @@ class Angle:
     def __radd__(self, other):
         """
         Implements binary arithmetic operation '+' when other is not an instance of Angle.
+        int + Angle
+        float + Angle
+
         Preconditions are delegated to self.__add__()
         """
 
@@ -120,6 +126,9 @@ class Angle:
     def __sub__(self, other):
         """
         Implements binary arithmetic operation '-'.
+        Angle - Angle
+        Angle - int
+        Angle - float
 
         PRE1: self is known
         PRE2: other is instance of Angle, int, or float
@@ -154,6 +163,8 @@ class Angle:
     def __rsub__(self, other):
         """
         Implements binary arithmetic operation '-'.
+        int - Angle
+        float - Angle
 
         PRE1: other is an instance of int|float
         Remaining preconditions are delegated to self.__add__()
