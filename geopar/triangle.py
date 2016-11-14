@@ -73,7 +73,7 @@ class Triangle:
 
     def __hash__(self):
         """
-        Computes hash of self.
+        Computes and returns hash of self.
         """
 
         sorted_points = sorted(self._points)
