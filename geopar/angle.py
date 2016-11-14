@@ -8,6 +8,8 @@ ISSUES:
 SUGGESTIONS:
 
 NOTES:
+1. include usage in __init__
+
 
 """
 
@@ -48,48 +50,61 @@ class Angle:
     contains ONLY objects of built-in Fraction class.
     """
 
-    def __init__(self, _coefficients):
+    def __init__(self, coefficients):
         """
-        PRE1: len(_coefficients) <= len(GREEK_LETTERS) + 1
-        PRE2: _coefficients[i] is an instance of Fraction, where 0 <= i < len(_coefficients)
+        PRE1: len(coefficients) <= len(GREEK_LETTERS) + 1
+        PRE2: coefficients[i] is an instance of Fraction, int, or float, where 0 <= i < len(coefficients)
         """
 
         # PRE1
-        if len(_coefficients) > len(GREEK_LETTERS) + 1:
+        if len(coefficients) > len(GREEK_LETTERS) + 1:
             raise Exception('Too many coefficients were provided.')
 
         # PRE2
-        for coef in _coefficients:
-            if not (isinstance(coef, Fraction)):
-                raise Exception('Coefficient provided is not Fraction.')
+        for coef in coefficients:
+            if not (isinstance(coef, Fraction) or isinstance(coef, int) or isinstance(coef, float)):
+                raise Exception('Coefficient provided is not Fraction|int|float.')
 
-        self._coefficients = _coefficients
+        # convert int, float coefficients to Fraction
+        coefficients2 = []
+        for coef in coefficients:
+            if isinstance(coef, int) or isinstance(coef, float):
+                coefficients2.append(Fraction(Decimal(str(coef))))
+            elif isinstance(coef, Fraction):
+                coefficients2.append(coef)
+
+        self._coefficients = coefficients2
 
     def __add__(self, other):
         """
         Implements binary arithmetic operation '+'.
 
-        PRE1: other is instance of Angle, int, or float
-        PRE2: if other is instance Angle, then:
-                1. self.get_dimension() == other.get_dimension()
-                2. other is known
+        PRE1: self is known
+        PRE2: other is instance of Angle, int, or float
+        PRE3: if other is instance Angle, then:
+                1. other is known
+                2. self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
+        if not self.is_known():
+            raise Exception('Self is unknown.')
+
+        # PRE2
         if not (isinstance(other, Angle) or isinstance(other, int) or isinstance(other, float)):
             raise Exception('Wrong type provided.')
 
-        # PRE2
+        # PRE3
         if isinstance(other, Angle):
-            if self.get_dimension() != other.get_dimension():
-                raise Exception('Angles to be added have different dimensions.')
             if not other.is_known():
                 raise Exception('Angle to be added is unknown.')
+            if self.get_dimension() != other.get_dimension():
+                raise Exception('Angles to be added have different dimensions.')
 
-        # int, float
+        # other is int, float
         if isinstance(other, int) or isinstance(other, float):
-            other_angle = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
-            return self + Angle(other_angle)
+            other_angle_coefficients = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
+            return self + Angle(other_angle_coefficients)
 
         # Angle
         return Angle(list(map(sum, zip(self._coefficients, other.get_coefficients()))))
