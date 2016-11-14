@@ -221,17 +221,12 @@ class Angle:
 
     def __rmul__(self, other):
         """
-        INTENT:
-        Performs multiplication:
-          numbers.Real * Angle
+        Implements binary arithmetic operation '*'.
+        int * Angle
+        float * Angle
 
-        PRE1: other is instance of numbers.Real
+        Preconditions are delegated to self.__mul__()
         """
-
-        # PRE1
-        if not isinstance(other, numbers.Real):
-            error_msg = 'Angle: Trying to multiply an Angle object to a <{}> object. int or float is required.'
-            raise TypeError(error_msg.format(type(other).__name__))
 
         return self * other
 
