@@ -44,7 +44,7 @@ class TestTriangle(unittest.TestCase):
 
         # force conversion of int, float angles to Angle
         triangle = Triangle([1, 2, 3], [10, 20.0, Angle([30])])
-        for angle in triangle.angles:
+        for angle in triangle._angles:
             self.assertTrue(isinstance(angle, Angle))
 
     def test_str(self):
