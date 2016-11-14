@@ -200,20 +200,24 @@ class Angle:
 
     def __mul__(self, other):
         """
-        INTENT:
-        Performs multiplication:
-          Angle * numbers.Real
+        Implements binary arithmetic operation '*'.
+        Angle * int
+        Angle * float
 
-        PRE1: other is instance of numbers.Real
+        PRE1: self is known
+        PRE1: other is an instance of int|float
         """
 
         # PRE1
-        if not isinstance(other, numbers.Real):
-            error_msg = 'Angle: Trying to multiply an Angle object to a <{}> object. int or float is required.'
-            raise TypeError(error_msg.format(type(other).__name__))
+        if not self.is_known():
+            raise Exception('Self is unknown.')
 
-        other_angle = list(map(lambda x: x * Fraction(Decimal(str(other))), self._coefficients))
-        return Angle(other_angle)
+        # PRE2
+        if not (isinstance(other, int) or isinstance(other, float)):
+            raise Exception('Wrong type provided.')
+
+        results_coefficients = list(map(lambda x: x * Fraction(Decimal(str(other))), self._coefficients))
+        return Angle(results_coefficients)
 
     def __rmul__(self, other):
         """
