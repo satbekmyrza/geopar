@@ -1,6 +1,5 @@
 from fractions import Fraction
 from decimal import Decimal
-import numbers
 
 """
 ISSUES:
@@ -8,8 +7,6 @@ ISSUES:
 SUGGESTIONS:
 
 NOTES:
-1. include usage in __init__
-
 
 """
 
@@ -45,6 +42,17 @@ class Angle:
     The angle can be in either of two states: known or unknown.
     If len(_coefficients) == 0, then the angle is said to be unknown.
     Otherwise, the angle is said to be known.
+
+    USAGE:
+    a = Angle([])
+    a.is_known() # False
+    print(a) # x
+    b = Angle([Fraction(1,2), Fraction(90)])
+    print(b) # 1/2α + 90
+    c = Angle([1.5, 2, -45]) # int and float values are implicitly converted to Fraction
+    print(c) # 3/2α + 2β - 45
+    d = Angle([Fraction(1,2), 40.5]) # Fraction, int, float values can be mixed
+    print(d) # 1/2α + 81/2
 
     {{1}} To explain more easily, I used integers as coefficients. However, keep in mind that _coefficients
     contains ONLY objects of built-in Fraction class.
