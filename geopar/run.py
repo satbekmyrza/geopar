@@ -39,9 +39,9 @@ def parse_a_file(filename):
         # angles_str = ['angle1', 'angle2', 'angle3']
         angles_str = list(map(str.strip, line[1].split(',')))
 
-        a1 = Angle.from_str(angles_str[0], dim)
-        a2 = Angle.from_str(angles_str[1], dim)
-        a3 = Angle.from_str(angles_str[2], dim)
+        a1 = Angle.from_str(angles_str[0])
+        a2 = Angle.from_str(angles_str[1])
+        a3 = Angle.from_str(angles_str[2])
 
         _angles = [a1, a2, a3]
         figure.add(Triangle(_points, _angles))
