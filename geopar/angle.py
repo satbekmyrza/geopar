@@ -70,13 +70,13 @@ class Angle:
 
         # PRE2
         for coef in coefficients:
-            if not (isinstance(coef, Fraction) or isinstance(coef, int) or isinstance(coef, float)):
+            if not isinstance(coef, (Fraction, int, float)):
                 raise Exception('Coefficient provided is not Fraction|int|float.')
 
         # convert int, float coefficients to Fraction
         coefficients2 = []
         for coef in coefficients:
-            if isinstance(coef, int) or isinstance(coef, float):
+            if isinstance(coef, (int, float)):
                 coefficients2.append(Fraction(Decimal(str(coef))))
             elif isinstance(coef, Fraction):
                 coefficients2.append(coef)
@@ -102,7 +102,7 @@ class Angle:
             raise Exception('Self is unknown.')
 
         # PRE2
-        if not (isinstance(other, Angle) or isinstance(other, int) or isinstance(other, float)):
+        if not isinstance(other, (Angle, int, float)):
             raise Exception('Wrong type provided.')
 
         # PRE3
@@ -113,7 +113,7 @@ class Angle:
                 raise Exception('Angles to be added have different dimensions.')
 
         # other is int, float
-        if isinstance(other, int) or isinstance(other, float):
+        if isinstance(other, (int, float)):
             other_angle_coefficients = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
             return self + Angle(other_angle_coefficients)
 
@@ -150,7 +150,7 @@ class Angle:
             raise Exception('Self is unknown.')
 
         # PRE2
-        if not (isinstance(other, Angle) or isinstance(other, int) or isinstance(other, float)):
+        if not isinstance(other, (Angle, int, float)):
             raise Exception('Wrong type provided.')
 
         # PRE3
@@ -161,7 +161,7 @@ class Angle:
                 raise Exception('Angles have different dimensions (subtraction).')
 
         other_angle_coefficients = None
-        if isinstance(other, int) or isinstance(other, float):
+        if isinstance(other, (int, float)):
             other_angle_coefficients = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(-other)))]
         elif isinstance(other, Angle):
             other_angle_coefficients = list(map(lambda x: -x, other.get_coefficients()))
@@ -179,7 +179,7 @@ class Angle:
         """
 
         # PRE1
-        if not (isinstance(other, int) or isinstance(other, float)):
+        if not isinstance(other, (int, float)):
             raise Exception('Wrong type provided.')
 
         negated_self_coefficients = list(map(lambda x: -x, self._coefficients))
@@ -200,7 +200,7 @@ class Angle:
             raise Exception('Self is unknown.')
 
         # PRE2
-        if not (isinstance(other, int) or isinstance(other, float)):
+        if not isinstance(other, (int, float)):
             raise Exception('Wrong type provided.')
 
         result_coefficients = list(map(lambda x: x / Fraction(Decimal(str(other))), self._coefficients))
@@ -221,7 +221,7 @@ class Angle:
             raise Exception('Self is unknown.')
 
         # PRE2
-        if not (isinstance(other, int) or isinstance(other, float)):
+        if not isinstance(other, (int, float)):
             raise Exception('Wrong type provided.')
 
         results_coefficients = list(map(lambda x: x * Fraction(Decimal(str(other))), self._coefficients))
@@ -259,7 +259,7 @@ class Angle:
             raise Exception('Self is unknown.')
 
         # PRE2
-        if not (isinstance(other, Angle) or isinstance(other, int) or isinstance(other, float)):
+        if not isinstance(other, (Angle, int, float)):
             raise Exception('Wrong type provided.')
 
         # PRE3
@@ -270,7 +270,7 @@ class Angle:
                 raise Exception('Angles to be compared have different dimensions.')
 
         # other is int, float
-        if isinstance(other, int) or isinstance(other, float):
+        if isinstance(other, (int, float)):
             a = Angle([Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))])
             return self == a
 
