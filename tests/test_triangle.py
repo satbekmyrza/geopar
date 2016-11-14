@@ -7,16 +7,15 @@ __author__ = 'satbek'
 
 
 class TestTriangle(unittest.TestCase):
-
     def setUp(self):
         self.triangle0 = Triangle([1, 2, 3], [20, 30, 130])
         self.triangle1 = Triangle([2, 1, 77], [130, 20, 30])
-        self.triangle2 = Triangle([1, 77, 88], [Angle([30,40,110]), Angle.from_str('x'), Angle([60,60,60])])
+        self.triangle2 = Triangle([1, 77, 88], [Angle([30, 40, 110]), Angle.from_str('x'), Angle([60, 60, 60])])
 
         self.aa = Angle.from_str('1/3 1/3 1/3 60')
         self.ab = Angle.from_str('-1/3 1/3 -1/3 45')
         self.ac = Angle.from_str('x')
-        self.triangle3 = Triangle([1, 2, 3], [self.aa,self.ab,self.ac])
+        self.triangle3 = Triangle([1, 2, 3], [self.aa, self.ab, self.ac])
 
         self.aaa = Angle.from_str('1/3 1/3 1/3 60')
         self.aba = Angle.from_str('-1/3 1/3 -1/3 45')
@@ -47,6 +46,12 @@ class TestTriangle(unittest.TestCase):
         triangle = Triangle([1, 2, 3], [10, 20.0, Angle([30])])
         for angle in triangle.angles:
             self.assertTrue(isinstance(angle, Angle))
+
+    def test_str(self):
+        print(self.triangle0)
+        print(self.triangle1)
+        print(self.triangle2)
+        print(self.triangle3)
 
     def test_hash(self):
         self.assertEqual(hash(self.triangle0), hash(self.triangle0))  # a == a
