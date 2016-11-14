@@ -232,51 +232,58 @@ class Angle:
 
     def __eq__(self, other):
         """
-        Performs comparison of:
-            - two angle objects (Angle == Angle)
-            - an angle object and a constant value of int (Angle == int or int == Angle)
+        Implements binary comparison operation '=='.
+        Angle == Angle
+        Angle == int
+        int == Angle
+        Angle == float
+        float == Angle
 
-        PRE1
-        Other is an instance of Angle or int
-
-        PRE2
-        If other is Angle, dimensions of other and self are equal
+        PRE1: self is known
+        PRE2: other is an instance of Angle|int|float
+        PRE3: if other is an instance of Angle:
+                1. other is known
+                2. self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
-        if not isinstance(other, Angle) and not isinstance(other, int):
-            error_msg = 'Angle: Trying to compare {} object to Angle object. Angle or int is required.'
-            raise TypeError(error_msg.format(type(other).__name__))
+        if not self.is_known():
+            raise Exception('Self is unknown.')
 
         # PRE2
-        if isinstance(other, Angle) and len(self._coefficients) != len(other._coefficients):
-            error_msg = 'Angle: Trying to compare two Angle objects of different dimension.'
-            raise Exception(error_msg)
+        if not (isinstance(other, Angle) or isinstance(other, int) or isinstance(other, float)):
+            raise Exception('Wrong type provided.')
 
-        if isinstance(other, int):
-            a = Angle([Fraction(0)] * (self.get_dimension() - 1) + [Fraction(other)])
+        # PRE3
+        if isinstance(other, Angle):
+            if not other.is_known():
+                raise Exception('Angle to be compared is unknown.')
+            if self.get_dimension() != other.get_dimension():
+                raise Exception('Angles to be compared have different dimensions.')
+
+        # other is int, float
+        if isinstance(other, int) or isinstance(other, float):
+            a = Angle([Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))])
             return self == a
 
+        # other is Angle
+        other_coefficients = other.get_coefficients()
         for i in range(len(self._coefficients)):
-            if self._coefficients[i] != other._coefficients[i]:
+            if self._coefficients[i] != other_coefficients[i]:
                 return False
 
         return True
 
     def __ne__(self, other):
         """
-        Performs comparison of:
-            - two angle objects (Angle != Angle)
-            - an angle object and a constant value of int (Angle != int or int != Angle)
+        Implements binary comparison operation '!='.
+        Angle != Angle
+        Angle != int
+        int != Angle
+        Angle != float
+        float != Angle
 
-        PRE1
-        Other is an instance of Angle or int.
-
-        PRE2
-        If other is Angle, dimensions of other and self are equal.
-
-        NOTE
-        Implementation of PRE1 and PRE2 are delegated to self.__eq__()
+        Preconditions are delegated to self.__eq__()
         """
 
         return not self.__eq__(other)
