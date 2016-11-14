@@ -58,7 +58,7 @@ class Triangle:
                 three_angles2.append(angle)
 
         self._points = three_points
-        self.angles = three_angles2
+        self._angles = three_angles2
 
     def __str__(self):
         """
@@ -85,10 +85,10 @@ class Triangle:
     def get_angles(self):
         """
         POST:
-        self.angles is returned
+        self._angles is returned
         """
 
-        return self.angles
+        return self._angles
 
     def get_angle_points_by_point(self, a_point):
         ind = self.index_of_point(a_point)
@@ -126,7 +126,7 @@ class Triangle:
             error_message = 'The point ({}) is not in a triangle!'
             raise ValueError(error_message.format(a_point))
 
-        return self.angles[self._points.index(a_point)]
+        return self._angles[self._points.index(a_point)]
 
     def index_of_point(self, a_point):
         """
@@ -213,11 +213,11 @@ class Triangle:
         unittest should be implemented
         """
 
-        if isinstance(self.angles[0], int) and isinstance(self.angles[1], int) and isinstance(self.angles[2], int):
+        if isinstance(self._angles[0], int) and isinstance(self._angles[1], int) and isinstance(self._angles[2], int):
             return 3
 
         count = 0
-        for angle in self.angles:
+        for angle in self._angles:
             if angle.is_known():
                 count += 1
         return count
@@ -244,18 +244,18 @@ class Triangle:
             error_message = 'The point ({}) is not in a triangle!'
             raise ValueError(error_message.format(a_point))
 
-        self.angles[self.index_of_point(a_point)] = an_angle
+        self._angles[self.index_of_point(a_point)] = an_angle
 
     def set_angle_by_index(self, an_index, an_angle):
         """
         INTENT:
-        Setting self.angles[an_index] in self to an_angle
+        Setting self._angles[an_index] in self to an_angle
 
         PRE:
         an_index is either 0, 1, or 2
 
         POST:
-        self.angles[an_index] == an_angle yields True
+        self._angles[an_index] == an_angle yields True
 
         RAISES:
         ValueError, if an_index is not in [0, 1, 2]
@@ -268,7 +268,7 @@ class Triangle:
             error_message = 'The index ({}) is bad!'
             raise ValueError(error_message.format(an_index))
 
-        self.angles[an_index] = an_angle
+        self._angles[an_index] = an_angle
 
     def has_point(self, a_point):
         """
@@ -307,10 +307,10 @@ class Triangle:
         If self has an unknown angle, this method completes it using 180 rule.
 
         PRE:
-        Two angles in self.angles are known, and one is unknown
+        Two angles in self._angles are known, and one is unknown
 
         POST:
-        1. All three angles in self.angles are known
+        1. All three angles in self._angles are known
         """
 
         if self.count_known() == 2:
@@ -318,9 +318,9 @@ class Triangle:
             for an in self.get_angles():
                 if an.is_known():
                     s += an
-            # s = sum(self.angles).get_coefficients()
+            # s = sum(self._angles).get_coefficients()
             s = s.get_coefficients()
             third = 180 - Angle(s)
             for i in range(3):
-                if not self.angles[i].is_known():
-                    self.angles[i] = third
+                if not self._angles[i].is_known():
+                    self._angles[i] = third
