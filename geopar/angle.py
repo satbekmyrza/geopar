@@ -119,32 +119,37 @@ class Angle:
 
     def __sub__(self, other):
         """
-        INTENT:
-        Performs subtraction:
-          Angle - Angle
-          Angle - numbers.Real
+        Implements binary arithmetic operation '-'.
 
-        PRE1: other is instance of Angle or numbers.Real
-        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
+        PRE1: self is known
+        PRE2: other is instance of Angle, int, or float
+        PRE3: if other is instance Angle, then:
+                1. other is known
+                2. self.get_dimension() == other.get_dimension()
         """
 
         # PRE1
-        if not isinstance(other, Angle) and not isinstance(other, numbers.Real):
-            error_msg = 'Angle: Trying to subtract <{}> object from an Angle object. Angle or int or float is required.'
-            raise TypeError(error_msg.format(type(other).__name__))
+        if not self.is_known():
+            raise Exception('Self is unknown.')
 
         # PRE2
-        if isinstance(other, Angle) and self.get_dimension() != other.get_dimension():
-            error_msg = 'Angle: minuend and subtrahend should have the same dimension! {} != {}'
-            raise Exception(error_msg.format(self.get_dimension(), other.get_dimension()))
+        if not (isinstance(other, Angle) or isinstance(other, int) or isinstance(other, float)):
+            raise Exception('Wrong type provided.')
 
-        other_angle = None
-        if isinstance(other, numbers.Real):
-            other_angle = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(-other)))]
+        # PRE3
+        if isinstance(other, Angle):
+            if not other.is_known():
+                raise Exception('Angle that is subtracted is unknown.')
+            if self.get_dimension() != other.get_dimension():
+                raise Exception('Angles have different dimensions (subtraction).')
+
+        other_angle_coefficients = None
+        if isinstance(other, int) or isinstance(other, float):
+            other_angle_coefficients = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(-other)))]
         elif isinstance(other, Angle):
-            other_angle = list(map(lambda x: -x, other._coefficients))
+            other_angle_coefficients = list(map(lambda x: -x, other.get_coefficients()))
 
-        return self + Angle(other_angle)
+        return self + Angle(other_angle_coefficients)
 
     def __rsub__(self, other):
         """
