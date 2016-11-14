@@ -215,18 +215,82 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(2.0 * b, Angle([2, 4, 6, 60]))
         self.assertEqual(1.0 * b, b)
 
+    def test_eq(self):
+        a = Angle([])
+        b = Angle([1, 2, 3, 30])
+        c = Angle([90])
+
+        # PRE1
+        # self is unknown
+        with self.assertRaises(Exception):
+            a == a
+
+        # PRE2
+        # other is not Angle|int|float
+        with self.assertRaises(Exception):
+            b == 'str'
+
+        # PRE3
+        # other is unknown
+        with self.assertRaises(Exception):
+            b == a
+        # self.get_dimension != other.get_dimension
+        with self.assertRaises(Exception):
+            b == c
+
+        # Angle == Angle
+        self.assertTrue(b == Angle([1, 2, 3, 30]))
+        self.assertTrue(b == b)
+        # int == Angle
+        self.assertTrue(90 == c)
+        # Angle == int
+        self.assertTrue(c == 90)
+        # float == Angle
+        self.assertTrue(90.0 == c)
+        # Angle == float
+        self.assertTrue(c == 90.0)
+
+    def test_ne(self):
+        a = Angle([])
+        b = Angle([1, 2, 3, 30])
+        c = Angle([90])
+
+        # PRE1
+        # self is unknown
+        with self.assertRaises(Exception):
+            a != a
+
+        # PRE2
+        # other is not Angle|int|float
+        with self.assertRaises(Exception):
+            b != 'str'
+
+        # PRE3
+        # other is unknown
+        with self.assertRaises(Exception):
+            b != a
+        # self.get_dimension != other.get_dimension
+        with self.assertRaises(Exception):
+            b != c
+
+        # Angle != Angle
+        self.assertTrue(b != Angle([2, 2, 3, 30]))
+        self.assertFalse(b != b)
+        # int != Angle
+        self.assertTrue(100 != c)
+        # Angle != int
+        self.assertFalse(c != 90)
+        # float != Angle
+        self.assertTrue(90.1 != c)
+        # Angle != float
+        self.assertFalse(c != 90.0)
+
     def test_from_str(self):
         a_str = '-1 2/4 -3/5 4000 -599 6/1'
         dim = 10
         a = Angle.from_str(a_str, dim)
 
         print(a_str.split())
-
-    def test_eq(self):
-        self.assertTrue(self.angle3 == self.angle4)
-        self.assertTrue(self.angle1 == self.angle1)
-        self.assertTrue(90 == self.angle5)
-        self.assertTrue(self.angle5 == 90)
 
     def test_str(self):
         print(self.a_constant)
