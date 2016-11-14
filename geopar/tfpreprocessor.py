@@ -92,8 +92,10 @@ class TFPreprocessor(object):
                 angle_following = t.angle_of_point(point_following)
                 angle_preceding = t.angle_of_point(point_preceding)
 
-                angle_following_list.append(angle_following)
-                angle_preceding_list.append(angle_preceding)
+                if angle_following.is_known():
+                    angle_following_list.append(angle_following)
+                if angle_preceding.is_known():
+                    angle_preceding_list.append(angle_preceding)
 
                 if not angle_following.is_known():
                     unknown_following_count += 1
