@@ -111,22 +111,11 @@ class Angle:
 
     def __radd__(self, other):
         """
-        INTENT:
-        Performs addition:
-          numbers.Real + Angle
-
-        PRE1: other is instance of numbers.Real
-        PRE2: if other is Angle, then self.get_dimension() == other.get_dimension()
+        Implements binary arithmetic operation '+' when other is not an instance of Angle.
+        Preconditions are delegated to self.__add__()
         """
 
-        # PRE1
-        if not isinstance(other, numbers.Real):
-            error_msg = 'Angle: Trying to add Angle object to <{}> object. int or float is required.'
-            raise TypeError(error_msg.format(type(other).__name__))
-
-        other_angle = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(other)))]
-
-        return self + Angle(other_angle)
+        return self + other
 
     def __sub__(self, other):
         """
