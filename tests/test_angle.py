@@ -285,13 +285,6 @@ class TestAngle(unittest.TestCase):
         # Angle != float
         self.assertFalse(c != 90.0)
 
-    def test_from_str(self):
-        a_str = '-1 2/4 -3/5 4000 -599 6/1'
-        dim = 10
-        a = Angle.from_str(a_str, dim)
-
-        print(a_str.split())
-
     def test_str(self):
         print(self.a_constant)
         print(self.a_constant_neg)
@@ -299,3 +292,7 @@ class TestAngle(unittest.TestCase):
         print(self.a_two2)
         print(self.a_two3)
         print(self.a_two4)
+
+    def test_from_str(self):
+        a_str = '-1 2/4 -3/5 40.00 -599 6/1'
+        a = Angle.from_str(a_str)
