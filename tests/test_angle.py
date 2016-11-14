@@ -76,7 +76,6 @@ class TestAngle(unittest.TestCase):
         # exceptions are delegated to self.__add__()
         a = Angle([])
         b = Angle([1, 90])
-        c = Angle([1, 1, 90])
 
         # PRE1
         # self is unknown
@@ -96,13 +95,37 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(1.5 + Angle([-1, 0, -10]), Angle([-1, 0, -8.5]))
 
     def test_sub(self):
-        # Angle - Angle
-        self.assertEqual(self.angle2 - self.angle1, Angle([1, 1, 1, 1, 1, 10]))
-        self.assertEqual(self.angle1 - self.angle2, Angle([-1, -1, -1, -1, -1, -10]))
+        a = Angle([])
+        b = Angle([1, 90])
+        c = Angle([1, 1, 90])
 
-        # Angle - numbers.Real
-        self.assertEqual(self.angle1 - 25, Angle([1, 2, 3, 4, 5, 35]))
-        self.assertEqual(self.angle1 - 50.0, Angle([1, 2, 3, 4, 5, 10]))
+        # PRE1
+        # self is unknown
+        with self.assertRaises(Exception):
+            d = a - b
+
+        # PRE2
+        # other is not Angle|int|float
+        with self.assertRaises(Exception):
+            d = b - 'str'
+
+        # PRE3
+        # other is unknown
+        with self.assertRaises(Exception):
+            d = b - a
+        # self.get_dimension != other.get_dimension
+        with self.assertRaises(Exception):
+            d = b - c
+
+        # Angle - Angle
+        self.assertEqual(Angle([10]) - Angle([20]), Angle([-10]))
+        self.assertEqual(Angle([1, 10]) - Angle([-3, -20]), Angle([4, 30]))
+        # Angle - int
+        self.assertEqual(Angle([1, 10]) - 90, Angle([1, -80]))
+        self.assertEqual(Angle([1, 2, 3, 4, -10]) - 90, Angle([1, 2, 3, 4, -100]))
+        # Angle - float
+        self.assertEqual(Angle([1, 10]) - 1.5, Angle([1, 8.5]))
+        self.assertEqual(Angle([-1, 0, -10]) - 1.5, Angle([-1, 0, -11.5]))
 
     def test_rsub(self):
         # numbers.Real - Angle
