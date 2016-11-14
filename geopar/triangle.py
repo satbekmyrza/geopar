@@ -1,35 +1,63 @@
 from geopar.angle import Angle
 
+"""
+ISSUES:
+
+SUGGESTIONS:
+
+NOTES:
+
+"""
+
 __author__ = 'satbek'
 
 
 class Triangle:
+    """
+    INTENT:
+    Defines a triangle with 3 angles and 3 vertices labeled by integers, in clockwise order.
+
+    NOTES:
+    Triangle vertices will be called 'points' throughout the rest of the program.
+
+    _points contains three points (int instances) in clockwise order.
+    _angles contains corresponding three angles (Angle instances) in clockwise order.
+    """
+
     def __init__(self, three_points, three_angles):
         """
-        INTENT:
-        Define a triangle with 3 angles and 3 vertex points labeled by integers, in clockwise order.
-
-        IMPORTANT:
-        Vertices of a Triangle objects will be called 'points' throughout the program.
-
-        PRE:
-        (Distinct): three_points consists of distinct non-negative integers
-
-        POST:
-        self.points = three_points AND
-        self.angles = three_angles
+        PRE1: three_points consists of three distinct non-negative integers
+        PRE2: three_angles consists of three Angle|int|float instances
 
         NOTES:
-        1. Raise an error if precondition (Distinct) is not met.
-
-        ISSUES:
-        1. find_third_angle method, returning True or False is a weak design.
-           (Change detection mechanics)
-
+        int and float angles in three_angles will be converted to Angle objects.
         """
 
-        self.points = three_points
-        self.angles = three_angles
+        # PRE1
+        # non-negative
+        if not all(list(map(lambda x: x > 0, three_points))):
+            raise Exception('Negative point provided.')
+        # exactly 3 distinct
+        if len(three_points) != 3:
+            raise Exception('Wrong number of points provided.')
+        elif len(set(three_points)) != 3:
+            raise Exception('Wrong number of points provided.')
+
+        # PRE2
+        for angle in three_angles:
+            if not isinstance(angle, (Angle, int, float)):
+                raise Exception('Angle provided is not Angle|int|float.')
+
+        # convert int|float angles to Angle
+        three_angles2 = []
+        for angle in three_angles:
+            if isinstance(angle, (int, float)):
+                three_angles2.append(Angle([angle]))
+            if isinstance(angle, Angle):
+                three_angles2.append(angle)
+
+        self._points = three_points
+        self.angles = three_angles2
 
     def __str__(self):
         """
@@ -50,7 +78,7 @@ class Triangle:
         Computes hash of self.
         """
 
-        sorted_points = sorted(self.points)
+        sorted_points = sorted(self._points)
         for_hash = str(sorted_points[0]) + str(hash(self.angle_of_point(sorted_points[0])))
         for_hash += str(sorted_points[1]) + str(hash(self.angle_of_point(sorted_points[1])))
         for_hash += str(sorted_points[2]) + str(hash(self.angle_of_point(sorted_points[2])))
@@ -67,16 +95,16 @@ class Triangle:
     def get_angle_points_by_point(self, a_point):
         ind = self.index_of_point(a_point)
         shift = (ind + 2) % 3
-        points = self.points[shift:] + self.points[:shift]
+        points = self._points[shift:] + self._points[:shift]
         return points
 
     def get_points(self):
         """
         POST:
-        self.points is returned
+        self._points is returned
         """
 
-        return self.points
+        return self._points
 
     def angle_of_point(self, a_point):
         """
@@ -84,42 +112,42 @@ class Triangle:
         get the angle given a_point
 
         PRE:
-        self.points contains a_point
+        self._points contains a_point
 
         POST:
         angle of a_point is returned
 
         RAISES:
-        ValueError, if self.points misses a_point
+        ValueError, if self._points misses a_point
 
         NOTES:
         unittest should be implemented
         """
 
-        if a_point not in self.points:
+        if a_point not in self._points:
             error_message = 'The point ({}) is not in a triangle!'
             raise ValueError(error_message.format(a_point))
 
-        return self.angles[self.points.index(a_point)]
+        return self.angles[self._points.index(a_point)]
 
     def index_of_point(self, a_point):
         """
         INTENT:
-        get the position of a_point in self.points
+        get the position of a_point in self._points
 
         PRE:
-        self.points contains a_point
+        self._points contains a_point
 
         POST:
         index is returned
 
         RAISES:
-        ValueError, if self.points misses a_point
+        ValueError, if self._points misses a_point
 
         NOTES:
         unittest should be implemented
         """
-        if a_point not in self.points:
+        if a_point not in self._points:
             error_message = 'The point ({}) is not in a triangle!'
             raise ValueError(error_message.format(a_point))
 
@@ -131,24 +159,24 @@ class Triangle:
         Returns a point that follows a_point in clockwise order.
 
         PRE:
-        self.points contains a_point
+        self._points contains a_point
 
         POST:
         a point following a_point is returned
 
         RAISES:
-        ValueError, if self.points misses a_point
+        ValueError, if self._points misses a_point
 
         NOTES:
         unittest should be implemented
         """
 
-        if a_point not in self.points:
+        if a_point not in self._points:
             error_message = 'The point ({}) is not in a triangle!'
             raise ValueError(error_message.format(a_point))
 
-        index_of_a_point = self.points.index(a_point)
-        return self.points[(index_of_a_point + 1) % 3]
+        index_of_a_point = self._points.index(a_point)
+        return self._points[(index_of_a_point + 1) % 3]
 
     def point_preceding(self, a_point):
         """
@@ -156,24 +184,24 @@ class Triangle:
         Returns a point that precedes a_point in clockwise order.
 
         PRE:
-        self.points contains a_point
+        self._points contains a_point
 
         POST:
         a point preceding a_point is returned
 
         RAISES:
-        ValueError, if self.points misses a_point
+        ValueError, if self._points misses a_point
 
         NOTES:
         unittest should be implemented
         """
 
-        if a_point not in self.points:
+        if a_point not in self._points:
             error_message = 'The point ({}) is not in a triangle!'
             raise ValueError(error_message.format(a_point))
 
-        index_of_a_point = self.points.index(a_point)
-        return self.points[(index_of_a_point - 1) % 3]
+        index_of_a_point = self._points.index(a_point)
+        return self._points[(index_of_a_point - 1) % 3]
 
     def count_known(self):
         """
@@ -202,19 +230,19 @@ class Triangle:
         Setting an angle of a_point in self to an_angle
 
         PRE:
-        a_point is in self.points
+        a_point is in self._points
 
         POST:
         self.angle_of_point(a_point) == an_angle yields True
 
         RAISES:
-        ValueError, if self.points misses a_point
+        ValueError, if self._points misses a_point
 
         NOTES:
         unittest should be implemented
         """
 
-        if a_point not in self.points:
+        if a_point not in self._points:
             error_message = 'The point ({}) is not in a triangle!'
             raise ValueError(error_message.format(a_point))
 
@@ -250,16 +278,16 @@ class Triangle:
         Learning if self has a point a_point
 
         POST:
-        True is returned, if a_point is in self.points; False, otherwise
+        True is returned, if a_point is in self._points; False, otherwise
 
         NOTES:
         unittest should be implemented
         """
 
-        return a_point in self.points
+        return a_point in self._points
 
     def has_all_points(self, three_points):
-        return set(self.points) == set(three_points)
+        return set(self._points) == set(three_points)
 
     def has_unknown(self):
         """
