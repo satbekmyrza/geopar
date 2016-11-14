@@ -10,21 +10,43 @@ class TestTriangle(unittest.TestCase):
 
     def setUp(self):
         self.triangle0 = Triangle([1, 2, 3], [20, 30, 130])
-        print(self.triangle0)
         self.triangle1 = Triangle([2, 1, 77], [130, 20, 30])
-        print(self.triangle1)
-        self.triangle2 = Triangle([1, 77, 88], [Angle([30,40,110]), Angle.from_str('x', 3), Angle([60,60,60])])
-        print(self.triangle2)
+        self.triangle2 = Triangle([1, 77, 88], [Angle([30,40,110]), Angle.from_str('x'), Angle([60,60,60])])
 
-        self.aa = Angle.from_str('1/3 1/3 1/3 60', 4)
-        self.ab = Angle.from_str('-1/3 1/3 -1/3 45', 4)
-        self.ac = Angle.from_str('x', 4)
+        self.aa = Angle.from_str('1/3 1/3 1/3 60')
+        self.ab = Angle.from_str('-1/3 1/3 -1/3 45')
+        self.ac = Angle.from_str('x')
         self.triangle3 = Triangle([1, 2, 3], [self.aa,self.ab,self.ac])
 
-        self.aaa = Angle.from_str('1/3 1/3 1/3 60', 4)
-        self.aba = Angle.from_str('-1/3 1/3 -1/3 45', 4)
-        self.aca = Angle.from_str('x', 4)
+        self.aaa = Angle.from_str('1/3 1/3 1/3 60')
+        self.aba = Angle.from_str('-1/3 1/3 -1/3 45')
+        self.aca = Angle.from_str('x')
         self.triangle3a = Triangle([1, 2, 3], [self.aaa, self.aba, self.aca])
+
+    def test_init(self):
+        # PRE1
+        # three_points negative
+        with self.assertRaises(Exception):
+            t = Triangle([-1, 2, 3], [1, 1, 1])
+        with self.assertRaises(Exception):
+            t = Triangle([1, -2, 3], [1, 1, 1])
+        with self.assertRaises(Exception):
+            t = Triangle([-1, -2, -3], [1, 1, 1])
+        # exactly 3
+        with self.assertRaises(Exception):
+            t = Triangle([2, 2, 3], [1, 1, 1])
+        with self.assertRaises(Exception):
+            t = Triangle([2, 2, 3, 1], [1, 1, 1])
+
+        # PRE2
+        # three_angles has other types
+        with self.assertRaises(Exception):
+            t = Triangle([1, 2, 3],['x', 2, 3])
+
+        # force conversion of int, float angles to Angle
+        triangle = Triangle([1, 2, 3], [10, 20.0, Angle([30])])
+        for angle in triangle.angles:
+            self.assertTrue(isinstance(angle, Angle))
 
     def test_hash(self):
         self.assertEqual(hash(self.triangle0), hash(self.triangle0))  # a == a
