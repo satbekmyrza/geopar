@@ -9,6 +9,7 @@ ISSUES:
 SUGGESTIONS:
 
 NOTES:
+- KNOWN, UNKNOWN angle, should be reconsidered?
 
 """
 
@@ -20,55 +21,63 @@ GREEK_LETTERS = 'αβγδεηθλπρστμφω'
 
 class Angle:
     """
+    INTENT:
     Defines a geometrical angle in terms of a list of Fraction numbers - _coefficients.
 
+    NOTES:
     _coefficients contains n elements, where 1 <= n <= len(GREEK_LETTERS) + 1.
+    Below are different cases for n. When {{1}}:
+    1. n == 1, the angle is constant.
+       _coefficients = [90] --> 90 degrees
+       _coefficients = [-30] --> -30 degrees
+    2. n == 2, the angle has one variable (first letter of GREEK_LETTERS) and a constant term.
+       _coefficients = [1, 45] --> α + 45
+       _coefficients = [-1, -30] --> -α - 30
+       _coefficients = [-1, 0] --> -α
+    3. n == 3, the angle has two variables (first two letters of GREEK_LETTERS) and a constant term.
+       _coefficients = [1, 1, 30] --> α + β + 30
+       _coefficients = [0, -1, 30] --> -β + 30
+       _coefficients = [-1, -1, 120] --> -α - β + 120
+       _coefficients = [1, 1, 0] --> α + β
+    ... and so on.
 
+    _state contains the state of self.
+    An angle can be in one of either states: KNOWN or UNKNOWN.
+    The value of KNOWN angle is explicitly set.
+    The value of UNKNOWN angle is implicit.
 
-
-    Defines an angle in terms of a list of MyFraction objects. Supports variable angles.
-    G.e. Let's say the angle is: aα + bβ + c, where α and β are variables.
-    Then, this angle can be expressed by [a, b, c] a.k.a. _coefficients.
-
-    IMPORTANT:
-    1. This class supports up to len(GREEK_LETTERS) variables.
-    2. If all of self._coefficients are 0, then the angle is said to be unknown.
+    {{1}} To explain more easily, I used integers as coefficients. However, keep in mind that _coefficients
+    contains ONLY objects of built-in Fraction class.
     """
 
     def __init__(self, _coefficients):
         """
         PRE1: len(_coefficients) >= 1
-        PRE2: len(_coefficients) <= self.dimension_support
-        PRE3: _coefficients[i] is MyFraction|int|float for all i
-
+        PRE2: len(_coefficients) <= len(GREEK_LETTERS) + 1
+        PRE3: _coefficients[i] is an instance of Fraction, where 0 <= i < len(_coefficients)
         """
 
         # PRE1
         if len(_coefficients) < 1:
-            error_msg = 'Angle: you need to provide at least one coefficient.'
-            raise Exception(error_msg)
+            raise Exception('You need to provide at least one coefficient.')
 
         # PRE2
         if len(_coefficients) > len(GREEK_LETTERS):
-            error_msg = 'Angle: this class supports {} variables. You provided too many ({}) variables.'
-            raise Exception(error_msg.format(len(GREEK_LETTERS), len(_coefficients)))
+            raise Exception('Too many coefficients were provided.')
 
         # PRE3
-        for c in _coefficients:
-            if not (isinstance(c, Fraction) or isinstance(c, numbers.Real)):
-                error_msg = 'Angle: wrong type provided for new Angle.' \
-                            '\nType: <{}>' \
-                            '\nValue: <{}>'
-                raise Exception(error_msg.format(type(c).__name__, c))
+        for coef in _coefficients:
+            if not (isinstance(coef, Fraction)):
+                raise Exception('Coefficient provided is not Fraction.')
 
         self._coefficients = _coefficients
-        self.state = AngleState.KNOWN
+        self._state = AngleState.KNOWN
 
     def set_state(self, a_state):
-        self.state = a_state
+        self._state = a_state
 
     def get_state(self):
-        return self.state
+        return self._state
 
     def __add__(self, other):
         """
@@ -349,7 +358,7 @@ class Angle:
         # INTENT
         # enables the user to know whether the value of self is known
 
-        return self.state == AngleState.KNOWN
+        return self._state == AngleState.KNOWN
 
     @classmethod
     def from_str(cls, a_str, a_dimension):
