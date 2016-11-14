@@ -194,8 +194,26 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(b * 1.0, b)
 
     def test_rmul(self):
-        # int * Angle
-        self.assertEqual(2 * self.angle3, Angle([4, 8, 12, 16, 200]))
+        a = Angle([])
+        b = Angle([1, 2, 3, 30])
+
+        # PRE1
+        # self is unknown
+        with self.assertRaises(Exception):
+            c = 2 * a
+
+        # PRE2
+        # other is not int|float
+        with self.assertRaises(Exception):
+            c = 'str' * a
+
+        # Angle * int
+        self.assertEqual(2 * b, Angle([2, 4, 6, 60]))
+        self.assertEqual(1 * b, b)
+        # Angle * float
+        self.assertEqual(.5 * b, Angle([.5, 1, 1.5, 15]))
+        self.assertEqual(2.0 * b, Angle([2, 4, 6, 60]))
+        self.assertEqual(1.0 * b, b)
 
     def test_from_str(self):
         a_str = '-1 2/4 -3/5 4000 -599 6/1'
