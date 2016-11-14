@@ -72,6 +72,7 @@ See:
 
 #### Terminology
 - interior point
+- dimension of angle
 
 
 Inline-style: 
