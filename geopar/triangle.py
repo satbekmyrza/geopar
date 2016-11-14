@@ -6,6 +6,7 @@ ISSUES:
 SUGGESTIONS:
 
 NOTES:
+1. Triangle should consist of angles of the same dimension
 
 """
 
@@ -61,13 +62,10 @@ class Triangle:
 
     def __str__(self):
         """
-        INTENT:
-        Make self printable
-
-        POST:
-        String representation of self is returned
+        Returns string representation of self.
         """
-        return_string = 'Triangle: Vertices {}, {}, {}; Angles {}, {}, {}'.format(
+
+        return_string = 'TRIANGLE -> Vertices: {}, {}, {}; Angles: {}, {}, {}'.format(
             self.get_points()[0], self.get_points()[1], self.get_points()[2],
             self.get_angles()[0], self.get_angles()[1], self.get_angles()[2])
 
