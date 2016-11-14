@@ -84,21 +84,13 @@ class Triangle:
 
     def get_angles(self):
         """
-        POST:
         self._angles is returned
         """
 
         return self._angles
 
-    def get_angle_points_by_point(self, a_point):
-        ind = self.index_of_point(a_point)
-        shift = (ind + 2) % 3
-        points = self._points[shift:] + self._points[:shift]
-        return points
-
     def get_points(self):
         """
-        POST:
         self._points is returned
         """
 
@@ -106,115 +98,59 @@ class Triangle:
 
     def angle_of_point(self, a_point):
         """
-        INTENT:
-        get the angle given a_point
-
-        PRE:
-        self._points contains a_point
-
-        POST:
-        angle of a_point is returned
-
-        RAISES:
-        ValueError, if self._points misses a_point
-
-        NOTES:
-        unittest should be implemented
+        INTENT: returns the angle of a_point
+        PRE: self._points contains a_point
+        POST: angle of a_point is returned
         """
 
         if a_point not in self._points:
-            error_message = 'The point ({}) is not in a triangle!'
-            raise ValueError(error_message.format(a_point))
+            raise Exception('There is no such point.')
 
         return self._angles[self._points.index(a_point)]
 
     def index_of_point(self, a_point):
         """
-        INTENT:
-        get the position of a_point in self._points
-
-        PRE:
-        self._points contains a_point
-
-        POST:
-        index is returned
-
-        RAISES:
-        ValueError, if self._points misses a_point
-
-        NOTES:
-        unittest should be implemented
+        INTENT: returns the position of a_point in self._points
+        PRE: self._points contains a_point
+        POST: index is returned
         """
+
         if a_point not in self._points:
-            error_message = 'The point ({}) is not in a triangle!'
-            raise ValueError(error_message.format(a_point))
+            raise Exception('There is no such point.')
 
         return self.get_points().index(a_point)
 
     def point_following(self, a_point):
         """
-        INTENT:
-        Returns a point that follows a_point in clockwise order.
-
-        PRE:
-        self._points contains a_point
-
-        POST:
-        a point following a_point is returned
-
-        RAISES:
-        ValueError, if self._points misses a_point
-
-        NOTES:
-        unittest should be implemented
+        INTENT: Returns a point that follows a_point in clockwise order.
+        PRE: self._points contains a_point
+        POST: a point following a_point is returned
         """
 
         if a_point not in self._points:
-            error_message = 'The point ({}) is not in a triangle!'
-            raise ValueError(error_message.format(a_point))
+            raise Exception('There is no such point.')
 
         index_of_a_point = self._points.index(a_point)
         return self._points[(index_of_a_point + 1) % 3]
 
     def point_preceding(self, a_point):
         """
-        INTENT:
-        Returns a point that precedes a_point in clockwise order.
-
-        PRE:
-        self._points contains a_point
-
-        POST:
-        a point preceding a_point is returned
-
-        RAISES:
-        ValueError, if self._points misses a_point
-
-        NOTES:
-        unittest should be implemented
+        INTENT: Returns a point that precedes a_point in clockwise order.
+        PRE: self._points contains a_point
+        POST: a point preceding a_point is returned
         """
 
         if a_point not in self._points:
-            error_message = 'The point ({}) is not in a triangle!'
-            raise ValueError(error_message.format(a_point))
+            raise Exception('There is no such point.')
 
         index_of_a_point = self._points.index(a_point)
         return self._points[(index_of_a_point - 1) % 3]
 
     def count_known(self):
         """
-        INTENT:
-        Count known angles in self
-
-        POST:
-        The number of known angles in self is returned
-
-        NOTES:
-        unittest should be implemented
+        INTENT: Count known angles in self
+        POST: The number of known angles in self is returned
         """
-
-        if isinstance(self._angles[0], int) and isinstance(self._angles[1], int) and isinstance(self._angles[2], int):
-            return 3
 
         count = 0
         for angle in self._angles:
@@ -222,64 +158,10 @@ class Triangle:
                 count += 1
         return count
 
-    def set_angle_by_point(self, a_point, an_angle):
-        """
-        INTENT:
-        Setting an angle of a_point in self to an_angle
-
-        PRE:
-        a_point is in self._points
-
-        POST:
-        self.angle_of_point(a_point) == an_angle yields True
-
-        RAISES:
-        ValueError, if self._points misses a_point
-
-        NOTES:
-        unittest should be implemented
-        """
-
-        if a_point not in self._points:
-            error_message = 'The point ({}) is not in a triangle!'
-            raise ValueError(error_message.format(a_point))
-
-        self._angles[self.index_of_point(a_point)] = an_angle
-
-    def set_angle_by_index(self, an_index, an_angle):
-        """
-        INTENT:
-        Setting self._angles[an_index] in self to an_angle
-
-        PRE:
-        an_index is either 0, 1, or 2
-
-        POST:
-        self._angles[an_index] == an_angle yields True
-
-        RAISES:
-        ValueError, if an_index is not in [0, 1, 2]
-
-        NOTES:
-        unittest should be implemented
-        """
-
-        if an_index not in [0, 1, 2]:
-            error_message = 'The index ({}) is bad!'
-            raise ValueError(error_message.format(an_index))
-
-        self._angles[an_index] = an_angle
-
     def has_point(self, a_point):
         """
-        INTENT:
-        Learning if self has a point a_point
-
-        POST:
-        True is returned, if a_point is in self._points; False, otherwise
-
-        NOTES:
-        unittest should be implemented
+        INTENT: Does self have a point a_point?
+        POST: True is returned, if a_point is in self._points; False, otherwise
         """
 
         return a_point in self._points
@@ -289,28 +171,47 @@ class Triangle:
 
     def has_unknown(self):
         """
-        INTENT:
-        Learning if self has unknown angles
-
-        POST:
-        True is returned, if self has an unknown angle; False, otherwise
-
-        NOTES:
-        unittest should be implemented
+        INTENT: Does self have unknown angles
+        POST: True is returned, if self has an unknown angle; False, otherwise
         """
 
         return self.count_known() != 3
 
+    def get_angle_points_by_point(self, a_point):
+        ind = self.index_of_point(a_point)
+        shift = (ind + 2) % 3
+        points = self._points[shift:] + self._points[:shift]
+        return points
+
+    def set_angle_by_point(self, a_point, an_angle):
+        """
+        INTENT: Sets an angle of a_point in self to an_angle
+        PRE: a_point is in self._points
+        POST: self.angle_of_point(a_point) == an_angle
+        """
+
+        if a_point not in self._points:
+            raise Exception('There is no such point.')
+
+        self._angles[self.index_of_point(a_point)] = an_angle
+
+    def set_angle_by_index(self, an_index, an_angle):
+        """
+        INTENT: Sets self._angles[an_index] in self to an_angle
+        PRE: an_index is either 0, 1, or 2
+        POST: self._angles[an_index] == an_angle
+        """
+
+        if an_index not in [0, 1, 2]:
+            raise Exception('Bad index.')
+
+        self._angles[an_index] = an_angle
+
     def complete_unknown_angle(self):
         """
-        INTENT:
-        If self has an unknown angle, this method completes it using 180 rule.
-
-        PRE:
-        Two angles in self._angles are known, and one is unknown
-
-        POST:
-        1. All three angles in self._angles are known
+        INTENT: If self has an unknown angle, this method completes it using 180 rule.
+        PRE: Two angles in self._angles are known, and one is unknown
+        POST: All three angles in self._angles are known
         """
 
         if self.count_known() == 2:
@@ -318,7 +219,6 @@ class Triangle:
             for an in self.get_angles():
                 if an.is_known():
                     s += an
-            # s = sum(self._angles).get_coefficients()
             s = s.get_coefficients()
             third = 180 - Angle(s)
             for i in range(3):
