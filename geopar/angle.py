@@ -179,20 +179,24 @@ class Angle:
 
     def __truediv__(self, other):
         """
-        INTENT:
-        Performs division:
-          Angle / numbers.Real
+        Implements binary arithmetic operation '/'.
+        Angle / int
+        Angle / float
 
-        PRE1: other is instance of numbers.Real
+        PRE1: self is known
+        PRE2: other is an instance of int|float
         """
 
         # PRE1
-        if not isinstance(other, numbers.Real):
-            error_msg = 'Angle: Trying to divide an Angle object by a <{}> object. int or float is required.'
-            raise TypeError(error_msg.format(type(other).__name__))
+        if not self.is_known():
+            raise Exception('Self is unknown.')
 
-        other_angle = list(map(lambda x: x / Fraction(Decimal(str(other))), self._coefficients))
-        return Angle(other_angle)
+        # PRE2
+        if not (isinstance(other, int) or isinstance(other, float)):
+            raise Exception('Wrong type provided.')
+
+        result_coefficients = list(map(lambda x: x / Fraction(Decimal(str(other))), self._coefficients))
+        return Angle(result_coefficients)
 
     def __mul__(self, other):
         """
