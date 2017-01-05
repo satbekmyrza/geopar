@@ -30,6 +30,55 @@ class TFPreprocessor(object):
     @staticmethod
     def theorem_2(a_tf):
         """
+        Computes unknown angle(s) at interior point(s) of a
+        triangulated figure by using 360 degrees rule.
+        For more information on 360 degrees rule, please refer to the paper.
+
+        PRE: a_tf is a triangulated figure with at least one interior point.
+             len( a_tf.get_interior_points() ) > 0
+        POST: Either any of interior points has exactly one unknown angle
+              OR nothing is done
+        """
+
+        def complete_unknown_angle(a_point):
+            """
+            Computes an unknown angle at a point by using 360 degrees rule.
+
+            PRE1: a_point is an interior point of a triangulated figure a_tf
+            PRE2: there is exactly one unknown angle at a_point
+            POST: unknown angle (see PRE2) is computed
+            """
+
+            # (Counted) unknowns_count is the number of unknown angles at a_point
+            # unknowns_count is used to keep PRE1 true
+            unknowns_count = 0
+            for triangle in a_tf.triangles_with_point(a_point):
+                if not triangle.angle_of_point(a_point).is_known():
+                    unknowns_count += 1
+
+            # (Recorded) angle_points is a list of angle_points of the unknown_angle at a_point
+            angle_points = None
+            for triangle in a_tf.triangles_with_point(a_point):
+                if not triangle.angle_of_point(a_point).is_known():
+                    angle_points = triangle.get_angle_points_by_point(a_point)
+
+            # (Summed up) angles_sum is a sum of known angles at a_point
+            angles_sum = 0
+            for triangle in a_tf.triangles_with_point(a_point):
+                if triangle.angle_of_point(a_point).is_known():
+                    angles_sum += triangle.angle_of_point(a_point)
+
+            # (Found and set) unknown_angle is the value of the unknown_angle
+            unknown_angle = 360 - angles_sum
+            if unknowns_count == 1:
+                a_tf.set_angle_by_points(*angle_points, unknown_angle)
+
+        for point in a_tf.get_interior_points():
+            complete_unknown_angle(point)
+
+    @staticmethod
+    def theorem_2b(a_tf):
+        """
         Completes unknown angles --where possible-- by using 360 degrees rule.
         For more information, please refer to the paper.
         """

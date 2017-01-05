@@ -54,12 +54,12 @@ class TestTFPreprocessor(unittest.TestCase):
 
         # TriangulatedFigure tf3 consists of seven Triangles ttt1-ttt7
         # Appearance: URL3 at the top
-        self.ttt1 = Triangle([2, 6, 5], [Angle([0,1,0]), Angle.from_str('x', 3), Angle.from_str('x', 3)])
-        self.ttt2 = Triangle([2, 3, 6], [Angle([0,1,0]), Angle([-1,-1,60]), Angle.from_str('x', 3)])
-        self.ttt3 = Triangle([6, 3, 4], [Angle.from_str('x', 3), Angle([-1,-1,60]), Angle.from_str('x', 3)])
-        self.ttt4 = Triangle([4, 3, 1], [Angle.from_str('x', 3), Angle([-1,-1,60]), Angle([1,0,0])])
-        self.ttt5 = Triangle([5, 4, 1], [Angle.from_str('x', 3), Angle.from_str('x', 3), Angle([1, 0, 0])])
-        self.ttt6 = Triangle([2, 5, 1], [Angle([0,1,0]), Angle.from_str('x', 3), Angle([1,0,0])])
+        self.ttt1 = Triangle([2, 6, 5], [Angle([0,1,0]), Angle.from_str('x'), Angle.from_str('x')])
+        self.ttt2 = Triangle([2, 3, 6], [Angle([0,1,0]), Angle([-1,-1,60]), Angle.from_str('x')])
+        self.ttt3 = Triangle([6, 3, 4], [Angle.from_str('x'), Angle([-1,-1,60]), Angle.from_str('x')])
+        self.ttt4 = Triangle([4, 3, 1], [Angle.from_str('x'), Angle([-1,-1,60]), Angle([1,0,0])])
+        self.ttt5 = Triangle([5, 4, 1], [Angle.from_str('x'), Angle.from_str('x'), Angle([1, 0, 0])])
+        self.ttt6 = Triangle([2, 5, 1], [Angle([0,1,0]), Angle.from_str('x'), Angle([1,0,0])])
         self.ttt7 = Triangle([6, 4, 5], [Angle([0, 0, 60]), Angle([0, 0, 60]), Angle([0, 0, 60])])
         self.tf3 = TriangulatedFigure([self.ttt1, self.ttt2, self.ttt3, self.ttt4, self.ttt5, self.ttt6, self.ttt7])
 
@@ -76,9 +76,9 @@ class TestTFPreprocessor(unittest.TestCase):
         preprocessor = TFPreprocessor()
         print('original:')
         print(self.tf2)
-        self.tf2.set_angle_by_points(6, 4, 5, Angle.from_str('x', 3))
-        self.tf2.set_angle_by_points(3, 5, 1, Angle.from_str('x', 3))
-        self.tf2.set_angle_by_points(2, 6, 3, Angle.from_str('x', 3))
+        self.tf2.set_angle_by_points(6, 4, 5, Angle.from_str('x'))
+        self.tf2.set_angle_by_points(3, 5, 1, Angle.from_str('x'))
+        self.tf2.set_angle_by_points(2, 6, 3, Angle.from_str('x'))
         print('edited:')
         print(self.tf2)
         preprocessor.theorem_2(self.tf2)
