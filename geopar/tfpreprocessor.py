@@ -50,12 +50,9 @@ class TFPreprocessor(object):
             POST: unknown angle (see PRE2) is computed
             """
 
-            # (Counted) unknowns_count is the number of unknown angles at a_point
+            # (Counted) unknowns_count contains the number of unknown angles at a_point
             # unknowns_count is used to keep PRE1 true
-            unknowns_count = 0
-            for triangle in a_tf.triangles_with_point(a_point):
-                if not triangle.angle_of_point(a_point).is_known():
-                    unknowns_count += 1
+            unknowns_count = a_tf.number_of_unknown_angles_at(a_point)
 
             # (Recorded) angle_points is a list of angle_points of the unknown_angle at a_point
             angle_points = None

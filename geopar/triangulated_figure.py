@@ -161,3 +161,20 @@ class TriangulatedFigure:
 
         # (Complement): all interior points found
         return interior_points
+
+    def number_of_unknown_angles_at(self, a_point):
+        """
+        Returns the number of unknown angles at a_point.
+
+        PRE: a_point is in self.get_points
+
+        POST: count contains the number of unknown angles at a_point
+        """
+
+        count = 0
+        triangles = self.triangles_with_point(a_point)
+        for triangle in triangles:
+            point = triangle.angle_of_point(a_point)
+            if not point.is_known():
+                count += 1
+        return count

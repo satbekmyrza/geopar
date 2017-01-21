@@ -102,5 +102,11 @@ class TestTriangulatedFigure(unittest.TestCase):
         self.assertTrue(self.tf_empty.is_empty())
         self.assertFalse(self.tf1.is_empty())
 
-
-
+    def test_number_of_unknown_angles_at(self):
+        self.assertEqual(self.tf1.number_of_unknown_angles_at(4), 0)
+        self.assertEqual(self.tf1.number_of_unknown_angles_at(5), 0)
+        self.assertEqual(self.tf1.number_of_unknown_angles_at(6), 0)
+        self.tf1.set_angle_by_points(6, 4, 5, Angle.from_str('x'))
+        self.assertEqual(self.tf1.number_of_unknown_angles_at(4), 1)
+        self.tf1.set_angle_by_points(3, 4, 6, Angle.from_str('x'))
+        self.assertEqual(self.tf1.number_of_unknown_angles_at(4), 2)
