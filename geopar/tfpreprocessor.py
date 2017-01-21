@@ -34,10 +34,11 @@ class TFPreprocessor(object):
         triangulated figure by using 360 degrees rule.
         For more information on 360 degrees rule, please refer to the paper.
 
-        PRE: a_tf is a triangulated figure with at least one interior point.
+        PRE1: a_tf is a triangulated figure with at least one interior point.
              len( a_tf.get_interior_points() ) > 0
-        POST: Either any of interior points has exactly one unknown angle
+        PRE2: Either any of interior points has exactly one unknown angle
               OR nothing is done
+        POST: unknown angles are computed
         """
 
         def complete_unknown_angle(a_point):
