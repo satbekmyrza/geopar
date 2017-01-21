@@ -61,10 +61,7 @@ class TFPreprocessor(object):
                     angle_points = triangle.get_angle_points_by_point(a_point)
 
             # (Summed up) angles_sum is a sum of known angles at a_point
-            angles_sum = 0
-            for triangle in a_tf.triangles_with_point(a_point):
-                if triangle.angle_of_point(a_point).is_known():
-                    angles_sum += triangle.angle_of_point(a_point)
+            angles_sum = a_tf.sum_of_known_angles_at(a_point)
 
             # (Found and set) unknown_angle is the value of the unknown_angle
             unknown_angle = 360 - angles_sum

@@ -110,3 +110,11 @@ class TestTriangulatedFigure(unittest.TestCase):
         self.assertEqual(self.tf1.number_of_unknown_angles_at(4), 1)
         self.tf1.set_angle_by_points(3, 4, 6, Angle.from_str('x'))
         self.assertEqual(self.tf1.number_of_unknown_angles_at(4), 2)
+
+    def test_sum_of_known_angles_at(self):
+        self.assertEqual(self.tf1.sum_of_known_angles_at(4), 360)
+        self.assertEqual(self.tf1.sum_of_known_angles_at(1), 60)
+        self.tf1.set_angle_by_points(1, 4, 3, Angle.from_str('x'))
+        self.assertEqual(self.tf1.sum_of_known_angles_at(4), 230)
+        self.tf1.set_angle_by_points(3, 1, 4, Angle.from_str('x'))
+        self.assertEqual(self.tf1.sum_of_known_angles_at(1), 40)

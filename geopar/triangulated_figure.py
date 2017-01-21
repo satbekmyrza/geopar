@@ -174,7 +174,25 @@ class TriangulatedFigure:
         count = 0
         triangles = self.triangles_with_point(a_point)
         for triangle in triangles:
-            point = triangle.angle_of_point(a_point)
-            if not point.is_known():
+            angle = triangle.angle_of_point(a_point)
+            if not angle.is_known():
                 count += 1
         return count
+
+    def sum_of_known_angles_at(self, a_point):
+        """
+        Returns the sum of known angles at a_point.
+
+        PRE: a_point is in self.get_points
+
+        POST: sum_angles contains the sum of known angles at a_point
+        """
+
+        sum_angles = 0
+        triangles = self.triangles_with_point(a_point)
+        for triangle in triangles:
+            angle = triangle.angle_of_point(a_point)
+            if angle.is_known():
+                sum_angles += angle
+
+        return sum_angles
