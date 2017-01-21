@@ -54,11 +54,8 @@ class TFPreprocessor(object):
             # unknowns_count is used to keep PRE1 true
             unknowns_count = a_tf.number_of_unknown_angles_at(a_point)
 
-            # (Recorded) angle_points is a list of angle_points of the unknown_angle at a_point
-            angle_points = None
-            for triangle in a_tf.triangles_with_point(a_point):
-                if not triangle.angle_of_point(a_point).is_known():
-                    angle_points = triangle.get_angle_points_by_point(a_point)
+            # (Recorded) angle_points is a list of angle_points of unknown_angle at a_point
+            angle_points = a_tf.angle_points_of_unknown_angles_at(a_point)[-1]
 
             # (Summed up) angles_sum is a sum of known angles at a_point
             angles_sum = a_tf.sum_of_known_angles_at(a_point)

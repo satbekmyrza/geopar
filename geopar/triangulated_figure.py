@@ -196,3 +196,22 @@ class TriangulatedFigure:
                 sum_angles += angle
 
         return sum_angles
+
+    def angle_points_of_unknown_angles_at(self, a_point):
+        """
+        Returns a list of angle points of unknown angles at a_point.
+
+        PRE: a_point is in self.get_points
+
+        POST: list_of_points contains angle points of unknown angles
+        """
+
+        list_of_points = []
+        triangles = self.triangles_with_point(a_point)
+        for triangle in triangles:
+            angle = triangle.angle_of_point(a_point)
+            if not angle.is_known():
+                angle_points = triangle.get_angle_points_by_point(a_point)
+                list_of_points.append(angle_points)
+
+        return list_of_points
