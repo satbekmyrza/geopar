@@ -63,7 +63,6 @@ class TestTFPreprocessor(unittest.TestCase):
         self.ttt7 = Triangle([6, 4, 5], [Angle([0, 0, 60]), Angle([0, 0, 60]), Angle([0, 0, 60])])
         self.tf3 = TriangulatedFigure([self.ttt1, self.ttt2, self.ttt3, self.ttt4, self.ttt5, self.ttt6, self.ttt7])
 
-
     def test_theorem_2(self):
         validator = TFValidator()
         if validator.rule_180(self.tf2):
