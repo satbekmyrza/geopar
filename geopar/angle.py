@@ -1,15 +1,6 @@
 from fractions import Fraction
 from decimal import Decimal
 
-"""
-ISSUES:
-
-SUGGESTIONS:
-
-NOTES:
-
-"""
-
 __author__ = 'satbek'
 
 # allows support for up to len(GREEK_LETTERS) variables (currently 15)
@@ -18,7 +9,6 @@ GREEK_LETTERS = 'αβγδεηθλπρστμφω'
 
 class Angle:
     """
-    INTENT:
     Defines a geometrical angle in terms of a list of Fraction numbers - _coefficients.
 
     NOTES:
