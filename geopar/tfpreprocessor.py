@@ -8,24 +8,29 @@ __author__ = 'satbek'
 
 class TFPreprocessor(object):
     """
-    TFPreprocessor - Triangulated Figure Preprocessor
-    encapsulates functions that deal with preprocessing a triangulated figure a_tf (look at methods' parameters).
+    TFPreprocessor (Triangulated Figure Preprocessor) - encapsulates preprocessing functions.
 
-    There are three theorems, by use of which we accomplish preprocessing:
-    - Theorem 1: Rule of 180 degrees
-    - Theorem 2: Rule of 360 degrees
-    - Theorem 3: Pairing rule
-    For more information on these rules, please refer to the paper.
+    Each function is an implementation of a theorem. There are three theorems:
+    - Theorem 1: 180-degree rule;
+    - Theorem 2: 360-degree rule;
+    - Theorem 3: Pairing rule.
+
+    For more information on these theorems, please refer to the paper.
     """
 
     @staticmethod
     def theorem_1(a_tf):
         """
-        Completes unknown angles --where possible-- by using 180 degrees rule.
+        Implementation of 180-degree rule.
+
+        Completes unknown angles of triangles in a_tf by 180-degree rule.
+
+        PRE: isinstance(a_tf, TriangulatedFigure) is True.
+        POST: !!!
         """
 
-        for t in a_tf.get_triangles():
-            t.complete_unknown_angle()
+        for triangle in a_tf.get_triangles():
+            triangle.complete_unknown_angle()
 
     @staticmethod
     def theorem_2(a_tf):
