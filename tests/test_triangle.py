@@ -153,3 +153,7 @@ class TestTriangle(unittest.TestCase):
         triangle = Triangle([1, 77, 88], [Angle([30, 40, 110]), Angle.from_str('x'), Angle([60, 60, 60])])
         triangle.complete_unknown_angle()
         self.assertEqual(Angle([-90, -100, 10]), triangle.angle_of_point(77))
+
+        triangle = Triangle([1, 2, 3], [Angle.from_str('x'), 100, 10])
+        triangle.complete_unknown_angle()
+        self.assertEqual(70, triangle.angle_of_point(1))

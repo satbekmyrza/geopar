@@ -231,13 +231,9 @@ class Triangle:
         if self.count_known() != 2:
             raise Exception('Something went wrong.')
 
-        s = 0
-        for an in self.get_angles():
-            if an.is_known():
-                s += an
+        sum_ = self.sum_of_known_angles()
+        third = 180 - sum_
 
-        s = s.get_coefficients()
-        third = 180 - Angle(s)
         for i in range(3):
             if not self._angles[i].is_known():
                 self._angles[i] = third
