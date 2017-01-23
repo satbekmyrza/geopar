@@ -67,7 +67,7 @@ def run(figure):
         state_after = figure.get_state()
 
     # All angles known?
-    if figure.all_angles_known():
+    if figure.all_angles_are_known():
         # 180, 360, and pairing valid?
         if validator.all_rules(figure):
             print("Pre-process complete.")
@@ -103,7 +103,7 @@ def run(figure):
                 state_after = figure.get_state()
 
             # All angles known; 180, 360, and pairing valid?
-            if figure.all_angles_known() and validator.all_rules(figure):
+            if figure.all_angles_are_known() and validator.all_rules(figure):
                 print('-------------------------')
                 print("Pre-process complete.")
                 print('-------------------------')

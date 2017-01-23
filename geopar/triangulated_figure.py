@@ -78,7 +78,7 @@ class TriangulatedFigure:
             return_str += "\n"
         return return_str
 
-    def all_angles_known(self):
+    def all_angles_are_known(self):
         for t in self._triangles:
             if t.has_unknown():
                 return False
