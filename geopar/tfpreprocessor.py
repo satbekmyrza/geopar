@@ -35,15 +35,19 @@ class TFPreprocessor(object):
     @staticmethod
     def theorem_2(a_tf):
         """
-        Computes unknown angle(s) at interior point(s) of a
-        triangulated figure by using 360 degrees rule.
-        For more information on 360 degrees rule, please refer to the paper.
+        Implementation of 360-degree rule.
 
-        PRE1: a_tf is a triangulated figure with at least one interior point.
-             len( a_tf.get_interior_points() ) > 0
-        PRE2: Either any of interior points has exactly one unknown angle
-              OR nothing is done
-        POST: unknown angles are computed
+        Completes unknown angles of triangles in a_tf by 360-degree rule.
+
+        PRE1: isinstance(a_tf, TriangulatedFigure) is True.
+        PRE2: EITHER
+                  len( a_tf.get_interior_points() ) > 0
+                  AND
+                  there is exactly one unknown angle at any of a_tf.get_interior_points()
+              OR
+                  nothing is done
+
+        POST: !!!
         """
 
         def complete_unknown_angle(a_point):
