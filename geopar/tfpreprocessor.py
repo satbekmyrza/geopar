@@ -54,46 +54,6 @@ class TFPreprocessor(object):
             a_tf.complete_unknown_angle_at(point)
 
     @staticmethod
-    def theorem_2b(a_tf):
-        """
-        Completes unknown angles --where possible-- by using 360 degrees rule.
-        For more information, please refer to the paper.
-        """
-
-        for point in a_tf.get_interior_points():
-            # get all triangles with given interior point
-            triangles = a_tf.triangles_with_point(point)
-
-            # count unknown angles around interior point
-            unknowns_count = 0
-            # sum known angles around interior point
-            sum_angles = 0
-            # angle points of all angles around interior point
-            angle_points = []
-            # record angle points of latest unknown angle
-            points_of_unknown_angle = None
-
-            # get all angle points of angles around interior point
-            for t in triangles:
-                angle_points.append(t.get_angle_points_by_point(point))
-
-            # cycle through angle points (is equivalent to cycling through angles) around interior point
-            for angle_point in angle_points:
-                # get the angle
-                angle = a_tf.get_angle_by_points(*angle_point)
-
-                # restore control variables
-                if not angle.is_known():
-                    unknowns_count += 1
-                    points_of_unknown_angle = angle_point
-                else:
-                    sum_angles += angle
-
-            # record result of computation
-            if unknowns_count == 1:
-                a_tf.set_angle_by_points(*points_of_unknown_angle, 360 - sum_angles)
-
-    @staticmethod
     def theorem_3(a_tf):
         # traversing through interior points
         for point in a_tf.get_interior_points():
