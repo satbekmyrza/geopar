@@ -64,7 +64,7 @@ class TestTriangulatedFigure(unittest.TestCase):
 
     def test_set_angle(self):
         a = Angle([100])
-        self.tf1.set_angle_by_points(3, 6, 2, 100)
+        self.tf1.set_angle_by_angle_points(3, 6, 2, 100)
         check = False
         for t in self.tf1.get_triangles():
             if t.has_all_points([3, 2, 6]):
@@ -106,17 +106,17 @@ class TestTriangulatedFigure(unittest.TestCase):
         self.assertEqual(self.tf1.number_of_unknown_angles_at(4), 0)
         self.assertEqual(self.tf1.number_of_unknown_angles_at(5), 0)
         self.assertEqual(self.tf1.number_of_unknown_angles_at(6), 0)
-        self.tf1.set_angle_by_points(6, 4, 5, Angle.from_str('x'))
+        self.tf1.set_angle_by_angle_points(6, 4, 5, Angle.from_str('x'))
         self.assertEqual(self.tf1.number_of_unknown_angles_at(4), 1)
-        self.tf1.set_angle_by_points(3, 4, 6, Angle.from_str('x'))
+        self.tf1.set_angle_by_angle_points(3, 4, 6, Angle.from_str('x'))
         self.assertEqual(self.tf1.number_of_unknown_angles_at(4), 2)
 
     def test_sum_of_known_angles_at(self):
         self.assertEqual(self.tf1.sum_of_known_angles_at(4), 360)
         self.assertEqual(self.tf1.sum_of_known_angles_at(1), 60)
-        self.tf1.set_angle_by_points(1, 4, 3, Angle.from_str('x'))
+        self.tf1.set_angle_by_angle_points(1, 4, 3, Angle.from_str('x'))
         self.assertEqual(self.tf1.sum_of_known_angles_at(4), 230)
-        self.tf1.set_angle_by_points(3, 1, 4, Angle.from_str('x'))
+        self.tf1.set_angle_by_angle_points(3, 1, 4, Angle.from_str('x'))
         self.assertEqual(self.tf1.sum_of_known_angles_at(1), 40)
 
     def test_angle_points_of_unknown_angles_at(self):
@@ -125,9 +125,9 @@ class TestTriangulatedFigure(unittest.TestCase):
         self.assertEqual(len(ang_pts), 0)
         self.assertEqual(len(ang_pts2), 0)
 
-        self.tf1.set_angle_by_points(6, 4, 5, Angle.from_str('x'))
-        self.tf1.set_angle_by_points(4, 5, 6, Angle.from_str('x'))
-        self.tf1.set_angle_by_points(6, 5, 2, Angle.from_str('x'))
+        self.tf1.set_angle_by_angle_points(6, 4, 5, Angle.from_str('x'))
+        self.tf1.set_angle_by_angle_points(4, 5, 6, Angle.from_str('x'))
+        self.tf1.set_angle_by_angle_points(6, 5, 2, Angle.from_str('x'))
         ang_pts = self.tf1.angle_points_of_unknown_angles_at(4)
         ang_pts2 = self.tf1.angle_points_of_unknown_angles_at(5)
         self.assertEqual(len(ang_pts), 1)
@@ -137,6 +137,6 @@ class TestTriangulatedFigure(unittest.TestCase):
         self.assertTrue([6, 5, 2] in ang_pts2)
 
     def test_complete_unknown_angle_at(self):
-        self.tf1.set_angle_by_points(1, 4, 3, Angle.from_str('x'))
+        self.tf1.set_angle_by_angle_points(1, 4, 3, Angle.from_str('x'))
         self.tf1.complete_unknown_angle_at(4)
         self.assertEqual(self.tf1.get_angle_by_points(1, 4, 3), 130)

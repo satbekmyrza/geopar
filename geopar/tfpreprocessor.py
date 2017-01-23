@@ -98,5 +98,5 @@ class TFPreprocessor(object):
             if unknown_following_count == 1 and unknown_following_count == 1 and \
                     Counter(angle_following_list) == Counter(angle_preceding_list):
                 angle_to_set = ((len(triangles) - 2) * 180 - sum_angles) / 2
-                a_tf.set_angle_by_points(*points_of_unknown_angles[0], angle_to_set)
-                a_tf.set_angle_by_points(*points_of_unknown_angles[1], angle_to_set)
+                a_tf.set_angle_by_angle_points(*points_of_unknown_angles[0], angle_to_set)
+                a_tf.set_angle_by_angle_points(*points_of_unknown_angles[1], angle_to_set)

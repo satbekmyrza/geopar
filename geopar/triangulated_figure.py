@@ -9,17 +9,19 @@ class TriangulatedFigure:
     # a unique set of vertices
 
     # Class Invariant 2: Every Triangle in self.triangles shares two get_points with another
+    # !!!
 
-    def __init__(self, triangles_=None):
+    def __init__(self, triangles=None):
         # the Triangle objects that make up self
 
-        if triangles_:
-            self.triangles = triangles_
+        if triangles:
+            self._triangles = triangles
         else:
-            self.triangles = []
+            self._triangles = []
 
     def get_state(self):
-        return hash(str(sorted(list(map(hash, self.triangles)))))
+        # !!!
+        return hash(str(sorted(list(map(hash, self._triangles)))))
 
     def add(self, a_triangle):
         # Precondition 1: a_triangle is a Triangle instance
@@ -29,9 +31,9 @@ class TriangulatedFigure:
         #   ... shares two vertices with a Triangle in old(self.triangles)
         # Postcondition: a_triangle is in self.triangles
 
-        self.triangles.append(a_triangle)
+        self._triangles.append(a_triangle)
 
-    def set_angle_by_points(self, p1, p2, p3, angle_):
+    def set_angle_by_angle_points(self, p1, p2, p3, angle_):
         """
         Set an angle in self to angle_.
         The angle is defined by three points p1, p2, and p3. In other words, the angle is
@@ -41,7 +43,7 @@ class TriangulatedFigure:
         Points are given in clockwise order.
         """
 
-        for triangle in self.triangles:
+        for triangle in self._triangles:
             if triangle.has_all_points([p1, p2, p3]):
                 triangle.set_angle_by_point(p2, angle_)
 
@@ -51,12 +53,12 @@ class TriangulatedFigure:
         Points are given in clockwise order.
         """
 
-        for triangle in self.triangles:
+        for triangle in self._triangles:
             if triangle.has_all_points([p1, p2, p3]):
                 return triangle.angle_of_point(p2)
 
     def get_triangles(self):
-        return self.triangles
+        return self._triangles
 
     def get_points(self):
         """
@@ -65,25 +67,25 @@ class TriangulatedFigure:
         """
 
         all_points = list()
-        for triangle in self.triangles:
+        for triangle in self._triangles:
             all_points.extend(triangle.get_points())
         return list(set(all_points))
 
     def __str__(self):
         return_str = ""
-        for current_triangle in self.triangles:
+        for current_triangle in self._triangles:
             return_str += str(current_triangle)
             return_str += "\n"
         return return_str
 
     def all_angles_known(self):
-        for t in self.triangles:
+        for t in self._triangles:
             if t.has_unknown():
                 return False
         return True
 
     def is_empty(self):
-        return not bool(self.triangles)
+        return not bool(self._triangles)
 
     def triangles_with_point(self, a_point):
         # Precondition: At least one triangle in self.triangles contains a_point
@@ -94,7 +96,7 @@ class TriangulatedFigure:
         # the triangles in self.triangles containing a_point [Note 3]
 
         triangles_with_a_point = []
-        for triangle in self.triangles:
+        for triangle in self._triangles:
             if triangle.has_point(a_point):
                 triangles_with_a_point.append(triangle)
 
@@ -238,4 +240,4 @@ class TriangulatedFigure:
         # (Found and set) unknown_angle is the value of the unknown_angle
         unknown_angle = 360 - angles_sum
         if unknowns_count == 1:
-            self.set_angle_by_points(*angle_points, unknown_angle)
+            self.set_angle_by_angle_points(*angle_points, unknown_angle)
