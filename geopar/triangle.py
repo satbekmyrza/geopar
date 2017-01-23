@@ -209,18 +209,23 @@ class Triangle:
 
     def complete_unknown_angle(self):
         """
-        INTENT: If self has an unknown angle, this method completes it using 180 rule.
-        PRE: Two angles in self._angles are known, and one is unknown
-        POST: All three angles in self._angles are known
+        Completes a triangle with one unknown angle.
+
+        PRE: self.count_known() == 2 is True.
+        POST: self.count_known() == 3 is True.
         """
 
-        if self.count_known() == 2:
-            s = 0
-            for an in self.get_angles():
-                if an.is_known():
-                    s += an
-            s = s.get_coefficients()
-            third = 180 - Angle(s)
-            for i in range(3):
-                if not self._angles[i].is_known():
-                    self._angles[i] = third
+        # Ensuring PRE
+        if self.count_known() != 2:
+            raise Exception('Something went wrong.')
+
+        s = 0
+        for an in self.get_angles():
+            if an.is_known():
+                s += an
+
+        s = s.get_coefficients()
+        third = 180 - Angle(s)
+        for i in range(3):
+            if not self._angles[i].is_known():
+                self._angles[i] = third
