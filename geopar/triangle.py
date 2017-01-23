@@ -207,6 +207,18 @@ class Triangle:
 
         self._angles[an_index] = an_angle
 
+    def sum_of_known_angles(self):
+        """
+        Computes the sum of known angles.
+        """
+
+        sum_ = 0
+        for angle in self._angles:
+            if angle.is_known():
+                sum_ += angle
+
+        return sum_
+
     def complete_unknown_angle(self):
         """
         Completes a triangle with one unknown angle.

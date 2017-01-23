@@ -145,6 +145,10 @@ class TestTriangle(unittest.TestCase):
         with self.assertRaises(Exception):
             self.triangle1.set_angle_by_index(3)
 
+    def test_sum_of_known_angles(self):
+        self.assertEqual(self.triangle0.sum_of_known_angles(), Angle([180]))
+        self.assertEqual(self.triangle2.sum_of_known_angles(), Angle([90, 100, 170]))
+
     def test_complete_unknown_angle(self):
         triangle = Triangle([1, 77, 88], [Angle([30, 40, 110]), Angle.from_str('x'), Angle([60, 60, 60])])
         triangle.complete_unknown_angle()
