@@ -73,9 +73,9 @@ class TestTriangulatedFigure(unittest.TestCase):
         self.assertTrue(check)
 
     def test_get_angle_by_points(self):
-        self.assertEqual(self.tf1.get_angle_by_points(2, 5, 1), 150)
-        self.assertEqual(self.tf1.get_angle_by_points(5, 1, 2), 20)
-        self.assertEqual(self.tf1.get_angle_by_points(1, 2, 5), 10)
+        self.assertEqual(self.tf1.get_angle_by_angle_points(2, 5, 1), 150)
+        self.assertEqual(self.tf1.get_angle_by_angle_points(5, 1, 2), 20)
+        self.assertEqual(self.tf1.get_angle_by_angle_points(1, 2, 5), 10)
 
     def test_get_state(self):
         print(self.tf1.get_state())
@@ -139,4 +139,4 @@ class TestTriangulatedFigure(unittest.TestCase):
     def test_complete_unknown_angle_at(self):
         self.tf1.set_angle_by_angle_points(1, 4, 3, Angle.from_str('x'))
         self.tf1.complete_unknown_angle_at(4)
-        self.assertEqual(self.tf1.get_angle_by_points(1, 4, 3), 130)
+        self.assertEqual(self.tf1.get_angle_by_angle_points(1, 4, 3), 130)

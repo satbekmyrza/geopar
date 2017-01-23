@@ -47,7 +47,7 @@ class TriangulatedFigure:
             if triangle.has_all_points([p1, p2, p3]):
                 triangle.set_angle_by_point(p2, angle_)
 
-    def get_angle_by_points(self, p1, p2, p3):
+    def get_angle_by_angle_points(self, p1, p2, p3):
         """
         PRE
         Points are given in clockwise order.
