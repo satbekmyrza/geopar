@@ -5,10 +5,14 @@ __author__ = 'mostly satbek'
 
 class TriangulatedFigure:
 
-    # Class Invariant 1: Every triangle in self.triangles has
-    # a unique set of vertices
+    """
+    Class Invariant 1: Every triangle in self.triangles has
+                       a unique set of vertices
+    Class Invariant 2: Every Triangle in self.triangles shares two get_points with another
 
-    # Class Invariant 2: Every Triangle in self.triangles shares two get_points with another
+    !!! Should I explain what angle points are?
+    """
+
     # !!!
 
     def __init__(self, triangles=None):
@@ -35,12 +39,27 @@ class TriangulatedFigure:
 
     def set_angle_by_angle_points(self, p1, p2, p3, angle_):
         """
-        Set an angle in self to angle_.
-        The angle is defined by three points p1, p2, and p3. In other words, the angle is
-        an angle of point p2 in triangle with points p1, p2, and p3.
+        Sets an angle in a triangulated figure by the angle's angle points.
 
-        PRE
-        Points are given in clockwise order.
+        Any angle in a Triangulated Figure can be described by a unique set of points
+        called angle points. In geometry,
+
+        A
+        |
+        |
+        | a
+        |_________C
+        B
+
+        angle a can be referred to as ABC. A, B, and C are vertices of line segments AB and BC.
+        In this project, we use the same geometric notion to describe an angle in a triangulated figure.
+        Since points in triangulated figure are unique, any angle has its own set of unique points.
+        We call them angle points. To make things consistent, we describe an angle by its angle points
+        in clockwise order. So, for the above example, angle points for angle a would be CBA.
+
+        PRE1: (p1 and p2 and p3) are in self.get_points()
+        PRE2: Points are in clockwise order.
+        PRE3: angle_ is (Angle or int or float) instance
         """
 
         for triangle in self._triangles:
