@@ -28,6 +28,7 @@ class TriangulatedFigure:
         return hash(str(sorted(list(map(hash, self._triangles)))))
 
     def add(self, a_triangle):
+        # !!!
         # Precondition 1: a_triangle is a Triangle instance
         # Precondition 2: len(self.triangles) < 2
         #   --XOR--
@@ -61,6 +62,8 @@ class TriangulatedFigure:
         PRE2: Points are in clockwise order
         PRE3: angle_ is (Angle or int or float) instance
         PRE4: angle_ has the same dimensionality as any of known angles in self
+
+        POST: !!!
         """
 
         for triangle in self._triangles:
@@ -69,8 +72,10 @@ class TriangulatedFigure:
 
     def get_angle_by_angle_points(self, p1, p2, p3):
         """
-        PRE
-        Points are given in clockwise order.
+        Returns an angle in a triangulated figure by the angle's angle points.
+
+        PRE1: (p1 and p2 and p3) are in self.get_points()
+        PRE2: Points are in clockwise order
         """
 
         for triangle in self._triangles:
@@ -78,12 +83,15 @@ class TriangulatedFigure:
                 return triangle.angle_of_point(p2)
 
     def get_triangles(self):
+        """
+        Returns the list of triangles that make up self.
+        """
+
         return self._triangles
 
     def get_points(self):
         """
-        Returns union of all points from self.triangles
-        Postcondition: all points returned.
+        Returns set of all points that make up self.
         """
 
         all_points = list()
@@ -92,6 +100,10 @@ class TriangulatedFigure:
         return list(set(all_points))
 
     def __str__(self):
+        """
+        Returns a string representation of self.
+        """
+
         return_str = ""
         for current_triangle in self._triangles:
             return_str += str(current_triangle)
