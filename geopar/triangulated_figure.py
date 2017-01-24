@@ -47,8 +47,8 @@ class TriangulatedFigure:
         A
         |
         |
-        | a
-        |_________C
+        |_ a
+        |_|________C
         B
 
         angle a can be referred to as ABC. A, B, and C are vertices of line segments AB and BC.
@@ -58,8 +58,9 @@ class TriangulatedFigure:
         in clockwise order. So, for the above example, angle points for angle a would be CBA.
 
         PRE1: (p1 and p2 and p3) are in self.get_points()
-        PRE2: Points are in clockwise order.
+        PRE2: Points are in clockwise order
         PRE3: angle_ is (Angle or int or float) instance
+        PRE4: angle_ has the same dimensionality as any of known angles in self
         """
 
         for triangle in self._triangles:
