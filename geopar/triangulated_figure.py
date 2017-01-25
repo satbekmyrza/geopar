@@ -84,14 +84,14 @@ class TriangulatedFigure:
 
     def get_triangles(self):
         """
-        Returns the list of triangles that make up self.
+        Returns a list of triangles that make up self.
         """
 
         return self._triangles
 
     def get_points(self):
         """
-        Returns set of all points that make up self.
+        Returns a set of all points that make up self.
         """
 
         all_points = list()
@@ -111,21 +111,31 @@ class TriangulatedFigure:
         return return_str
 
     def all_angles_are_known(self):
-        for t in self._triangles:
-            if t.has_unknown():
+        """
+        Returns True if all angles in self are known, False otherwise.
+        """
+
+        for triangle in self._triangles:
+            if triangle.has_unknown_angle():
                 return False
         return True
 
     def is_empty(self):
+        """
+        Returns True if self has no triangles, False otherwise.
+        """
+
         return not bool(self._triangles)
 
     def triangles_with_point(self, a_point):
-        # Precondition: At least one triangle in self.triangles contains a_point
-        # Returns the (contiguous) list of self.triangles containing a_point
-        # in clockwise order
+        """
+        Returns the (contiguous) list of self.triangles containing a_point in clockwise order.
+
+        PRE: At least one triangle in self.triangles contains a_point
+        """
 
         # [Collected]: triangles_with_a_point =
-        # the triangles in self.triangles containing a_point [Note 3]
+        # the triangles in self.triangles containing a_point
 
         triangles_with_a_point = []
         for triangle in self._triangles:
@@ -135,7 +145,6 @@ class TriangulatedFigure:
         # (In Order): triangles_in_order is a non-empty sub-list of
         # triangles_with_a_point, which is in clockwise order
         # AND triangles_remaining = triangles_with_a_point\triangles_in_order
-        # [Note 2]
 
         triangles_in_order = [triangles_with_a_point[0]]
         triangles_remaining = triangles_with_a_point[1:]
@@ -158,11 +167,7 @@ class TriangulatedFigure:
 
     def get_interior_points(self):
         """
-        INTENT:
-        Find all interior points of self (TriangulatedFigure)
-
-        POST:
-        interior_points is returned
+        Returns the list of interior points in self.
 
         OBJECTIVES:
          (Found 1a): found the points that have more than 2 triangles attached to them
@@ -170,6 +175,7 @@ class TriangulatedFigure:
          (Found 1b): saved them in point_nums, alongside with number of triangles that they are in
          (Found 2): found interior points
          (Complement): returned interior_points
+
 
         """
 
