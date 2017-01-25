@@ -115,8 +115,8 @@ class TestTriangle(unittest.TestCase):
         self.assertTrue(self.triangle1.has_all_points([1, 2, 77]))
 
     def test_has_unknown(self):
-        self.assertFalse(self.triangle0.has_unknown())
-        self.assertTrue(self.triangle2.has_unknown())
+        self.assertFalse(self.triangle0.has_unknown_angle())
+        self.assertTrue(self.triangle2.has_unknown_angle())
 
     def test_get_angle_points_by_point(self):
         self.assertEqual(self.triangle0.get_angle_points_by_point(1), [3, 1, 2])

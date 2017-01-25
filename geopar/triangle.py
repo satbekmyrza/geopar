@@ -169,7 +169,7 @@ class Triangle:
     def has_all_points(self, three_points):
         return set(self._points) == set(three_points)
 
-    def has_unknown(self):
+    def has_unknown_angle(self):
         """
         INTENT: Does self have unknown angles
         POST: True is returned, if self has an unknown angle; False, otherwise
