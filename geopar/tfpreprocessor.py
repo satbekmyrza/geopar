@@ -21,13 +21,14 @@ class TFPreprocessor(object):
     @staticmethod
     def theorem_1(a_tf):
         """
-        Implementation of 180-degree rule.
+        !!! PERFECTO
 
-        Completes unknown angles of triangles in a_tf by 180-degree rule.
+        Intent: Implementation of 180-degree rule.
+                Completes unknown angles of triangles in a_tf by 180-degree rule.
 
         PRE: isinstance(a_tf, TriangulatedFigure) is True.
         POST: For every triangle old(t) in a_tf.get_triangles(), in which exactly 2 angles are known,
-              all angles of t in a_tf.get_triangles() are known.
+              all angles of t are known.
         """
 
         for triangle in a_tf.get_triangles():
