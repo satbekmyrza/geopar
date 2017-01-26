@@ -24,16 +24,6 @@ class TestAngle(unittest.TestCase):
         self.angle5 = Angle([0, 0, 0, 0, 0, 90])
 
     def test_init(self):
-        # PRE 1
-        # len(coefficients) > 16
-        with self.assertRaises(Exception):
-            angle = Angle([1] * (len(GREEK_LETTERS) + 2))
-
-        # PRE 2
-        # wrong type
-        with self.assertRaises(Exception):
-            angle = Angle(['str value'])
-
         # Force conversion of int, float coefficients to Fraction
         angle = Angle([1, 2, Fraction(3), 4.0, Fraction(1, 3)])
         for coef in angle.get_coefficients():
