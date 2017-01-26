@@ -9,10 +9,11 @@ GREEK_LETTERS = 'αβγδεηθλπρστμφω'
 
 class Angle:
     """
-    Defines a geometrical angle in terms of a list of Fraction numbers - _coefficients.
+    Defines a geometric angle in terms of a list of Fractions.
 
     NOTES:
     _coefficients contains n elements, where 0 <= n <= len(GREEK_LETTERS) + 1.
+
     Below are different cases for n. When {{1}}:
     1. n == 0, the angle is unknown.
     2. n == 1, the angle is constant.
@@ -37,12 +38,16 @@ class Angle:
     a = Angle([])
     a.is_known() # False
     print(a) # x
+
     b = Angle([Fraction(1,2), Fraction(90)])
     print(b) # 1/2α + 90
+
     c = Angle([1.5, 2, -45]) # int and float values are implicitly converted to Fraction
     print(c) # 3/2α + 2β - 45
+
     d = Angle([Fraction(1,2), 40.5]) # Fraction, int, float values can be mixed
     print(d) # 1/2α + 81/2
+
 
     {{1}} To explain more easily, I used integers as coefficients. However, keep in mind that _coefficients
     contains ONLY objects of built-in Fraction class.
@@ -51,27 +56,18 @@ class Angle:
     def __init__(self, coefficients):
         """
         PRE1: len(coefficients) <= len(GREEK_LETTERS) + 1
-        PRE2: coefficients[i] is an instance of Fraction, int, or float, where 0 <= i < len(coefficients)
+        PRE2: isinstance(coef, (Fraction, int, float)) is True for every coef in self._coefficients
         """
 
-        # PRE1
-        if len(coefficients) > len(GREEK_LETTERS) + 1:
-            raise Exception('Too many coefficients were provided.')
-
-        # PRE2
-        for coef in coefficients:
-            if not isinstance(coef, (Fraction, int, float)):
-                raise Exception('Coefficient provided is not Fraction|int|float.')
-
-        # convert int, float coefficients to Fraction
-        coefficients2 = []
+        # implicitly converting coefficients into Fractions
+        temp = []
         for coef in coefficients:
             if isinstance(coef, (int, float)):
-                coefficients2.append(Fraction(Decimal(str(coef))))
+                temp.append(Fraction(Decimal(str(coef))))
             elif isinstance(coef, Fraction):
-                coefficients2.append(coef)
+                temp.append(coef)
 
-        self._coefficients = coefficients2
+        self._coefficients = temp
 
     def __add__(self, other):
         """
