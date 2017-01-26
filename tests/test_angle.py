@@ -34,24 +34,6 @@ class TestAngle(unittest.TestCase):
         b = Angle([1, 90])
         c = Angle([1, 1, 90])
 
-        # PRE1
-        # self is unknown
-        with self.assertRaises(Exception):
-            d = a + b
-
-        # PRE2
-        # other is not Angle|int|float
-        with self.assertRaises(Exception):
-            d = b + 'str'
-
-        # PRE3
-        # other is unknown
-        with self.assertRaises(Exception):
-            d = b + a
-        # self.get_dimension != other.get_dimension
-        with self.assertRaises(Exception):
-            d = b + c
-
         # Angle + Angle
         self.assertEqual(Angle([10]) + Angle([20]), Angle([30]))
         self.assertEqual(Angle([1, 10]) + Angle([0, -20]), Angle([1, -10]))
