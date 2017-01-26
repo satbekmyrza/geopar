@@ -55,11 +55,12 @@ class Angle:
 
     def __init__(self, coefficients):
         """
-        PRE1: len(coefficients) <= len(GREEK_LETTERS) + 1
+        PRE1: len(coefficients) <= 16
         PRE2: isinstance(coef, (Fraction, int, float)) is True for every coef in self._coefficients
         """
 
-        # implicitly converting coefficients into Fractions
+        # (Converted): temp contains every element from coefficients,
+        # where temp[i] is coefficients[i] implicitly converted into Fraction.
         temp = []
         for coef in coefficients:
             if isinstance(coef, (int, float)):
@@ -67,6 +68,7 @@ class Angle:
             elif isinstance(coef, Fraction):
                 temp.append(coef)
 
+        # (Complement): len(temp) = len(coefficients)
         self._coefficients = temp
 
     def __add__(self, other):
