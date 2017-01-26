@@ -73,39 +73,31 @@ class Angle:
 
     def __add__(self, other):
         """
-        Implements binary arithmetic operation '+'.
+        Intent: Implementation of "+" arithmetic operation.
+                This method is invoked when there is something to be added to self.
+
+        Usage:
         Angle + Angle
         Angle + int
         Angle + float
 
-        PRE1: self is known
-        PRE2: other is instance of Angle, int, or float
-        PRE3: if other is instance Angle, then:
-                1. other is known
-                2. self.get_dimension() == other.get_dimension()
+        PRE1: self.is_known() is True
+        PRE2: isinstance(other, (Angle, int, float)) is True
+        PRE3: if isinstance(other, Angle) is True:
+                  1. other.is_known() is True
+                  2. self.get_dimension() = other.get_dimension()
         """
 
-        # PRE1
-        if not self.is_known():
-            raise Exception('Self is unknown.')
-
-        # PRE2
-        if not isinstance(other, (Angle, int, float)):
-            raise Exception('Wrong type provided.')
-
-        # PRE3
-        if isinstance(other, Angle):
-            if not other.is_known():
-                raise Exception('Angle to be added is unknown.')
-            if self.get_dimension() != other.get_dimension():
-                raise Exception('Angles to be added have different dimensions.')
-
-        # other is int, float
+        # (Converted): other_angle is an Angle instance, where
+        # other_angle.get_dimension() = self.get_dimension()
+        # AND
+        # other_angle = other
         if isinstance(other, (int, float)):
-            other_angle_coefficients = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
-            return self + Angle(other_angle_coefficients)
+            temp = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
+            other_angle = Angle(temp)
 
-        # Angle
+        # (Added): self + other is returned
+            return self + other_angle
         return Angle(list(map(sum, zip(self._coefficients, other.get_coefficients()))))
 
     def __radd__(self, other):
