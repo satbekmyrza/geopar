@@ -75,16 +75,6 @@ class TestAngle(unittest.TestCase):
         b = Angle([1, 90])
         c = Angle([1, 1, 90])
 
-        # PRE1
-        # self is unknown
-        with self.assertRaises(Exception):
-            d = 90 - a
-
-        # PRE2
-        # other is not int|float
-        with self.assertRaises(Exception):
-            d = 'str' - b
-
         # int - Angle
         self.assertEqual(90 - Angle([1, 10]), Angle([-1, 80]))
         self.assertEqual(90 - Angle([1, 2, 3, 4, -10]), Angle([-1, -2, -3, -4, 100]))
@@ -95,16 +85,6 @@ class TestAngle(unittest.TestCase):
     def test_truediv(self):
         a = Angle([])
         b = Angle([1, 2, 3, 30])
-
-        # PRE1
-        # self is unknown
-        with self.assertRaises(Exception):
-            c = a / 2
-
-        # PRE2
-        # other is not int|float
-        with self.assertRaises(Exception):
-            c = a / 'str'
 
         # Angle / int
         self.assertEqual(b / 2, Angle([.5, 1, 1.5, 15]))
