@@ -45,19 +45,8 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle([-1, 0, -10]) + 1.5, Angle([-1, 0, -8.5]))
 
     def test_radd(self):
-        # exceptions are delegated to self.__add__()
         a = Angle([])
         b = Angle([1, 90])
-
-        # PRE1
-        # self is unknown
-        with self.assertRaises(Exception):
-            d = 90 + a
-
-        # PRE2
-        # other is not Angle|int|float
-        with self.assertRaises(Exception):
-            d = 'str' + b
 
         # int + Angle
         self.assertEqual(90 + Angle([1, 10]), Angle([1, 100]))
@@ -70,24 +59,6 @@ class TestAngle(unittest.TestCase):
         a = Angle([])
         b = Angle([1, 90])
         c = Angle([1, 1, 90])
-
-        # PRE1
-        # self is unknown
-        with self.assertRaises(Exception):
-            d = a - b
-
-        # PRE2
-        # other is not Angle|int|float
-        with self.assertRaises(Exception):
-            d = b - 'str'
-
-        # PRE3
-        # other is unknown
-        with self.assertRaises(Exception):
-            d = b - a
-        # self.get_dimension != other.get_dimension
-        with self.assertRaises(Exception):
-            d = b - c
 
         # Angle - Angle
         self.assertEqual(Angle([10]) - Angle([20]), Angle([-10]))
