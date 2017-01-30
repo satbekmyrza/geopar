@@ -87,7 +87,9 @@ class Angle:
 
         # (Converted): temp_angle is an Angle instance, where
         # temp_angle = an_angle AND
-        # temp_angle.get_dimension() = self.get_dimension()
+        # temp_angle.get_dimension() = self.get_dimension() AND
+        # temp_angle.get_coefficients()[i] is Fraction instance for all i, such that
+        # 0 <= i < temp_angle.get_dimension()
         if isinstance(an_angle, (int, float)):
             temp = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(an_angle)))]
             temp_angle = Angle(temp)
@@ -109,42 +111,36 @@ class Angle:
         # delegated to self.__add__
         return self + an_angle
 
-    def __sub__(self, other):
+    def __sub__(self, an_angle):
         """
-        Implements binary arithmetic operation '-'.
+        Intent: Implementation of "-" arithmetic operation.
+                This method is invoked when there is something to be subtracted from self.
+
+        Usage:
         Angle - Angle
         Angle - int
         Angle - float
 
-        PRE1: self is known
-        PRE2: other is instance of Angle, int, or float
-        PRE3: if other is instance Angle, then:
-                1. other is known
-                2. self.get_dimension() == other.get_dimension()
+        PRE1: self.is_known()
+        PRE2: is_instance(an_angle, (Angle, int, float))
+        PRE3: EITHER !is_instance(an_angle, Angle) OR
+              an_angle.is_known() AND self.get_dimension() = an_angle.get_dimension()
         """
 
-        # PRE1
-        if not self.is_known():
-            raise Exception('Self is unknown.')
+        # (Converted and Negated): negated_angle is an Angle instance, where
+        # negated_angle = -an_angle AND
+        # negated_angle.get_dimension() = self.get_dimension() AND
+        # negated_angle.get_coefficients()[i] is Fraction instance for all i, such that
+        # 0 <= i < temp_angle.get_dimension()
+        negated_coefs = None
+        if isinstance(an_angle, (int, float)):
+            negated_coefs = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(-an_angle)))]
+        elif isinstance(an_angle, Angle):
+            negated_coefs = list(map(lambda x: -x, an_angle.get_coefficients()))
+        negated_angle = Angle(negated_coefs)
 
-        # PRE2
-        if not isinstance(other, (Angle, int, float)):
-            raise Exception('Wrong type provided.')
-
-        # PRE3
-        if isinstance(other, Angle):
-            if not other.is_known():
-                raise Exception('Angle that is subtracted is unknown.')
-            if self.get_dimension() != other.get_dimension():
-                raise Exception('Angles have different dimensions (subtraction).')
-
-        other_angle_coefficients = None
-        if isinstance(other, (int, float)):
-            other_angle_coefficients = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(-other)))]
-        elif isinstance(other, Angle):
-            other_angle_coefficients = list(map(lambda x: -x, other.get_coefficients()))
-
-        return self + Angle(other_angle_coefficients)
+        # (Subtracted): self - an_angle is returned
+        return self + negated_angle
 
     def __rsub__(self, other):
         """
