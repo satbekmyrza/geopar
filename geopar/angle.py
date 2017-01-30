@@ -142,22 +142,21 @@ class Angle:
         # (Subtracted): self - an_angle is returned
         return self + negated_angle
 
-    def __rsub__(self, other):
+    def __rsub__(self, an_angle):
         """
-        Implements binary arithmetic operation '-'.
+        Intent: Implementation of "-" arithmetic operation.
+                This method is invoked when self is to be subtracted from something.
+
+        Usage:
         int - Angle
         float - Angle
-
-        PRE1: other is an instance of int|float
-        Remaining preconditions are delegated to self.__add__()
         """
 
-        # PRE1
-        if not isinstance(other, (int, float)):
-            raise Exception('Wrong type provided.')
+        # an_angle - self = negated_self + an_angle
+        negated_self = Angle(list(map(lambda x: -x, self._coefficients)))
 
-        negated_self_coefficients = list(map(lambda x: -x, self._coefficients))
-        return Angle(negated_self_coefficients) + other
+        # delegated to self.__add__
+        return negated_self + an_angle
 
     def __truediv__(self, other):
         """
