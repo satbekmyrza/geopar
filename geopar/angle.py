@@ -158,25 +158,21 @@ class Angle:
         # delegated to self.__add__
         return negated_self + an_angle
 
-    def __truediv__(self, other):
+    def __truediv__(self, a_number):
         """
-        Implements binary arithmetic operation '/'.
+        Intent: Implementation of "/" arithmetic operation.
+                This method is invoked when self is to be divided by a real number.
+
+        Usage:
         Angle / int
         Angle / float
 
-        PRE1: self is known
-        PRE2: other is an instance of int|float
+        PRE1: self.is_known()
+        PRE2: is_instance(a_number, (int, float))
         """
 
-        # PRE1
-        if not self.is_known():
-            raise Exception('Self is unknown.')
-
-        # PRE2
-        if not isinstance(other, (int, float)):
-            raise Exception('Wrong type provided.')
-
-        result_coefficients = list(map(lambda x: x / Fraction(Decimal(str(other))), self._coefficients))
+        # (Divided): self / a_number is returned
+        result_coefficients = list(map(lambda x: x / Fraction(Decimal(str(a_number))), self._coefficients))
         return Angle(result_coefficients)
 
     def __mul__(self, other):
