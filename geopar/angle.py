@@ -59,17 +59,15 @@ class Angle:
         PRE2: isinstance(coef, (Fraction, int, float)) is True for every coef in self._coefficients
         """
 
-        # (Converted): temp contains every element from coefficients,
-        # where temp[i] is coefficients[i] implicitly converted into Fraction.
-        temp = []
-        for coef in coefficients:
+        # (Converted): non-Fraction coefficients[i] is implicitly converted to Fraction
+        # for all i, such that 0 <= i < len(coefficients)
+        for i in range(len(coefficients)):
+            coef = coefficients[i]
             if isinstance(coef, (int, float)):
-                temp.append(Fraction(Decimal(str(coef))))
-            elif isinstance(coef, Fraction):
-                temp.append(coef)
+                coefficients[i] = Fraction(Decimal(str(coef)))
 
-        # (Complement): len(temp) = len(coefficients)
-        self._coefficients = temp
+        # (Complement): i = len(coefficients)
+        self._coefficients = coefficients
 
     def __add__(self, other):
         """
