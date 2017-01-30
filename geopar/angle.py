@@ -96,16 +96,18 @@ class Angle:
             return self + temp_angle
         return Angle(list(map(sum, zip(self._coefficients, an_angle.get_coefficients()))))
 
-    def __radd__(self, other):
+    def __radd__(self, an_angle):
         """
-        Implements binary arithmetic operation '+' when other is not an instance of Angle.
+        Intent: Implementation of "+" arithmetic operation.
+                This method is invoked when self is to be added to something.
+
+        Usage:
         int + Angle
         float + Angle
-
-        Preconditions are delegated to self.__add__()
         """
 
-        return self + other
+        # delegated to self.__add__
+        return self + an_angle
 
     def __sub__(self, other):
         """
