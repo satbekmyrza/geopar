@@ -69,7 +69,7 @@ class Angle:
         # (Complement): i = len(coefficients)
         self._coefficients = coefficients
 
-    def __add__(self, other):
+    def __add__(self, an_angle):
         """
         Intent: Implementation of "+" arithmetic operation.
                 This method is invoked when there is something to be added to self.
@@ -79,24 +79,22 @@ class Angle:
         Angle + int
         Angle + float
 
-        PRE1: self.is_known() is True
-        PRE2: isinstance(other, (Angle, int, float)) is True
-        PRE3: if isinstance(other, Angle) is True:
-                  1. other.is_known() is True
-                  2. self.get_dimension() = other.get_dimension()
+        PRE1: self.is_known()
+        PRE2: is_instance(an_angle, (Angle, int, float))
+        PRE3: EITHER !is_instance(an_angle, Angle) OR
+              an_angle.is_known() AND self.get_dimension() = an_angle.get_dimension()
         """
 
-        # (Converted): other_angle is an Angle instance, where
-        # other_angle.get_dimension() = self.get_dimension()
-        # AND
-        # other_angle = other
-        if isinstance(other, (int, float)):
-            temp = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))]
-            other_angle = Angle(temp)
+        # (Converted): temp_angle is an Angle instance, where
+        # temp_angle = an_angle AND
+        # temp_angle.get_dimension() = self.get_dimension()
+        if isinstance(an_angle, (int, float)):
+            temp = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(an_angle)))]
+            temp_angle = Angle(temp)
 
-        # (Added): self + other is returned
-            return self + other_angle
-        return Angle(list(map(sum, zip(self._coefficients, other.get_coefficients()))))
+        # (Added): self + an_angle is returned
+            return self + temp_angle
+        return Angle(list(map(sum, zip(self._coefficients, an_angle.get_coefficients()))))
 
     def __radd__(self, other):
         """
