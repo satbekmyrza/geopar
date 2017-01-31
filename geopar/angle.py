@@ -170,30 +170,25 @@ class Angle:
         PRE2: is_instance(a_number, (int, float))
         """
 
-        # (Divided): self / a_number is returned
+        # (Divided): (self / a_number) is returned
         result_coefficients = list(map(lambda x: x / Fraction(Decimal(str(a_number))), self._coefficients))
         return Angle(result_coefficients)
 
-    def __mul__(self, other):
+    def __mul__(self, a_number):
         """
-        !!!
-        Implements binary arithmetic operation '*'.
+        Intent: Implementation of "*" arithmetic operation.
+                This method is invoked when self is to be multiplied by a real number.
+
+        Usage:
         Angle * int
         Angle * float
 
-        PRE1: self is known
-        PRE1: other is an instance of int|float
+        PRE1: self.is_known()
+        PRE2: is_instance(a_number, (int, float))
         """
 
-        # PRE1
-        if not self.is_known():
-            raise Exception('Self is unknown.')
-
-        # PRE2
-        if not isinstance(other, (int, float)):
-            raise Exception('Wrong type provided.')
-
-        results_coefficients = list(map(lambda x: x * Fraction(Decimal(str(other))), self._coefficients))
+        # (Multiplied): (self * a_number) is returned
+        results_coefficients = list(map(lambda x: x * Fraction(Decimal(str(a_number))), self._coefficients))
         return Angle(results_coefficients)
 
     def __rmul__(self, other):
