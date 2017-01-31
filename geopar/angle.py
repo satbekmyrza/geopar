@@ -53,21 +53,21 @@ class Angle:
     contains ONLY objects of built-in Fraction class.
     """
 
-    def __init__(self, coefficients):
+    def __init__(self, some_coefficients):
         """
-        PRE1: len(coefficients) <= 16
+        PRE1: len(some_coefficients) <= 16
         PRE2: isinstance(coef, (Fraction, int, float)) is True for every coef in self._coefficients
         """
 
-        # (Converted): non-Fraction coefficients[i] is implicitly converted to Fraction
-        # for all i, such that 0 <= i < len(coefficients)
-        for i in range(len(coefficients)):
-            coef = coefficients[i]
+        # (Converted): self._coefficients[i] is the Fraction equivalent of some_coefficients[i]
+        # for all i, such that 0 <= i < len(some_coefficients)
+        self._coefficients = []
+        for i in range(len(some_coefficients)):
+            coef = some_coefficients[i]
             if isinstance(coef, (int, float)):
-                coefficients[i] = Fraction(Decimal(str(coef)))
-
-        # (Complement): i = len(coefficients)
-        self._coefficients = coefficients
+                self._coefficients.append(Fraction(Decimal(str(coef))))
+            elif isinstance(coef, Fraction):
+                self._coefficients.append(coef)
 
     def __add__(self, an_angle):
         """
