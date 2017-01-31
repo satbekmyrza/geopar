@@ -194,13 +194,15 @@ class Angle:
 
     def __rmul__(self, other):
         """
-        Implements binary arithmetic operation '*'.
+        Intent: Implementation of "*" arithmetic operation.
+                This method is invoked when a real number is to be multiplied by self.
+
+        Usage:
         int * Angle
         float * Angle
-
-        Preconditions are delegated to self.__mul__()
         """
 
+        # delegated to self.__mul__
         return self * other
 
     def __eq__(self, other):
