@@ -98,16 +98,6 @@ class TestAngle(unittest.TestCase):
         a = Angle([])
         b = Angle([1, 2, 3, 30])
 
-        # PRE1
-        # self is unknown
-        with self.assertRaises(Exception):
-            c = a * 2
-
-        # PRE2
-        # other is not int|float
-        with self.assertRaises(Exception):
-            c = a * 'str'
-
         # Angle * int
         self.assertEqual(b * 2, Angle([2, 4, 6, 60]))
         self.assertEqual(b * 1, b)
