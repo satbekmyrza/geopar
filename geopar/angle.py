@@ -1,5 +1,6 @@
 from fractions import Fraction
 from decimal import Decimal
+from geopar.extras import to_fraction
 
 __author__ = 'satbek'
 
@@ -65,7 +66,7 @@ class Angle:
         for i in range(len(some_coefficients)):
             coef = some_coefficients[i]
             if isinstance(coef, (int, float)):
-                self._coefficients.append(Fraction(Decimal(str(coef))))
+                self._coefficients.append(to_fraction(coef))
             elif isinstance(coef, Fraction):
                 self._coefficients.append(coef)
 
@@ -90,7 +91,7 @@ class Angle:
         # an_angle.get_coefficients()[i] is Fraction instance for all i,
         # such that 0 <= i < an_angle.get_dimension()
         if isinstance(an_angle, (int, float)):
-            temp = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(an_angle)))]
+            temp = [to_fraction(0)] * (self.get_dimension() - 1) + [to_fraction(an_angle)]
             an_angle = Angle(temp)
 
         # (Added): self + an_angle is returned
@@ -133,7 +134,7 @@ class Angle:
         # 0 <= i < temp_angle.get_dimension()
         negated_coefs = None
         if isinstance(an_angle, (int, float)):
-            negated_coefs = [Fraction(0)] * (len(self._coefficients) - 1) + [Fraction(Decimal(str(-an_angle)))]
+            negated_coefs = [to_fraction(0)] * (len(self._coefficients) - 1) + [to_fraction(-an_angle)]
         elif isinstance(an_angle, Angle):
             negated_coefs = list(map(lambda x: -x, an_angle.get_coefficients()))
         negated_angle = Angle(negated_coefs)
@@ -171,7 +172,7 @@ class Angle:
         """
 
         # (Divided): (self / a_number) is returned
-        result_coefficients = list(map(lambda x: x / Fraction(Decimal(str(a_number))), self._coefficients))
+        result_coefficients = list(map(lambda x: x / to_fraction(a_number), self._coefficients))
         return Angle(result_coefficients)
 
     def __mul__(self, a_number):
@@ -188,7 +189,7 @@ class Angle:
         """
 
         # (Multiplied): (self * a_number) is returned
-        results_coefficients = list(map(lambda x: x * Fraction(Decimal(str(a_number))), self._coefficients))
+        results_coefficients = list(map(lambda x: x * to_fraction(a_number), self._coefficients))
         return Angle(results_coefficients)
 
     def __rmul__(self, other):
