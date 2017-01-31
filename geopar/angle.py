@@ -85,17 +85,16 @@ class Angle:
               an_angle.is_known() AND self.get_dimension() = an_angle.get_dimension()
         """
 
-        # (Converted): temp_angle is an Angle instance, where
-        # temp_angle = an_angle AND
-        # temp_angle.get_dimension() = self.get_dimension() AND
-        # temp_angle.get_coefficients()[i] is Fraction instance for all i, such that
-        # 0 <= i < temp_angle.get_dimension()
+        # (Converted): an_angle is an Angle instance, where
+        # an_angle.get_dimension() = self.get_dimension() AND
+        # an_angle.get_coefficients()[i] is Fraction instance for all i,
+        # such that 0 <= i < an_angle.get_dimension()
         if isinstance(an_angle, (int, float)):
             temp = [Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(an_angle)))]
-            temp_angle = Angle(temp)
+            an_angle = Angle(temp)
 
         # (Added): self + an_angle is returned
-            return self + temp_angle
+            return self + an_angle
         return Angle(list(map(sum, zip(self._coefficients, an_angle.get_coefficients()))))
 
     def __radd__(self, an_angle):
@@ -177,6 +176,7 @@ class Angle:
 
     def __mul__(self, other):
         """
+        !!!
         Implements binary arithmetic operation '*'.
         Angle * int
         Angle * float
