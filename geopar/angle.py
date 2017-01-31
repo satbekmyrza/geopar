@@ -192,7 +192,7 @@ class Angle:
         results_coefficients = list(map(lambda x: x * to_fraction(a_number), self._coefficients))
         return Angle(results_coefficients)
 
-    def __rmul__(self, other):
+    def __rmul__(self, a_number):
         """
         Intent: Implementation of "*" arithmetic operation.
                 This method is invoked when a real number is to be multiplied by self.
@@ -203,48 +203,38 @@ class Angle:
         """
 
         # delegated to self.__mul__
-        return self * other
+        return self * a_number
 
-    def __eq__(self, other):
+    def __eq__(self, an_angle):
         """
-        Implements binary comparison operation '=='.
+        Intent: Implementation of "==" test for equality operation.
+                This method is invoked when self is to be checked for equality with something.
+
+        Usage:
         Angle == Angle
         Angle == int
-        int == Angle
         Angle == float
+          int == Angle
         float == Angle
 
-        PRE1: self is known
-        PRE2: other is an instance of Angle|int|float
-        PRE3: if other is an instance of Angle:
-                1. other is known
-                2. self.get_dimension() == other.get_dimension()
+        PRE1: self.is_known()
+        PRE2: is_instance(an_angle, (Angle, int, float))
+        PRE3: EITHER !is_instance(an_angle, Angle) OR
+              an_angle.is_known() AND self.get_dimension() = an_angle.get_dimension()
         """
 
-        # PRE1
-        if not self.is_known():
-            raise Exception('Self is unknown.')
+        # (Converted): an_angle is an Angle instance, where
+        # an_angle.get_dimension() = self.get_dimension() AND
+        # an_angle.get_coefficients()[i] is Fraction instance for all i,
+        # such that 0 <= i < an_angle.get_dimension()
+        if isinstance(an_angle, (int, float)):
+            an_angle = Angle([to_fraction(0)] * (self.get_dimension() - 1) + [to_fraction(an_angle)])
 
-        # PRE2
-        if not isinstance(other, (Angle, int, float)):
-            raise Exception('Wrong type provided.')
-
-        # PRE3
-        if isinstance(other, Angle):
-            if not other.is_known():
-                raise Exception('Angle to be compared is unknown.')
-            if self.get_dimension() != other.get_dimension():
-                raise Exception('Angles to be compared have different dimensions.')
-
-        # other is int, float
-        if isinstance(other, (int, float)):
-            a = Angle([Fraction(0)] * (self.get_dimension() - 1) + [Fraction(Decimal(str(other)))])
-            return self == a
-
-        # other is Angle
-        other_coefficients = other.get_coefficients()
+        # (Compared): self._coefficients[i] is compared to an_angle.get_coefficients()[i] for all i,
+        # such that 0 <= i < len(self._coefficients)
+        an_angle_coefs = an_angle.get_coefficients()
         for i in range(len(self._coefficients)):
-            if self._coefficients[i] != other_coefficients[i]:
+            if self._coefficients[i] != an_angle_coefs[i]:
                 return False
 
         return True
