@@ -1,28 +1,25 @@
 from geopar.angle import Angle
 
-"""
-ISSUES:
-
-SUGGESTIONS:
-
-NOTES:
-1. Triangle should consist of angles of the same dimension
-
-"""
 
 __author__ = 'satbek'
 
 
 class Triangle:
     """
-    INTENT:
-    Defines a triangle with 3 angles and 3 vertices labeled by integers, in clockwise order.
+    --------------------------------------------------------------------------------------------------------------------
+    Intent: Defines a triangle with 3 angles and 3 vertices (later called 'points'
+    throughout the rest of the program), in clockwise order.
 
-    NOTES:
-    Triangle vertices will be called 'points' throughout the rest of the program.
-
-    _points contains three points (int instances) in clockwise order.
+    --------------------------------------------------------------------------------------------------------------------
+    Object attributes:
+    _points contains three points (distinct int instances) in clockwise order.
     _angles contains corresponding three angles (Angle instances) in clockwise order.
+
+    --------------------------------------------------------------------------------------------------------------------
+    Class invariants:
+    1. _points[i] corresponds to _angles[i] for i in [0, 2]
+    2. _points contains three distinct non-negative int instances
+    --------------------------------------------------------------------------------------------------------------------
     """
 
     def __init__(self, three_points, three_angles):
