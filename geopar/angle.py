@@ -1,6 +1,7 @@
 from fractions import Fraction
 from decimal import Decimal
 from geopar.extras import to_fraction
+from operator import add
 
 __author__ = 'satbek'
 
@@ -80,23 +81,35 @@ class Angle:
         Angle + int
         Angle + float
 
-        PRE1: self.is_known()
-        PRE2: is_instance(an_angle, (Angle, int, float))
-        PRE3: EITHER !is_instance(an_angle, Angle) OR
-              an_angle.is_known() AND self.get_dimension() = an_angle.get_dimension()
+        Pre1 (Known): self.is_known()
+
+        Pre2 (Correct parameter): EITHER is_instance(an_angle, (int, float)) OR
+                                  ( is_instance(an_angle, Angle) AND
+                                    an_angle.is_known() AND
+                                    an_angle.get_dimension() = self.get_dimension() )
+
+        Post1 (Coefficients obtained): an_angle_coefs is a list of length self.get_dimension() whose elements are
+                                       EITHER an_angle.get_coefficients() when is_instance(an_angle, Angle)
+                                       OR [0, 0, ..., an_angle] when is_instance(an_angle, (int, float))
+
+        Post2 (Coefficients added): return_angle_coefs is a list of length self.get_dimension() where
+                                    return_angle_coefs[i] = self._coefficients[i] + an_angle_coefs[i]
+
+        Post3 (Sum returned): Angle with coefficients return_angle_coefs is returned
         """
 
-        # (Converted): an_angle is an Angle instance, where
-        # an_angle.get_dimension() = self.get_dimension() AND
-        # an_angle.get_coefficients()[i] is Fraction instance for all i,
-        # such that 0 <= i < an_angle.get_dimension()
-        if isinstance(an_angle, (int, float)):
-            temp = [to_fraction(0)] * (self.get_dimension() - 1) + [to_fraction(an_angle)]
-            an_angle = Angle(temp)
+        # === (Correct parameter)
+        an_angle_coefs = []
+        if isinstance(an_angle, Angle):
+            an_angle_coefs = an_angle.get_coefficients()
+        elif isinstance(an_angle, (int, float)):
+            an_angle_coefs = [Fraction(0)] * (self.get_dimension() - 1) + [to_fraction(an_angle)]
 
-        # (Added): self + an_angle is returned
-            return self + an_angle
-        return Angle(list(map(sum, zip(self._coefficients, an_angle.get_coefficients()))))
+        # === (Coefficients added)
+        return_angle_coefs = list(map(add, self._coefficients, an_angle_coefs))
+
+        # === (Sum returned)
+        return Angle(return_angle_coefs)
 
     def __radd__(self, an_angle):
         """
