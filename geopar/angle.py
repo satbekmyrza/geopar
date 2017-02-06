@@ -73,21 +73,22 @@ class Angle:
 
     def __add__(self, an_angle):
         """
+        ----------------------------------------------------------------------------------------------------------------
         Intent: Implementation of "+" arithmetic operation.
                 This method is invoked when there is something to be added to self.
-
+        ----------------------------------------------------------------------------------------------------------------
         Usage:
         Angle + Angle
         Angle + int
         Angle + float
-
+        ----------------------------------------------------------------------------------------------------------------
         Pre1 (Known): self.is_known()
 
         Pre2 (Correct parameter): EITHER is_instance(an_angle, (int, float)) OR
                                   ( is_instance(an_angle, Angle) AND
                                     an_angle.is_known() AND
                                     an_angle.get_dimension() = self.get_dimension() )
-
+        ----------------------------------------------------------------------------------------------------------------
         Post1 (Coefficients obtained): an_angle_coefs is a list of length self.get_dimension() whose elements are
                                        EITHER an_angle.get_coefficients() when is_instance(an_angle, Angle)
                                        OR [0, 0, ..., an_angle] when is_instance(an_angle, (int, float))
@@ -96,9 +97,10 @@ class Angle:
                                     return_angle_coefs[i] = self._coefficients[i] + an_angle_coefs[i]
 
         Post3 (Sum returned): Angle with coefficients return_angle_coefs is returned
+        ----------------------------------------------------------------------------------------------------------------
         """
 
-        # === (Correct parameter)
+        # === (Coefficients Obtained)
         an_angle_coefs = []
         if isinstance(an_angle, Angle):
             an_angle_coefs = an_angle.get_coefficients()
