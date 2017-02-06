@@ -31,21 +31,6 @@ class Triangle:
         int and float angles in three_angles will be converted to Angle objects.
         """
 
-        # PRE1
-        # non-negative
-        if not all(list(map(lambda x: x > 0, three_points))):
-            raise Exception('Negative point provided.')
-        # exactly 3 distinct
-        if len(three_points) != 3:
-            raise Exception('Wrong number of points provided.')
-        elif len(set(three_points)) != 3:
-            raise Exception('Wrong number of points provided.')
-
-        # PRE2
-        for angle in three_angles:
-            if not isinstance(angle, (Angle, int, float)):
-                raise Exception('Angle provided is not Angle|int|float.')
-
         # convert int|float angles to Angle
         three_angles2 = []
         for angle in three_angles:
