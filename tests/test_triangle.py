@@ -22,25 +22,6 @@ class TestTriangle(unittest.TestCase):
         self.triangle3a = Triangle([1, 2, 3], [self.aaa, self.aba, self.aca])
 
     def test_init(self):
-        # PRE1
-        # three_points negative
-        with self.assertRaises(Exception):
-            t = Triangle([-1, 2, 3], [1, 1, 1])
-        with self.assertRaises(Exception):
-            t = Triangle([1, -2, 3], [1, 1, 1])
-        with self.assertRaises(Exception):
-            t = Triangle([-1, -2, -3], [1, 1, 1])
-        # exactly 3
-        with self.assertRaises(Exception):
-            t = Triangle([2, 2, 3], [1, 1, 1])
-        with self.assertRaises(Exception):
-            t = Triangle([2, 2, 3, 1], [1, 1, 1])
-
-        # PRE2
-        # three_angles has other types
-        with self.assertRaises(Exception):
-            t = Triangle([1, 2, 3],['x', 2, 3])
-
         # force conversion of int, float angles to Angle
         triangle = Triangle([1, 2, 3], [10, 20.0, Angle([30])])
         for angle in triangle._angles:
