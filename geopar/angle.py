@@ -2,6 +2,7 @@ from fractions import Fraction
 from decimal import Decimal
 from geopar.extras import to_fraction
 from operator import add
+from operator import sub
 
 __author__ = 'satbek'
 
@@ -130,34 +131,45 @@ class Angle:
 
     def __sub__(self, an_angle):
         """
+        ----------------------------------------------------------------------------------------------------------------
         Intent: Implementation of "-" arithmetic operation.
                 This method is invoked when there is something to be subtracted from self.
-
+        ----------------------------------------------------------------------------------------------------------------
         Usage:
         Angle - Angle
         Angle - int
         Angle - float
+        ----------------------------------------------------------------------------------------------------------------
+        Pre1 (Known): self.is_known()
 
-        PRE1: self.is_known()
-        PRE2: is_instance(an_angle, (Angle, int, float))
-        PRE3: EITHER !is_instance(an_angle, Angle) OR
-              an_angle.is_known() AND self.get_dimension() = an_angle.get_dimension()
+        Pre2 (Correct parameter): EITHER is_instance(an_angle, (int, float)) OR
+                                  ( is_instance(an_angle, Angle) AND
+                                    an_angle.is_known() AND
+                                    an_angle.get_dimension() = self.get_dimension() )
+        ----------------------------------------------------------------------------------------------------------------
+        Post1 (Coefficients obtained): an_angle_coefs is a list of length self.get_dimension() whose elements are
+                                       EITHER an_angle.get_coefficients() when is_instance(an_angle, Angle)
+                                       OR [0, 0, ..., an_angle] when is_instance(an_angle, (int, float))
+
+        Post2 (Coefficients added): return_angle_coefs is a list of length self.get_dimension() where
+                                    return_angle_coefs[i] = self._coefficients[i] - an_angle_coefs[i]
+
+        Post3 (Sum returned): Angle with coefficients return_angle_coefs is returned
+        ----------------------------------------------------------------------------------------------------------------
         """
 
-        # (Converted and Negated): negated_angle is an Angle instance, where
-        # negated_angle = -an_angle AND
-        # negated_angle.get_dimension() = self.get_dimension() AND
-        # negated_angle.get_coefficients()[i] is Fraction instance for all i, such that
-        # 0 <= i < temp_angle.get_dimension()
-        negated_coefs = None
-        if isinstance(an_angle, (int, float)):
-            negated_coefs = [to_fraction(0)] * (len(self._coefficients) - 1) + [to_fraction(-an_angle)]
-        elif isinstance(an_angle, Angle):
-            negated_coefs = list(map(lambda x: -x, an_angle.get_coefficients()))
-        negated_angle = Angle(negated_coefs)
+        # === (Coefficients Obtained)
+        an_angle_coefs = []
+        if isinstance(an_angle, Angle):
+            an_angle_coefs = an_angle.get_coefficients()
+        elif isinstance(an_angle, (int, float)):
+            an_angle_coefs = [Fraction(0)] * (self.get_dimension() - 1) + [to_fraction(an_angle)]
 
-        # (Subtracted): self - an_angle is returned
-        return self + negated_angle
+        # === (Coefficients added)
+        return_angle_coefs = list(map(sub, self._coefficients, an_angle_coefs))
+
+        # === (Sum returned)
+        return Angle(return_angle_coefs)
 
     def __rsub__(self, an_angle):
         """
