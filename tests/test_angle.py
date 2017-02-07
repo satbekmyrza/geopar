@@ -76,12 +76,14 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(1.5 - Angle([-1, 0, -10]), Angle([1, 0, 11.5]))
 
     def test_truediv(self):
-        a = Angle([])
+        a = Angle([120])
         b = Angle([1, 2, 3, 30])
 
         # Angle / int
+        self.assertEqual(a / .5, Angle([240]))
         self.assertEqual(b / 2, Angle([.5, 1, 1.5, 15]))
         self.assertEqual(b / 1, b)
+
         # Angle / float
         self.assertEqual(b / .5, Angle([2, 4, 6, 60]))
         self.assertEqual(b / 2.0, Angle([.5, 1, 1.5, 15]))
