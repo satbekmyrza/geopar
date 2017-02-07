@@ -55,16 +55,15 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(1.5 + Angle([-1, 0, -10]), Angle([-1, 0, -8.5]))
 
     def test_sub(self):
-        a = Angle([])
-        b = Angle([1, 90])
-        c = Angle([1, 1, 90])
-
         # Angle - Angle
         self.assertEqual(Angle([10]) - Angle([20]), Angle([-10]))
         self.assertEqual(Angle([1, 10]) - Angle([-3, -20]), Angle([4, 30]))
+        self.assertEqual(Angle([110, 112, 114, 116]) - Angle([10, 11, 12, 13]), Angle([100, 101, 102, 103]))
+
         # Angle - int
         self.assertEqual(Angle([1, 10]) - 90, Angle([1, -80]))
         self.assertEqual(Angle([1, 2, 3, 4, -10]) - 90, Angle([1, 2, 3, 4, -100]))
+
         # Angle - float
         self.assertEqual(Angle([1, 10]) - 1.5, Angle([1, 8.5]))
         self.assertEqual(Angle([-1, 0, -10]) - 1.5, Angle([-1, 0, -11.5]))
