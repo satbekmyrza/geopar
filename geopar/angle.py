@@ -195,7 +195,7 @@ class Angle:
         ----------------------------------------------------------------------------------------------------------------
         Intent: Implementation of "/" arithmetic operation.
                 This method is invoked when self is to be divided by a real number.
-                In other words, this method is used for scaling self by a_number.
+                In other words, this method is used for scaling down self by a_number.
         ----------------------------------------------------------------------------------------------------------------
         Usage:
         Angle / int
@@ -210,32 +210,45 @@ class Angle:
         Post (Divided): result_coefs is a list of length self.get_dimension() where
                         result_coefs[i] = self._coefficients[i] / a_number
 
-        Post (Returned): Angle with coefficients return_coefs is returned
+        Post (Returned): Angle with coefficients result_coefs is returned
         ----------------------------------------------------------------------------------------------------------------
         """
 
         # === (Divided)
-        result_coefficients = list(map(lambda x: x / to_fraction(a_number), self._coefficients))
+        result_coefs = list(map(lambda x: x / to_fraction(a_number), self._coefficients))
 
         # === (Returned)
-        return Angle(result_coefficients)
+        return Angle(result_coefs)
 
     def __mul__(self, a_number):
         """
+        ----------------------------------------------------------------------------------------------------------------
         Intent: Implementation of "*" arithmetic operation.
-                This method is invoked when self is to be multiplied by a real number.
-
+                This method is invoked when self is to be divided by a real number.
+                In other words, this method is used for scaling up self by a_number.
+        ----------------------------------------------------------------------------------------------------------------
         Usage:
         Angle * int
         Angle * float
+        ----------------------------------------------------------------------------------------------------------------
+        Pre1 (Known): self.is_known()
 
-        PRE1: self.is_known()
-        PRE2: is_instance(a_number, (int, float))
+        Pre2 (Correct parameter): is_instance(a_number, (int, float))
+
+        Pre3 (Nonzero): a_number != 0
+        ----------------------------------------------------------------------------------------------------------------
+        Post (Multiplied): result_coefs is a list of length self.get_dimension() where
+                           result_coefs[i] = self._coefficients[i] * a_number
+
+        Post (Returned): Angle with coefficients result_coefs is returned
+        ----------------------------------------------------------------------------------------------------------------
         """
 
-        # (Multiplied): (self * a_number) is returned
-        results_coefficients = list(map(lambda x: x * to_fraction(a_number), self._coefficients))
-        return Angle(results_coefficients)
+        # === (Multiplied)
+        result_coefs = list(map(lambda x: x * to_fraction(a_number), self._coefficients))
+
+        # === (Returned)
+        return Angle(result_coefs)
 
     def __rmul__(self, a_number):
         """
