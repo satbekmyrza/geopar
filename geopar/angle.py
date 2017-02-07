@@ -173,15 +173,18 @@ class Angle:
 
     def __rsub__(self, an_angle):
         """
+        ----------------------------------------------------------------------------------------------------------------
         Intent: Implementation of "-" arithmetic operation.
                 This method is invoked when self is to be subtracted from something.
-
+        ----------------------------------------------------------------------------------------------------------------
         Usage:
         int - Angle
         float - Angle
+        ----------------------------------------------------------------------------------------------------------------
         """
 
-        # an_angle - self = negated_self + an_angle
+        # an_angle - self =
+        # an_angle + negated_self
         negated_self = Angle(list(map(lambda x: -x, self._coefficients)))
 
         # delegated to self.__add__
