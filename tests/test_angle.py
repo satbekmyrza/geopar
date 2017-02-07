@@ -44,12 +44,10 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle([-1, 0, -10]) + 1.5, Angle([-1, 0, -8.5]))
 
     def test_radd(self):
-        a = Angle([])
-        b = Angle([1, 90])
-
         # int + Angle
         self.assertEqual(90 + Angle([1, 10]), Angle([1, 100]))
         self.assertEqual(90 + Angle([1, 2, 3, 4, -10]), Angle([1, 2, 3, 4, 80]))
+
         # float + Angle
         self.assertEqual(1.5 + Angle([1, 10]), Angle([1, 11.5]))
         self.assertEqual(1.5 + Angle([-1, 0, -10]), Angle([-1, 0, -8.5]))
@@ -69,13 +67,10 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(Angle([-1, 0, -10]) - 1.5, Angle([-1, 0, -11.5]))
 
     def test_rsub(self):
-        a = Angle([])
-        b = Angle([1, 90])
-        c = Angle([1, 1, 90])
-
         # int - Angle
         self.assertEqual(90 - Angle([1, 10]), Angle([-1, 80]))
         self.assertEqual(90 - Angle([1, 2, 3, 4, -10]), Angle([-1, -2, -3, -4, 100]))
+
         # float - Angle
         self.assertEqual(1.5 - Angle([1, 10]), Angle([-1, -8.5]))
         self.assertEqual(1.5 - Angle([-1, 0, -10]), Angle([1, 0, 11.5]))
