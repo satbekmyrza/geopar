@@ -30,16 +30,15 @@ class TestAngle(unittest.TestCase):
             self.assertTrue(isinstance(coef, Fraction))
 
     def test_add(self):
-        a = Angle([])
-        b = Angle([1, 90])
-        c = Angle([1, 1, 90])
-
         # Angle + Angle
         self.assertEqual(Angle([10]) + Angle([20]), Angle([30]))
         self.assertEqual(Angle([1, 10]) + Angle([0, -20]), Angle([1, -10]))
+        self.assertEqual(Angle([100, 101, 102, 103]) + Angle([10, 11, 12, 13]), Angle([110, 112, 114, 116]))
+
         # Angle + int
         self.assertEqual(Angle([1, 10]) + 90, Angle([1, 100]))
         self.assertEqual(Angle([1, 2, 3, 4, -10]) + 90, Angle([1, 2, 3, 4, 80]))
+
         # Angle + float
         self.assertEqual(Angle([1, 10]) + 1.5, Angle([1, 11.5]))
         self.assertEqual(Angle([-1, 0, -10]) + 1.5, Angle([-1, 0, -8.5]))
