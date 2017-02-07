@@ -192,19 +192,32 @@ class Angle:
 
     def __truediv__(self, a_number):
         """
+        ----------------------------------------------------------------------------------------------------------------
         Intent: Implementation of "/" arithmetic operation.
                 This method is invoked when self is to be divided by a real number.
-
+                In other words, this method is used for scaling self by a_number.
+        ----------------------------------------------------------------------------------------------------------------
         Usage:
         Angle / int
         Angle / float
+        ----------------------------------------------------------------------------------------------------------------
+        Pre1 (Known): self.is_known()
 
-        PRE1: self.is_known()
-        PRE2: is_instance(a_number, (int, float))
+        Pre2 (Correct parameter): is_instance(a_number, (int, float))
+
+        Pre3 (Nonzero): a_number != 0
+        ----------------------------------------------------------------------------------------------------------------
+        Post (Divided): result_coefs is a list of length self.get_dimension() where
+                        result_coefs[i] = self._coefficients[i] / a_number
+
+        Post (Returned): Angle with coefficients return_coefs is returned
+        ----------------------------------------------------------------------------------------------------------------
         """
 
-        # (Divided): (self / a_number) is returned
+        # === (Divided)
         result_coefficients = list(map(lambda x: x / to_fraction(a_number), self._coefficients))
+
+        # === (Returned)
         return Angle(result_coefficients)
 
     def __mul__(self, a_number):
