@@ -1,6 +1,6 @@
 from geopar.triangulated_figure import TriangulatedFigure
 from geopar.triangle import Triangle
-from geopar.angle import Angle
+from geopar.angle_class import Angle
 from collections import Counter
 
 __author__ = 'satbek'

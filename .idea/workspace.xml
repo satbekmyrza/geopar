@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0d2d385-f62c-42ba-a9c5-38f76b4f73dd" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/geopar/angle.py" afterPath="$PROJECT_DIR$/geopar/angle_class.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/satbekabdyldayev.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/satbekabdyldayev.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/run.py" afterPath="$PROJECT_DIR$/geopar/run.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/tfpreprocessor.py" afterPath="$PROJECT_DIR$/geopar/tfpreprocessor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/triangle.py" afterPath="$PROJECT_DIR$/geopar/triangle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/triangulated_figure.py" afterPath="$PROJECT_DIR$/geopar/triangulated_figure.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_angle.py" afterPath="$PROJECT_DIR$/tests/test_angle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_tfpreprocessor.py" afterPath="$PROJECT_DIR$/tests/test_tfpreprocessor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_triangle.py" afterPath="$PROJECT_DIR$/tests/test_triangle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_triangulated_figure.py" afterPath="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
     </list>
     <ignored path="Geopar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="angle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geopar/angle.py">
+      <file leaf-file-name="angle_class.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/geopar/angle_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5100">
-              <caret line="341" column="38" lean-forward="false" selection-start-line="341" selection-start-column="38" selection-end-line="341" selection-end-column="38" />
+            <state relative-caret-position="5700">
+              <caret line="380" column="12" lean-forward="false" selection-start-line="380" selection-start-column="12" selection-end-line="380" selection-end-column="12" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -37,23 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tfvalidator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geopar/tfvalidator.py">
+      <file leaf-file-name="test_angle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_angle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_tfvalidator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_tfvalidator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="48" column="50" lean-forward="false" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+            <state relative-caret-position="150">
+              <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -64,38 +59,38 @@
       <file leaf-file-name="triangle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geopar/triangle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="171" column="17" lean-forward="false" selection-start-line="171" selection-start-column="17" selection-end-line="171" selection-end-column="17" />
+            <state relative-caret-position="583">
+              <caret line="41" column="32" lean-forward="false" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_angle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_angle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="triangulated_figure.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="triangulated_figure.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="178" column="0" lean-forward="true" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+            <state relative-caret-position="405">
+              <caret line="27" column="44" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file leaf-file-name="test_triangle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_triangle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="76" column="25" lean-forward="false" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
+            <state relative-caret-position="330">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -105,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1200">
-              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -114,11 +109,21 @@
       <file leaf-file-name="tfpreprocessor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geopar/tfpreprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="32" column="45" lean-forward="true" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
+            <state relative-caret-position="390">
+              <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="52" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geopar/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1320">
+              <caret line="92" column="43" lean-forward="false" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -145,6 +150,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>get_tri</find>
+      <find>is_kno</find>
+      <find>from</find>
+      <find>dimen</find>
+      <find>from_st</find>
+      <find>get_dimen</find>
+      <find>get_state</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,27 +166,27 @@
       <list>
         <option value="$PROJECT_DIR$/geopar/__init__.py" />
         <option value="$PROJECT_DIR$/inputs/input.txt" />
-        <option value="$PROJECT_DIR$/geopar/extras.py" />
-        <option value="$PROJECT_DIR$/tests/test_angle.py" />
         <option value="$PROJECT_DIR$/geopar/run.py" />
         <option value="$PROJECT_DIR$/geopar/tfvalidator.py" />
         <option value="$PROJECT_DIR$/../temp/temp.py" />
         <option value="$PROJECT_DIR$/tests/test_tfpreprocessor.py" />
-        <option value="$PROJECT_DIR$/geopar/angle.py" />
         <option value="$PROJECT_DIR$/tests/test_tfvalidator.py" />
-        <option value="$PROJECT_DIR$/tests/test_triangle.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
-        <option value="$PROJECT_DIR$/geopar/tfpreprocessor.py" />
-        <option value="$PROJECT_DIR$/geopar/triangle.py" />
         <option value="$PROJECT_DIR$/geopar/triangulated_figure.py" />
+        <option value="$PROJECT_DIR$/geopar/tfpreprocessor.py" />
+        <option value="$PROJECT_DIR$/tests/test_triangle.py" />
+        <option value="$PROJECT_DIR$/geopar/triangle.py" />
+        <option value="$PROJECT_DIR$/geopar/extras.py" />
+        <option value="$PROJECT_DIR$/geopar/angle.py" />
+        <option value="$PROJECT_DIR$/tests/test_angle.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="715" />
+    <option name="height" value="710" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -208,7 +219,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,6 +271,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -268,8 +279,8 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/satbekabdyldayev/PycharmProjects/geopar/geopar/angle.py" />
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TestTFPreprocessor.test_theorem_2">
-    <configuration default="false" name="Unittest TestTriangle.test_sum_of_known_angles" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittest TestAngle.test_mul">
+    <configuration default="false" name="Unittest TestAngle.test_sub" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -279,9 +290,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangle.py" />
-      <option name="CLASS_NAME" value="TestTriangle" />
-      <option name="METHOD_NAME" value="test_sum_of_known_angles" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_angle.py" />
+      <option name="CLASS_NAME" value="TestAngle" />
+      <option name="METHOD_NAME" value="test_sub" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -291,7 +302,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in TestTriangle" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest TestAngle.test_radd" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -301,31 +312,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangle.py" />
-      <option name="CLASS_NAME" value="TestTriangle" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestTriangle.test_complete_unknown_angle" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangle.py" />
-      <option name="CLASS_NAME" value="TestTriangle" />
-      <option name="METHOD_NAME" value="test_complete_unknown_angle" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_angle.py" />
+      <option name="CLASS_NAME" value="TestAngle" />
+      <option name="METHOD_NAME" value="test_radd" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -335,7 +324,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest TestTriangle.test_complete_unknown_angle (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest TestAngle.test_rsub" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -345,9 +334,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangle.py" />
-      <option name="CLASS_NAME" value="TestTriangle" />
-      <option name="METHOD_NAME" value="test_complete_unknown_angle" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_angle.py" />
+      <option name="CLASS_NAME" value="TestAngle" />
+      <option name="METHOD_NAME" value="test_rsub" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -357,7 +346,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest TestTFPreprocessor.test_theorem_2" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest TestAngle.test_truediv" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -367,9 +356,31 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_tfpreprocessor.py" />
-      <option name="CLASS_NAME" value="TestTFPreprocessor" />
-      <option name="METHOD_NAME" value="test_theorem_2" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_angle.py" />
+      <option name="CLASS_NAME" value="TestAngle" />
+      <option name="METHOD_NAME" value="test_truediv" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestAngle.test_mul" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Geopar" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_angle.py" />
+      <option name="CLASS_NAME" value="TestAngle" />
+      <option name="METHOD_NAME" value="test_mul" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -514,19 +525,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangle.test_sum_of_known_angles" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangle" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangle.test_complete_unknown_angle" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangle.test_complete_unknown_angle (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestTFPreprocessor.test_theorem_2" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_sub" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_radd" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_rsub" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_truediv" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_mul" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestTFPreprocessor.test_theorem_2" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangle.test_complete_unknown_angle (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangle.test_sum_of_known_angles" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangle.test_complete_unknown_angle" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangle" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_mul" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_truediv" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_rsub" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_radd" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_sub" />
       </list>
     </recent_temporary>
   </component>
@@ -544,35 +555,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_TestTFPreprocessor_test_theorem_2 - 2017.01.23 at 17h 30m 42s.xml">
-      <configuration name="Unittest TestTFPreprocessor.test_theorem_2" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_mul - 2017.02.07 at 16h 25m 30s.xml">
+      <configuration name="Unittest TestAngle.test_mul" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestTriangle_test_complete_unknown_angle - 2017.01.23 at 16h 09m 04s.xml">
-      <configuration name="Unittest TestTriangle.test_complete_unknown_angle" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_mul - 2017.02.07 at 16h 26m 13s.xml">
+      <configuration name="Unittest TestAngle.test_mul" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestTriangle_test_complete_unknown_angle_(1) - 2017.01.23 at 16h 19m 32s.xml">
-      <configuration name="Unittest TestTriangle.test_complete_unknown_angle (1)" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_mul - 2017.02.07 at 16h 31m 00s.xml">
+      <configuration name="Unittest TestAngle.test_mul" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestTriangle_test_complete_unknown_angle_(1) - 2017.01.23 at 16h 22m 06s.xml">
-      <configuration name="Unittest TestTriangle.test_complete_unknown_angle (1)" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_radd - 2017.02.07 at 15h 59m 41s.xml">
+      <configuration name="Unittest TestAngle.test_radd" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestTriangle_test_complete_unknown_angle_(1) - 2017.01.23 at 17h 28m 42s.xml">
-      <configuration name="Unittest TestTriangle.test_complete_unknown_angle (1)" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_rsub - 2017.02.07 at 15h 59m 47s.xml">
+      <configuration name="Unittest TestAngle.test_rsub" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestTriangle_test_sum_of_known_angles - 2017.01.23 at 16h 09m 19s.xml">
-      <configuration name="Unittest TestTriangle.test_sum_of_known_angles" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_sub - 2017.02.07 at 15h 50m 24s.xml">
+      <configuration name="Unittest TestAngle.test_sub" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestTriangle_test_sum_of_known_angles - 2017.01.23 at 16h 17m 29s.xml">
-      <configuration name="Unittest TestTriangle.test_sum_of_known_angles" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_sub - 2017.02.07 at 15h 51m 24s.xml">
+      <configuration name="Unittest TestAngle.test_sub" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestTriangle - 2017.01.23 at 15h 57m 14s.xml">
-      <configuration name="Unittests in TestTriangle" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_sub - 2017.02.07 at 15h 51m 40s.xml">
+      <configuration name="Unittest TestAngle.test_sub" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestTriangle - 2017.01.23 at 16h 06m 15s.xml">
-      <configuration name="Unittests in TestTriangle" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_sub - 2017.02.07 at 15h 52m 16s.xml">
+      <configuration name="Unittest TestAngle.test_sub" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_tfpreprocessor - 2017.01.21 at 15h 49m 34s.xml">
-      <configuration name="Unittests in test_tfpreprocessor" configurationId="tests" />
+    <history-entry file="Unittest_TestAngle_test_truediv - 2017.02.07 at 16h 16m 37s.xml">
+      <configuration name="Unittest TestAngle.test_truediv" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -585,13 +596,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="715" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1280" height="710" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20703125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.228125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32817337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -601,10 +611,11 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24336973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23995657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3978328" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39660493" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -627,13 +638,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/inputs/input.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
@@ -641,7 +645,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/angle.py">
+    <entry file="file://$PROJECT_DIR$/geopar/angle_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -705,7 +709,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/angle.py">
+    <entry file="file://$PROJECT_DIR$/geopar/angle_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1095">
           <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
@@ -769,7 +773,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/angle.py">
+    <entry file="file://$PROJECT_DIR$/geopar/angle_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1095">
           <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
@@ -833,7 +837,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/angle.py">
+    <entry file="file://$PROJECT_DIR$/geopar/angle_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1168">
           <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
@@ -924,42 +928,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/run.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_tfvalidator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="104" column="18" lean-forward="false" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+        <state relative-caret-position="660">
+          <caret line="48" column="50" lean-forward="false" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geopar/tfvalidator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="76" column="25" lean-forward="false" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geopar/extras.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_triangle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2355">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_tfvalidator.py">
+    <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="48" column="50" lean-forward="false" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_angle.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        <state relative-caret-position="1200">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -972,65 +988,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/tests/test_angle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="25" lean-forward="false" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/angle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5100">
-          <caret line="341" column="38" lean-forward="false" selection-start-line="341" selection-start-column="38" selection-end-line="341" selection-end-column="38" />
+        <state relative-caret-position="150">
+          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geopar/tfpreprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="32" column="45" lean-forward="true" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
+        <state relative-caret-position="390">
+          <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="52" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/tfvalidator.py">
+    <entry file="file://$PROJECT_DIR$/geopar/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/triangle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="171" column="17" lean-forward="false" selection-start-line="171" selection-start-column="17" selection-end-line="171" selection-end-column="17" />
+        <state relative-caret-position="1320">
+          <caret line="92" column="43" lean-forward="false" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="178" column="0" lean-forward="true" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+        <state relative-caret-position="405">
+          <caret line="27" column="44" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geopar/triangle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="41" column="32" lean-forward="false" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geopar/angle_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5700">
+          <caret line="380" column="12" lean-forward="false" selection-start-line="380" selection-start-column="12" selection-end-line="380" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

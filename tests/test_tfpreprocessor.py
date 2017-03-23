@@ -2,7 +2,7 @@ import unittest
 from geopar.tfpreprocessor import TFPreprocessor
 from geopar.triangulated_figure import TriangulatedFigure
 from geopar.triangle import Triangle
-from geopar.angle import Angle
+from geopar.angle_class import Angle
 from geopar.tfvalidator import TFValidator
 
 __author__ = 'satbek'
