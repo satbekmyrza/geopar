@@ -1,6 +1,6 @@
 from fractions import Fraction
 from decimal import Decimal
-from geopar.extras import to_fraction
+from geopar.utilities import to_fraction
 from operator import add
 from operator import sub
 
