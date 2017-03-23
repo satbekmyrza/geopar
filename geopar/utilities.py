@@ -1,6 +1,7 @@
 from fractions import Fraction
 from decimal import Decimal
 
+GREEK_LETTERS = 'αβγδεηθλπρστμφω'  # For names of variables
 
 def to_fraction(a_value):
     """

@@ -1,5 +1,4 @@
 from collections import Counter
-from geopar.utilities import EmptyException
 
 __author__ = 'satbek'
 

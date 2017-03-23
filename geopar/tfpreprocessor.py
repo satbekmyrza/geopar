@@ -32,7 +32,8 @@ class TFPreprocessor(object):
         """
 
         for triangle in a_tf.get_triangles():
-            triangle.complete_unknown_angle()
+            if triangle.count_known() == 2:
+                triangle.complete_unknown_angle()
 
     @staticmethod
     def theorem_2(a_tf):

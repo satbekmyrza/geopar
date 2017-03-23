@@ -1,6 +1,6 @@
 import unittest
 from geopar.angle_class import Angle
-from geopar.angle_class import GREEK_LETTERS
+from geopar.utilities import GREEK_LETTERS
 from fractions import Fraction
 
 __author__ = 'satbek'

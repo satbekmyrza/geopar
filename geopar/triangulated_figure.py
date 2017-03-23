@@ -269,13 +269,13 @@ class TriangulatedFigure:
         # unknowns_count is used to keep PRE1 true
         unknowns_count = self.number_of_unknown_angles_at(a_point)
 
-        # (Recorded) angle_points is a list of angle_points of unknown_angle at a_point
-        angle_points = self.angle_points_of_unknown_angles_at(a_point)[-1]
-
         # (Summed up) angles_sum is a sum of known angles at a_point
         angles_sum = self.sum_of_known_angles_at(a_point)
 
         # (Found and set) unknown_angle is the value of the unknown_angle
         unknown_angle = 360 - angles_sum
+
         if unknowns_count == 1:
+            # (Recorded) angle_points is a list of angle_points of unknown_angle at a_point
+            angle_points = self.angle_points_of_unknown_angles_at(a_point)[-1]
             self.set_angle_by_angle_points(*angle_points, unknown_angle)
