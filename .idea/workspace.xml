@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0d2d385-f62c-42ba-a9c5-38f76b4f73dd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/triangle_class.py" afterPath="$PROJECT_DIR$/geopar/triangle_class.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_triangle.py" afterPath="$PROJECT_DIR$/tests/test_triangle.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/geopar/triangulated_figure.py" afterPath="$PROJECT_DIR$/geopar/triangulated_figure_class.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/run.py" afterPath="$PROJECT_DIR$/geopar/run.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/tfpreprocessor.py" afterPath="$PROJECT_DIR$/geopar/tfpreprocessor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_tfpreprocessor.py" afterPath="$PROJECT_DIR$/tests/test_tfpreprocessor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_tfvalidator.py" afterPath="$PROJECT_DIR$/tests/test_tfvalidator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_triangulated_figure.py" afterPath="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
     </list>
     <ignored path="Geopar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,21 +63,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_triangle.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_triangle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_triangle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+            <state relative-caret-position="285">
+              <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="triangulated_figure.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
+      <file leaf-file-name="triangulated_figure_class.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4080">
-              <caret line="272" column="29" lean-forward="false" selection-start-line="272" selection-start-column="29" selection-end-line="272" selection-end-column="29" />
+            <state relative-caret-position="-3713">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -85,7 +89,7 @@
             <state relative-caret-position="795">
               <caret line="56" column="49" lean-forward="false" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
               <folding>
-                <element signature="e#0#57#0" expanded="true" />
+                <element signature="e#0#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,7 +101,7 @@
             <state relative-caret-position="367">
               <caret line="62" column="23" lean-forward="false" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
               <folding>
-                <element signature="e#0#57#0" expanded="true" />
+                <element signature="e#0#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -677,7 +681,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
+    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
@@ -697,7 +701,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -733,7 +737,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
+    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -753,7 +757,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -796,7 +800,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
+    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -816,7 +820,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -852,7 +856,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
+    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -865,7 +869,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -975,16 +979,8 @@
         <state relative-caret-position="795">
           <caret line="56" column="49" lean-forward="false" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4080">
-          <caret line="272" column="29" lean-forward="false" selection-start-line="272" selection-start-column="29" selection-end-line="272" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,7 +1017,7 @@
         <state relative-caret-position="367">
           <caret line="62" column="23" lean-forward="false" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1046,8 +1042,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_triangle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        <state relative-caret-position="285">
+          <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3713">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
