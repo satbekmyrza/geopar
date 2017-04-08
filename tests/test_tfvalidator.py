@@ -1,7 +1,7 @@
 import unittest
 from geopar.tfvalidator import TFValidator
 from geopar.triangulated_figure import TriangulatedFigure
-from geopar.triangle import Triangle
+from geopar.triangle_class import Triangle
 from geopar.utilities import EmptyException
 
 __author__ = 'satbek'

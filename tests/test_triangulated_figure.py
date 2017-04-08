@@ -1,5 +1,5 @@
 import unittest
-from geopar.triangle import Triangle
+from geopar.triangle_class import Triangle
 from geopar.triangulated_figure import TriangulatedFigure
 from geopar.angle_class import Angle
 
