@@ -1,6 +1,8 @@
-from geopar.triangulated_figure import TriangulatedFigure
-from geopar.triangle import Triangle
-from geopar.angle import Angle
+from geopar.triangulated_figure_class import TriangulatedFigure
+from geopar.triangle_class import Triangle
+from geopar.angle_class import Angle
+from geopar.tfvalidator import TFValidator
+from geopar.tfpreprocessor import TFPreprocessor
 
 """
 ISSUES:
@@ -37,9 +39,9 @@ def parse_a_file(filename):
         # angles_str = ['angle1', 'angle2', 'angle3']
         angles_str = list(map(str.strip, line[1].split(',')))
 
-        a1 = Angle.from_str(angles_str[0], dim)
-        a2 = Angle.from_str(angles_str[1], dim)
-        a3 = Angle.from_str(angles_str[2], dim)
+        a1 = Angle.from_str(angles_str[0])
+        a2 = Angle.from_str(angles_str[1])
+        a3 = Angle.from_str(angles_str[2])
 
         _angles = [a1, a2, a3]
         figure.add(Triangle(_points, _angles))
@@ -48,18 +50,26 @@ def parse_a_file(filename):
 
 
 def run(figure):
+
+    validator = TFValidator()
+    preprocessor = TFPreprocessor()
+
     # Apply 180 and 360 rules until no new angles deduced
-    figure.preprocess_theorem_1()
-    figure.preprocess_theorem_2()
-    while figure.anything_new:
-        figure.anything_new = False
-        figure.preprocess_theorem_1()
-        figure.preprocess_theorem_2()
+    state_before = figure.get_state()
+    preprocessor.theorem_1(figure)
+    preprocessor.theorem_2(figure)
+    state_after = figure.get_state()
+
+    while state_before != state_after:
+        state_before = figure.get_state()
+        preprocessor.theorem_1(figure)
+        preprocessor.theorem_2(figure)
+        state_after = figure.get_state()
 
     # All angles known?
-    if figure.all_angles_known():
+    if figure.all_angles_are_known():
         # 180, 360, and pairing valid?
-        if figure.rule_360_valid() and figure.rule_180_valid() and figure.rule_pairing_valid():
+        if validator.all_rules(figure):
             print("Pre-process complete.")
             print("Here is your triangulated figure:")
             print(figure)
@@ -70,24 +80,30 @@ def run(figure):
             print('INCONCLUSIVE (1)')
     else:
         # pairing wanted?
+        print('-------------------------')
+        print('Before pairing:')
+        print('-------------------------')
+        print(figure)
         user_input = input('Do you want angle pairing to be applied? (y/n): ')
         print()
 
         if user_input == 'y':
 
             # Apply pairing, 180, and 360 rules until no new angles deduced
-            figure.preprocess_theorem_3_pairing()
-            figure.preprocess_theorem_1()
-            figure.preprocess_theorem_2()
-            while figure.anything_new:
-                figure.anything_new = False
-                figure.preprocess_theorem_3_pairing()
-                figure.preprocess_theorem_1()
-                figure.preprocess_theorem_2()
+            state_before = figure.get_state()
+            preprocessor.theorem_3(figure)
+            preprocessor.theorem_1(figure)
+            preprocessor.theorem_2(figure)
+            state_after = figure.get_state()
+            while state_before != state_after:
+                state_before = figure.get_state()
+                preprocessor.theorem_3(figure)
+                preprocessor.theorem_1(figure)
+                preprocessor.theorem_2(figure)
+                state_after = figure.get_state()
 
             # All angles known; 180, 360, and pairing valid?
-            if figure.all_angles_known() and figure.rule_180_valid() and figure.rule_360_valid() \
-                    and figure.rule_pairing_valid():
+            if figure.all_angles_are_known() and validator.all_rules(figure):
                 print('-------------------------')
                 print("Pre-process complete.")
                 print('-------------------------')

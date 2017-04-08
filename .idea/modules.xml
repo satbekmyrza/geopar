@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/../CS566/.idea/CS566.iml" filepath="$PROJECT_DIR$/../CS566/.idea/CS566.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Geopar.iml" filepath="$PROJECT_DIR$/.idea/Geopar.iml" />
       <module fileurl="file://$PROJECT_DIR$/../pargen/.idea/Pargen.iml" filepath="$PROJECT_DIR$/../pargen/.idea/Pargen.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../projects/.idea/projects.iml" filepath="$PROJECT_DIR$/../projects/.idea/projects.iml" />
       <module fileurl="file://$PROJECT_DIR$/../temp/.idea/temp.iml" filepath="$PROJECT_DIR$/../temp/.idea/temp.iml" />
     </modules>
   </component>

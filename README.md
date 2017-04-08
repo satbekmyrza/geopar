@@ -66,3 +66,15 @@ See:
 - angle.py
 - triangle.py
 - triangulated_figure.py
+
+#### Conventions
+- Object attributes start with _ (underscore). G.e. _object_attribute
+- Triangle vertices are called triangle points (or simply, points), for convenience
+
+#### Terminology
+- interior point
+- dimension of angle
+- angle points (Triangle)
+
+Inline-style: 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
