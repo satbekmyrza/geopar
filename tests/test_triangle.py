@@ -24,7 +24,7 @@ class TestTriangle(unittest.TestCase):
     def test_init(self):
         # force conversion of int, float angles to Angle
         triangle = Triangle([1, 2, 3], [10, 20.0, Angle([30])])
-        for angle in triangle._angles:
+        for angle in triangle.angles:
             self.assertTrue(isinstance(angle, Angle))
 
     def test_str(self):
@@ -81,9 +81,9 @@ class TestTriangle(unittest.TestCase):
             self.triangle1.angle_of_point(4)
 
     def test_count_known(self):
-        self.assertEqual(3, self.triangle0.count_known())
-        self.assertEqual(3, self.triangle1.count_known())
-        self.assertEqual(2, self.triangle2.count_known())
+        self.assertEqual(3, self.triangle0.number_of_known())
+        self.assertEqual(3, self.triangle1.number_of_known())
+        self.assertEqual(2, self.triangle2.number_of_known())
 
     def test_has_point(self):
         self.assertTrue(self.triangle0.has_point(1))
