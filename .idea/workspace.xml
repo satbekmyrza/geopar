@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-
     <list default="true" id="b0d2d385-f62c-42ba-a9c5-38f76b4f73dd" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/geopar/triangulated_figure.py" afterPath="$PROJECT_DIR$/geopar/triangulated_figure_class.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/run.py" afterPath="$PROJECT_DIR$/geopar/run.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/tfpreprocessor.py" afterPath="$PROJECT_DIR$/geopar/tfpreprocessor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_tfpreprocessor.py" afterPath="$PROJECT_DIR$/tests/test_tfpreprocessor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_tfvalidator.py" afterPath="$PROJECT_DIR$/tests/test_tfvalidator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_triangulated_figure.py" afterPath="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geopar/triangulated_figure_class.py" afterPath="$PROJECT_DIR$/geopar/triangulated_figure_class.py" />
     </list>
     <ignored path="Geopar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +26,7 @@
       <file leaf-file-name="angle_class.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geopar/angle_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="787">
+            <state relative-caret-position="4605">
               <caret line="312" column="43" lean-forward="false" selection-start-line="312" selection-start-column="43" selection-end-line="312" selection-end-column="43" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
@@ -55,7 +50,7 @@
       <file leaf-file-name="test_angle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_angle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
+            <state relative-caret-position="690">
               <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -77,8 +72,18 @@
       <file leaf-file-name="triangulated_figure_class.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3713">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_triangulated_figure.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="21" column="52" lean-forward="true" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -99,7 +104,7 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geopar/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
+            <state relative-caret-position="870">
               <caret line="62" column="23" lean-forward="false" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
@@ -113,16 +118,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1275">
               <caret line="85" column="31" lean-forward="false" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="input.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/inputs/input.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -171,7 +166,6 @@
         <option value="$PROJECT_DIR$/tests/test_tfpreprocessor.py" />
         <option value="$PROJECT_DIR$/tests/test_tfvalidator.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
         <option value="$PROJECT_DIR$/geopar/triangle.py" />
         <option value="$PROJECT_DIR$/geopar/extras.py" />
         <option value="$PROJECT_DIR$/geopar/angle.py" />
@@ -183,13 +177,15 @@
         <option value="$PROJECT_DIR$/geopar/utilities.py" />
         <option value="$PROJECT_DIR$/geopar/triangle_class.py" />
         <option value="$PROJECT_DIR$/tests/test_triangle.py" />
+        <option value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+        <option value="$PROJECT_DIR$/geopar/triangulated_figure_class.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1920" />
-    <option name="height" value="989" />
+    <option name="width" value="1280" />
+    <option name="height" value="710" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -296,8 +292,8 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/satbekabdyldayev/PycharmProjects/geopar/geopar/angle.py" />
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in TestTriangle">
-    <configuration default="false" name="Unittest TestAngle.test_rsub" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittests in TestTriangulatedFigure (2)">
+    <configuration default="false" name="Unittests in TestTriangulatedFigure (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -307,9 +303,31 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_angle.py" />
-      <option name="CLASS_NAME" value="TestAngle" />
-      <option name="METHOD_NAME" value="test_rsub" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+      <option name="CLASS_NAME" value="TestTriangulatedFigure" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestTriangulatedFigure.test_get_state" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Geopar" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+      <option name="CLASS_NAME" value="TestTriangulatedFigure" />
+      <option name="METHOD_NAME" value="test_get_state" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -319,7 +337,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest TestAngle.test_truediv" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest TestTriangulatedFigure.test_get_points" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -329,9 +347,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_angle.py" />
-      <option name="CLASS_NAME" value="TestAngle" />
-      <option name="METHOD_NAME" value="test_truediv" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+      <option name="CLASS_NAME" value="TestTriangulatedFigure" />
+      <option name="METHOD_NAME" value="test_get_points" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -341,7 +359,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest TestAngle.test_mul" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in TestTriangulatedFigure" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -351,11 +369,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_angle.py" />
-      <option name="CLASS_NAME" value="TestAngle" />
-      <option name="METHOD_NAME" value="test_mul" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+      <option name="CLASS_NAME" value="TestTriangulatedFigure" />
+      <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -363,24 +381,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geopar" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geopar/run.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in TestTriangle" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in TestTriangulatedFigure (2)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -390,8 +391,8 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Geopar" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangle.py" />
-      <option name="CLASS_NAME" value="TestTriangle" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_triangulated_figure.py" />
+      <option name="CLASS_NAME" value="TestTriangulatedFigure" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_CLASS" />
@@ -537,19 +538,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_rsub" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_truediv" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_mul" />
-      <item index="3" class="java.lang.String" itemvalue="Python.run" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangle" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangulatedFigure (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangulatedFigure.test_get_state" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangulatedFigure.test_get_points" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangulatedFigure" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangulatedFigure (2)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangle" />
-        <item index="1" class="java.lang.String" itemvalue="Python.run" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_mul" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_truediv" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestAngle.test_rsub" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangulatedFigure (2)" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangulatedFigure" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangulatedFigure.test_get_points" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestTriangulatedFigure (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestTriangulatedFigure.test_get_state" />
       </list>
     </recent_temporary>
   </component>
@@ -567,35 +568,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_TestAngle_test_sub - 2017.02.07 at 15h 50m 24s.xml">
-      <configuration name="Unittest TestAngle.test_sub" configurationId="tests" />
+    <history-entry file="Unittest_TestTriangulatedFigure_test_get_points - 2017.04.10 at 13h 02m 50s.xml">
+      <configuration name="Unittest TestTriangulatedFigure.test_get_points" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestAngle_test_sub - 2017.02.07 at 15h 51m 24s.xml">
-      <configuration name="Unittest TestAngle.test_sub" configurationId="tests" />
+    <history-entry file="Unittest_TestTriangulatedFigure_test_get_points - 2017.04.10 at 13h 03m 06s.xml">
+      <configuration name="Unittest TestTriangulatedFigure.test_get_points" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestAngle_test_sub - 2017.02.07 at 15h 51m 40s.xml">
-      <configuration name="Unittest TestAngle.test_sub" configurationId="tests" />
+    <history-entry file="Unittest_TestTriangulatedFigure_test_get_points - 2017.04.10 at 13h 03m 08s.xml">
+      <configuration name="Unittest TestTriangulatedFigure.test_get_points" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestAngle_test_sub - 2017.02.07 at 15h 52m 16s.xml">
-      <configuration name="Unittest TestAngle.test_sub" configurationId="tests" />
+    <history-entry file="Unittest_TestTriangulatedFigure_test_get_points - 2017.04.10 at 13h 03m 25s.xml">
+      <configuration name="Unittest TestTriangulatedFigure.test_get_points" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestAngle_test_truediv - 2017.02.07 at 16h 16m 37s.xml">
-      <configuration name="Unittest TestAngle.test_truediv" configurationId="tests" />
+    <history-entry file="Unittest_TestTriangulatedFigure_test_get_points - 2017.04.10 at 13h 06m 03s.xml">
+      <configuration name="Unittest TestTriangulatedFigure.test_get_points" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestTriangle - 2017.04.08 at 10h 06m 42s.xml">
-      <configuration name="Unittests in TestTriangle" configurationId="tests" />
+    <history-entry file="Unittest_TestTriangulatedFigure_test_get_points - 2017.04.10 at 13h 06m 12s.xml">
+      <configuration name="Unittest TestTriangulatedFigure.test_get_points" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestTriangle - 2017.04.08 at 10h 13m 28s.xml">
-      <configuration name="Unittests in TestTriangle" configurationId="tests" />
+    <history-entry file="Unittest_TestTriangulatedFigure_test_get_state - 2017.04.10 at 13h 02m 47s.xml">
+      <configuration name="Unittest TestTriangulatedFigure.test_get_state" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestTriangle - 2017.04.08 at 10h 14m 18s.xml">
-      <configuration name="Unittests in TestTriangle" configurationId="tests" />
+    <history-entry file="Unittests_in_TestTriangulatedFigure - 2017.04.10 at 13h 14m 59s.xml">
+      <configuration name="Unittests in TestTriangulatedFigure" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestTriangle - 2017.04.08 at 10h 14m 23s.xml">
-      <configuration name="Unittests in TestTriangle" configurationId="tests" />
+    <history-entry file="Unittests_in_TestTriangulatedFigure_(1) - 2017.04.10 at 13h 03m 19s.xml">
+      <configuration name="Unittests in TestTriangulatedFigure (1)" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestTriangle - 2017.04.08 at 10h 14m 26s.xml">
-      <configuration name="Unittests in TestTriangle" configurationId="tests" />
+    <history-entry file="Unittests_in_TestTriangulatedFigure_(2) - 2017.04.10 at 13h 15m 05s.xml">
+      <configuration name="Unittests in TestTriangulatedFigure (2)" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -608,15 +609,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="989" extended-state="6" />
+    <frame x="0" y="22" width="1280" height="710" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15104167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15078124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35869566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3572543" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -945,13 +946,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_tfpreprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
@@ -963,7 +957,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1005,7 +998,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geopar/angle_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="787">
+        <state relative-caret-position="4605">
           <caret line="312" column="43" lean-forward="false" selection-start-line="312" selection-start-column="43" selection-end-line="312" selection-end-column="43" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
@@ -1015,7 +1008,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geopar/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
+        <state relative-caret-position="870">
           <caret line="62" column="23" lean-forward="false" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
@@ -1025,7 +1018,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_angle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
+        <state relative-caret-position="690">
           <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -1049,10 +1042,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_triangulated_figure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="52" lean-forward="true" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/geopar/triangulated_figure_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3713">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>

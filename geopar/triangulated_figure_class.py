@@ -4,16 +4,12 @@ __author__ = 'mostly satbek'
 
 
 class TriangulatedFigure:
-
     """
-    Class Invariant 1: Every triangle in self.triangles has
-                       a unique set of vertices
-    Class Invariant 2: Every Triangle in self.triangles shares two get_points with another
-
-    !!! Should I explain what angle points are?
+    Class Invariants
+    1: self.triangles is a list of triangle, each with a unique set of vertices
+    2: For every triangle t1 in self.triangles, there is a t2 in self.triangles
+       such that t1.points and t2.points share 2 elements
     """
-
-    # !!!
 
     def __init__(self, triangles=None):
         # the Triangle objects that make up self
