@@ -78,8 +78,8 @@ class TestTriangulatedFigure(unittest.TestCase):
         self.assertEqual(self.tf1.get_angle_by_angle_points(1, 2, 5), 10)
 
     def test_get_state(self):
-        print(self.tf1.get_state())
-        print(self.tf11.get_state())
+        print(self.tf1.get_id())
+        print(self.tf11.get_id())
         self.assertTrue(True)
 
     def test_get_points(self):

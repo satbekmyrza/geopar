@@ -19,8 +19,8 @@ class TriangulatedFigure:
         else:
             self._triangles = []
 
-    def get_state(self):
-        # 'state' of a triangulated figure is an integer number (result of built-in hash() function)
+    def get_id(self):
+        # 'id' of a triangulated figure is an integer number (result of built-in hash() function)
         # that is unique to every triangulated figure with different configurations.
         # That is, two triangulated figures with equivalent configurations have the same states.
 
